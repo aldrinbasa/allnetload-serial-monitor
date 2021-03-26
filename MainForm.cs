@@ -37,6 +37,8 @@ namespace SerialSMSSender {
             processCommandsThread.Start();
             processOutboundsThread.Start();
 
+            GetRoleRank("PROVINCIAL");
+
             //ClearMessagesOnGateWay(GateWayOnePort);
             //ClearMessagesOnGateWay(GateWayTwoPort);
             //ClearMessagesOnGateWay(SenderOnePort);
@@ -247,6 +249,12 @@ namespace SerialSMSSender {
                     else if ((commandType == "DISTRIBUTOR") || (commandType == "DEALER") || (commandType == "MOBILE") || (commandType == "CITY") || (commandType == "PROVINCIAL")) {
                         ProcessRegistrationByRole(senderNumber, command, referenceNumber, commandType);
                     }
+                    else if (commandType == "ADD") {
+                        ProcessAdditionalAccount(senderNumber, command, referenceNumber);
+                    }
+                    else if (commandType.Contains("UP")) {
+                        ProcessStatusUpgrade(senderNumber, command, referenceNumber);
+                    }
                     else {
                         QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
                     }
@@ -407,12 +415,92 @@ namespace SerialSMSSender {
                 }
             }
             catch{
-                QueueOutbound("(OUTER IF)Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
+                QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
 
-        private void ProcessDealer(string senderNumber, string command, string referenceNumber) {
+        private void ProcessAdditionalAccount(string senderNumber, string command, string referenceNumber) {
+            try {
+                string activationCode = command.Split(' ')[1].Trim().Split('/')[0];
+                string numberToAdd = command.Split(' ')[1].Trim().Split('/')[1];
+                string userRole = GetUserRole(senderNumber);
+                string activationCodeRole = GetActivationCodeRole(activationCode);
+                string query;
 
+                if (ActivationCodeUsable(activationCode, activationCodeRole)) {
+
+                    if(GetActivationCodeUser(activationCode) == "") {
+
+                        query = "UPDATE users SET Pins = '" + (int.Parse(GetUserPins(senderNumber)) + int.Parse(GetNumberOfRegistrationPins(activationCodeRole))).ToString() + "' WHERE PhoneNumber = '" + senderNumber + "'";
+                        
+                        RunDatabaseQuery(query);
+
+                        UseActivationCode(activationCode, GetUserUsername(senderNumber));
+
+                        QueueOutbound("Congratulations! You have added 1 " + activationCodeRole + " to your account. You now have additional " + FormatNumberWithComma(GetNumberOfRegistrationPins(activationCodeRole), false) + " TU Pins.", numberToAdd, referenceNumber);
+                        Thread.Sleep(2000);
+                        QueueOutbound("Congratulations! " + numberToAdd + " has been upgraded to " + activationCodeRole + ".", senderNumber, referenceNumber);
+                    }
+                    else {
+                        QueueOutbound("Registration Error: Activation Code Already Used by " + GetActivationCodeUser(activationCode) + ".", senderNumber, referenceNumber);
+                    }
+                }
+                else {
+                    QueueOutbound("Additional Account Error: Invalid Activation Code.", senderNumber, referenceNumber);
+                }
+            }
+            catch {
+                QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
+            }
+        }
+
+        private void ProcessStatusUpgrade(string senderNumber, string command, string referenceNumber) {
+
+            try {
+
+                string activationCode = command.Split(' ')[1].Trim();
+                string upgradeRole = command.Split(' ')[0].Trim().Substring(2).ToUpper();
+
+                string senderRole = GetUserRole(senderNumber);
+
+                int senderRoleRank = GetRoleRank(senderRole);
+                int upgradeRoleRank = GetRoleRank(upgradeRole);
+
+                bool canUpgrade = senderRoleRank <= upgradeRoleRank;
+
+                if ((upgradeRole == "DISTRIBUTOR") || (upgradeRole == "DEALER") || (upgradeRole == "MOBILE") || (upgradeRole == "CITY") || (upgradeRole == "PROVINCIAL")) {
+
+                    if (ActivationCodeUsable(activationCode, upgradeRole)) {
+
+                        if (GetActivationCodeUser(activationCode) == "") {
+
+                            if (canUpgrade) {
+
+                                string query = "UPDATE users SET Role = '" + upgradeRole + "', Pins = '" + (int.Parse(GetUserPins(senderNumber)) + int.Parse(GetNumberOfRegistrationPins(upgradeRole))).ToString() + "' WHERE PhoneNumber = '" + senderNumber + "'";
+                                RunDatabaseQuery(query);
+
+                                UseActivationCode(activationCode, GetUserUsername(senderNumber));
+                                QueueOutbound("Congratulations! You have upgraded your account to " + upgradeRole + " status. You now have " + GetNumberOfRegistrationPins(upgradeRole) + " additional TU Pins.", senderNumber, referenceNumber);
+                            }
+                            else {
+                                QueueOutbound("Upgrade Error: You can not downgrade or upgrade to your current status.", senderNumber, referenceNumber);
+                            }
+                        }
+                        else {
+                            QueueOutbound("Upgrade Error: Upgrade Code Already Used by " + GetActivationCodeUser(activationCode) + ".", senderNumber, referenceNumber);
+                        }
+                    }
+                    else {
+                        QueueOutbound("Upgrade Error: Invalid Upgrade Code.", senderNumber, referenceNumber);
+                    }
+                }
+                else {
+                    QueueOutbound("Upgrade Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
+                }
+            }
+            catch {
+                QueueOutbound("Upgrade Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
+            }
         }
         #endregion
 
@@ -474,6 +562,7 @@ namespace SerialSMSSender {
         private void DeductPin(string phoneNumber, string amount) {
             RunDatabaseQuery("UPDATE users SET Pins = (Pins - " + amount + ") WHERE PhoneNumber = '" + phoneNumber + "'");
         }
+
         #endregion
 
         #region METHODS - Messages Handling
@@ -754,6 +843,97 @@ namespace SerialSMSSender {
             }
 
             return pins;
+        }
+
+        private string GetUserRole(string phoneNumber) {
+            string query = "SELECT Role FROM users WHERE PhoneNumber = '" + phoneNumber + "'";
+            string role = "";
+
+            DataTable dataTableBalance = RunQueryDataTable(query);
+
+            try {
+                role = dataTableBalance.Rows[0]["Role"].ToString();
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+
+            return role;
+        }
+
+        private string GetActivationCodeRole(string activationCode) {
+            string query = "SELECT Role FROM activation_codes WHERE Code = '" + activationCode + "'";
+            string role = "";
+
+            DataTable dataTableBalance = RunQueryDataTable(query);
+
+            try {
+                role = dataTableBalance.Rows[0]["Role"].ToString();
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message + "GetActivationCodeRole");
+            }
+
+            return role;
+        }
+
+        private string GetUserUsername(string phoneNumber) {
+            string query = "SELECT Username FROM users WHERE PhoneNumber = '" + phoneNumber + "'";
+            string username = "";
+
+            DataTable dataTableBalance = RunQueryDataTable(query);
+
+            try {
+                username = dataTableBalance.Rows[0]["Username"].ToString();
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+
+            return username;
+        }
+
+        private int GetRoleRank(string role) {
+            
+            string query = "SELECT Value FROM configurations WHERE Parameter = '" + char.ToUpper(role.ToLower()[0]) + role.ToLower().Substring(1) + "Rank'";
+            int rank = 0;
+
+            DataTable dataTableBalance = RunQueryDataTable(query);
+
+            if(dataTableBalance.Rows.Count > 0) {
+                rank = int.Parse(dataTableBalance.Rows[0]["Value"].ToString());
+            }
+
+            return rank;
+        }
+        
+        private bool CanTransfer(string senderNumber, string receiverNumber, string type) {
+
+            bool canTransfer = false;
+
+            string senderRole = GetUserRole(senderNumber);
+            string receiverRole = GetUserRole(receiverNumber);
+
+            int senderRank = GetRoleRank(senderRole);
+            int receiverRank = GetRoleRank(receiverRole);
+
+            if (type == "TTU") {
+                if (senderRank == 0) {
+                    canTransfer = false;
+                }
+                else if (senderRank >= receiverRank) {
+                    canTransfer = true;
+                }
+                else {
+                    canTransfer = false;
+                }
+            }
+            else {
+                if(senderRank >= receiverRank) {
+                    canTransfer = true;
+                }
+            }
+            return canTransfer;
         }
         #endregion
 
