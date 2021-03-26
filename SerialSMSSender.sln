@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialSMSSender", "SerialSMSSender.csproj", "{155C39CB-4E4F-4178-B579-2F20C8143474}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{155C39CB-4E4F-4178-B579-2F20C8143474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155C39CB-4E4F-4178-B579-2F20C8143474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155C39CB-4E4F-4178-B579-2F20C8143474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155C39CB-4E4F-4178-B579-2F20C8143474}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91EDD235-7616-43BA-9308-6E3902A11B4F}
+	EndGlobalSection
+EndGlobal
