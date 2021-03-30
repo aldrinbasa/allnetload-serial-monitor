@@ -32,17 +32,26 @@ namespace SerialSMSSender {
             Thread processCommandsThread = new Thread(ProcessCommands);
             Thread processOutboundsThread = new Thread(ProcessOutbounds);
 
+            Thread processSmartLoadingQueueThread = new Thread(ProcessSmartLoadingQueue);
+            Thread processGlobeLoadingQueueThread = new Thread(ProcessGlobeLoadingQueue);
+
             receiveMessageGateWayOneThread.Start();
             receiveMessageGateWayTwoThread.Start();
+
             processCommandsThread.Start();
             processOutboundsThread.Start();
 
-            GetRoleRank("PROVINCIAL");
+            processSmartLoadingQueueThread.Start();
+            processGlobeLoadingQueueThread.Start();
 
             //ClearMessagesOnGateWay(GateWayOnePort);
             //ClearMessagesOnGateWay(GateWayTwoPort);
             //ClearMessagesOnGateWay(SenderOnePort);
             //ClearMessagesOnGateWay(SenderTwoPort);
+            //ClearMessagesOnGateWay(GlobeRetailerOnePort);
+            //ClearMessagesOnGateWay(GlobeRetailerTwoPort);
+            //ClearMessagesOnGateWay(GlobeRetailerThreePort);
+            //ClearMessagesOnGateWay(SmartRetailerPort);
         }
         #endregion
 
@@ -65,9 +74,14 @@ namespace SerialSMSSender {
 
         public bool SenderPortOneActive = true;
         public bool SenderPortTwoActive = true;
+
+        public bool SmartRetailerIsSending = false;
+        public bool GlobeOnePortDialingUSSD = false;
+        public bool GlobeTwoPortDialingUSSD = false;
+        public bool GlobeThreePortDialingUSSD = false;
         #endregion
 
-        #region THREAD - Receive Messages on Gateway One
+        #region THREAD - Receive Messages on Gateways
         private void ReceiveMessageGateWayOne() {
             string[] splitDisplacerNewLine = new string[] { Environment.NewLine };
             string[] splitDisplacerCMT = new string[] { "+CMT" };
@@ -144,9 +158,7 @@ namespace SerialSMSSender {
                 MessageBox.Show(error.Message);
             }
         }
-        #endregion
 
-        #region THREAD - Receive Messages on Gateway Two
         private void ReceiveMessageGateWayTwo() {
             string[] splitDisplacerNewLine = new string[] { Environment.NewLine };
             string[] splitDisplacerCMT = new string[] { "+CMT" };
@@ -225,6 +237,291 @@ namespace SerialSMSSender {
         }
         #endregion
 
+        #region THREAD - Receive Messages on Retailer Ports
+        private void ReceiveMessageRetailerGlobeOne() {
+            string[] splitDisplacerNewLine = new string[] { Environment.NewLine };
+            string[] splitDisplacerCMT = new string[] { "+CMT" };
+            string[] splitDisplacerLoaded = new string[] { "loaded" };
+            string[] splitDisplacerTo = new string[] { "to" };
+
+            string messageReceived;
+
+            try {
+
+                using (SerialPort globeOnePort = new SerialPort(GlobeRetailerOnePort, 115200)) {
+                    globeOnePort.Open();
+                    globeOnePort.NewLine = Environment.NewLine;
+                    globeOnePort.Write("AT+CNMI=1,2,0,0,0\r");
+                    Thread.Sleep(100);
+                    globeOnePort.Write("AT\r\n");
+                    Thread.Sleep(100);
+                    globeOnePort.Write("AT+CMGF=1\r\n");
+                    Thread.Sleep(100);
+
+                    globeOnePort.Write("AT+CMGL=\"ALL\"\r\n");
+                    Thread.Sleep(100);
+
+                    string existing = globeOnePort.ReadExisting();
+
+                    if (existing.Contains("+CMT")) {
+
+                        this.Invoke((MethodInvoker)delegate {
+                            homeTextBoxGlobe.Text = homeTextBoxGlobe.Text + existing;
+                            homeTextBoxGlobe.SelectionStart = homeTextBoxGlobe.Text.Length;
+                            homeTextBoxGlobe.ScrollToCaret();
+                        });
+
+                        messageReceived = existing.Split(splitDisplacerCMT, StringSplitOptions.None)[1];
+                        messageReceived = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0] + Environment.NewLine + messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1];
+
+                        string messageContent = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1].Trim();
+                        string senderNumber = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0].Split('"')[1].Trim();
+
+                        RunDatabaseQuery("INSERT INTO messages_globe (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+
+                        if(messageContent.Contains("has loaded")) {
+                            string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0]);
+                            string amount = Regex.Replace(messageContent.Split(splitDisplacerLoaded, StringSplitOptions.None)[1].Trim().Split(' ')[0].Trim(), "[A-Za-z ]", "");
+
+                            DataTable loadsTable = RunQueryDataTable("SELECT * FROM loads WHERE Status = 'PROCESSING' AND ReceiverNumber = '" + receiverNumber + "'");
+
+                            string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
+                            string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
+                            string telecomResponse = messageContent;
+                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
+                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
+
+                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
+
+                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
+
+                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
+                            Thread.Sleep(2000);
+                        }
+                    }
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void ReceiveMessageRetailerGlobeTwo() {
+            string[] splitDisplacerNewLine = new string[] { Environment.NewLine };
+            string[] splitDisplacerCMT = new string[] { "+CMT" };
+            string[] splitDisplacerLoaded = new string[] { "loaded" };
+            string[] splitDisplacerTo = new string[] { "to" };
+
+            string messageReceived;
+
+            try {
+
+                using (SerialPort globeTwoPort = new SerialPort(GlobeRetailerTwoPort, 115200)) {
+                    globeTwoPort.Open();
+                    globeTwoPort.NewLine = Environment.NewLine;
+                    globeTwoPort.Write("AT+CNMI=1,2,0,0,0\r");
+                    Thread.Sleep(100);
+                    globeTwoPort.Write("AT\r\n");
+                    Thread.Sleep(100);
+                    globeTwoPort.Write("AT+CMGF=1\r\n");
+                    Thread.Sleep(100);
+
+                    globeTwoPort.Write("AT+CMGL=\"ALL\"\r\n");
+                    Thread.Sleep(100);
+
+                    string existing = globeTwoPort.ReadExisting();
+
+                    if (existing.Contains("+CMT")) {
+
+                        this.Invoke((MethodInvoker)delegate {
+                            homeTextBoxGlobe.Text = homeTextBoxGlobe.Text + existing;
+                            homeTextBoxGlobe.SelectionStart = homeTextBoxGlobe.Text.Length;
+                            homeTextBoxGlobe.ScrollToCaret();
+                        });
+
+                        messageReceived = existing.Split(splitDisplacerCMT, StringSplitOptions.None)[1];
+                        messageReceived = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0] + Environment.NewLine + messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1];
+
+                        string messageContent = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1].Trim();
+                        string senderNumber = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0].Split('"')[1].Trim();
+
+                        RunDatabaseQuery("INSERT INTO messages_globe (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+
+                        if (messageContent.Contains("has loaded")) {
+                            string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0]);
+                            string amount = Regex.Replace(messageContent.Split(splitDisplacerLoaded, StringSplitOptions.None)[1].Trim().Split(' ')[0].Trim(), "[A-Za-z ]", "");
+
+                            DataTable loadsTable = RunQueryDataTable("SELECT * FROM loads WHERE Status = 'PROCESSING' AND ReceiverNumber = '" + receiverNumber + "'");
+
+                            string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
+                            string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
+                            string telecomResponse = messageContent;
+                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
+                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
+
+                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
+
+                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
+
+                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
+                            Thread.Sleep(2000);
+                        }
+                    }
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void ReceiveMessageRetailerGlobeThree() {
+            string[] splitDisplacerNewLine = new string[] { Environment.NewLine };
+            string[] splitDisplacerCMT = new string[] { "+CMT" };
+            string[] splitDisplacerLoaded = new string[] { "loaded" };
+            string[] splitDisplacerTo = new string[] { "to" };
+
+            string messageReceived;
+
+            try {
+
+                using (SerialPort globeTwoPort = new SerialPort(GlobeRetailerTwoPort, 115200)) {
+                    globeTwoPort.Open();
+                    globeTwoPort.NewLine = Environment.NewLine;
+                    globeTwoPort.Write("AT+CNMI=1,2,0,0,0\r");
+                    Thread.Sleep(100);
+                    globeTwoPort.Write("AT\r\n");
+                    Thread.Sleep(100);
+                    globeTwoPort.Write("AT+CMGF=1\r\n");
+                    Thread.Sleep(100);
+
+                    globeTwoPort.Write("AT+CMGL=\"ALL\"\r\n");
+                    Thread.Sleep(100);
+
+                    string existing = globeTwoPort.ReadExisting();
+
+                    if (existing.Contains("+CMT")) {
+
+                        this.Invoke((MethodInvoker)delegate {
+                            homeTextBoxGlobe.Text = homeTextBoxGlobe.Text + existing;
+                            homeTextBoxGlobe.SelectionStart = homeTextBoxGlobe.Text.Length;
+                            homeTextBoxGlobe.ScrollToCaret();
+                        });
+
+                        messageReceived = existing.Split(splitDisplacerCMT, StringSplitOptions.None)[1];
+                        messageReceived = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0] + Environment.NewLine + messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1];
+
+                        string messageContent = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1].Trim();
+                        string senderNumber = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0].Split('"')[1].Trim();
+
+                        RunDatabaseQuery("INSERT INTO messages_globe (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+
+                        if (messageContent.Contains("has loaded")) {
+                            string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0]);
+                            string amount = Regex.Replace(messageContent.Split(splitDisplacerLoaded, StringSplitOptions.None)[1].Trim().Split(' ')[0].Trim(), "[A-Za-z ]", "");
+
+                            DataTable loadsTable = RunQueryDataTable("SELECT * FROM loads WHERE Status = 'PROCESSING' AND ReceiverNumber = '" + receiverNumber + "'");
+
+                            string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
+                            string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
+                            string telecomResponse = messageContent;
+                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
+                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
+
+                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
+
+                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
+
+                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
+                            Thread.Sleep(2000);
+                        }
+                    }
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+        } 
+
+        private void ReceiveMessageRetailerSmart() {
+            string[] splitDisplacerNewLine = new string[] { Environment.NewLine };
+            string[] splitDisplacerCMT = new string[] { "+CMT" };
+            string[] splitDisplacerTo = new string[] { "to" };
+
+            string messageReceived;
+
+            try {
+
+                using (SerialPort smartPort = new SerialPort(SmartRetailerPort, 115200)) {
+                    smartPort.Open();
+                    smartPort.NewLine = Environment.NewLine;
+                    smartPort.Write("AT+CNMI=1,2,0,0,0\r");
+                    Thread.Sleep(100);
+                    smartPort.Write("AT\r\n");
+                    Thread.Sleep(100);
+                    smartPort.Write("AT+CMGF=1\r\n");
+                    Thread.Sleep(100);
+
+                    smartPort.Write("AT+CMGL=\"ALL\"\r\n");
+                    Thread.Sleep(100);
+
+                    string existing = smartPort.ReadExisting();
+
+                    if (existing.Contains("+CMT")) {
+
+                        this.Invoke((MethodInvoker)delegate {
+                            homeTextBoxSmart.Text = homeTextBoxSmart.Text + existing;
+                            homeTextBoxSmart.SelectionStart = homeTextBoxSmart.Text.Length;
+                            homeTextBoxSmart.ScrollToCaret();
+                        });
+
+                        messageReceived = existing.Split(splitDisplacerCMT, StringSplitOptions.None)[1];
+                        messageReceived = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0] + Environment.NewLine + messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1];
+
+                        string messageContent = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[1].Trim();
+                        string senderNumber = messageReceived.Split(splitDisplacerNewLine, StringSplitOptions.None)[0].Split('"')[1].Trim();
+
+                        RunDatabaseQuery("INSERT INTO messages_smart (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+
+                        if (messageContent.Contains("has loaded")) {
+                            string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0].Trim());
+                            string amount = messageContent.Split('(')[0].Trim().Split(' ').Last().Trim().Split('.')[0].Replace("P", "");
+
+                            DataTable loadsTable = RunQueryDataTable("SELECT * FROM loads WHERE Status = 'PROCESSING' AND ReceiverNumber = '" + receiverNumber + "'");
+
+                            string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
+                            string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
+                            string telecomResponse = messageContent;
+                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString());
+                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("SMART")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
+
+                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
+
+                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
+
+                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
+                            Thread.Sleep(2000);
+                        }
+                    }
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+        }
+        #endregion
+
         #region THREAD - Process Commands
         private void ProcessCommands() {
             while (true) {
@@ -254,6 +551,15 @@ namespace SerialSMSSender {
                     }
                     else if (commandType.Contains("UP")) {
                         ProcessStatusUpgrade(senderNumber, command, referenceNumber);
+                    }
+                    else if (commandType == "TLC") {
+                        ProcessTransferLoadCredit(senderNumber, command, referenceNumber);
+                    }
+                    else if (commandType == "TTU") {
+                        ProcessTransferPins(senderNumber, command, referenceNumber);
+                    }
+                    else if (commandType == "LOAD") {
+                        ProcessLoadingQueue(senderNumber, command, referenceNumber);
                     }
                     else {
                         QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
@@ -502,6 +808,217 @@ namespace SerialSMSSender {
                 QueueOutbound("Upgrade Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
+
+        private void ProcessTransferLoadCredit(string senderNumber, string command, string referenceNumber) {
+            
+            try {
+
+                string numberToReceive = command.Split(' ')[1].Trim();
+                string amount = command.Split(' ')[2].Trim();
+
+                DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'MinimumTLC'");
+                double minimumTransferAmount = double.Parse(configurationsTable.Rows[0]["Value"].ToString());
+
+                configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
+                string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
+
+                double amountToBeDeducted, income;
+                string newSenderBalance, newReceiverBalance;
+
+                if (UserExists(numberToReceive)) {
+
+                    if (CanTransfer(senderNumber, numberToReceive, "TLC")) {
+
+                        if (senderNumber != numberToReceive) {
+
+                            if (double.Parse(amount) >= minimumTransferAmount) {
+
+                                amountToBeDeducted = (double.Parse(amount)) * (1 - GetPercentOfIncomeTLC(senderNumber, numberToReceive));
+                                income = double.Parse(amount) - amountToBeDeducted;
+
+                                if (HasLoadCreditBalance(senderNumber, amountToBeDeducted.ToString())) {
+
+                                    if(!HasSameTransactionWithin30Minutes(senderNumber, numberToReceive, amount, "TLC")){
+
+                                        newSenderBalance = (double.Parse(GetUserBalance(senderNumber)) - amountToBeDeducted).ToString();
+                                        newReceiverBalance = (double.Parse(GetUserBalance(numberToReceive)) + double.Parse(amount)).ToString();
+
+                                        RunDatabaseQuery("UPDATE users SET Balance = '" + newReceiverBalance + "' WHERE PhoneNumber = '" + numberToReceive + "'");
+                                        RunDatabaseQuery("UPDATE users SET Balance = '" + newSenderBalance + "' WHERE PhoneNumber = '" + senderNumber + "'");
+
+                                        RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + income + "', 'TLC', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + referenceNumber + "')");
+
+                                        RunDatabaseQuery("INSERT INTO history_tlc (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + amount + "(" + amountToBeDeducted + ")', '" + numberToReceive + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + referenceNumber + "')");
+
+                                        QueueOutbound("You have issued P" + FormatNumberWithComma(amount, true) + "(" + FormatNumberWithComma(amountToBeDeducted.ToString(), true) + ") load credits to " + numberToReceive + ". New load wallet balance: P" + newSenderBalance + ". RefNo: " + referenceNumber + Environment.NewLine + "Date: " + DateTime.Now.ToString(), senderNumber, referenceNumber);
+
+                                        Thread.Sleep(2000);
+
+                                        QueueOutbound("You have received P" + FormatNumberWithComma(amount, true) + " load credits from " + senderNumber + ". New load credit balance: P" + FormatNumberWithComma(newReceiverBalance, true) + Environment.NewLine + " RefNo: " + referenceNumber, numberToReceive, referenceNumber);
+                                    }
+                                    else {
+                                        QueueOutbound("TLC Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                                    }
+                                }
+                                else {
+                                    QueueOutbound("TLC Error: You have insufficient balance to complete the transaction.", senderNumber, referenceNumber);
+                                }
+                            }
+                            else {
+                                QueueOutbound("TLC Error: The minimum amount that can be transferred is P" + FormatNumberWithComma(minimumTransferAmount.ToString(), true) + "", senderNumber, referenceNumber);
+                            }
+                        }
+                        else {
+                            QueueOutbound("TLC Error: You can not transfer to your own account.", senderNumber, referenceNumber);
+                        }
+                    }
+                    else {
+                        QueueOutbound("TLC Error: You are not allowed to transfer to this account.", senderNumber, referenceNumber);
+                    }
+                }
+                else {
+                    QueueOutbound("TLC Error: Receiver is not registered in the system.", senderNumber, referenceNumber);
+                }
+            }
+            catch {
+                QueueOutbound("TLC Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
+            }
+        }
+  
+        private void ProcessTransferPins(string senderNumber, string command, string referenceNumber) {
+
+            try {
+
+                string receiverNumber = command.Split(' ')[1];
+                string amount = command.Split(' ')[2];
+
+                DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'MinimumTTU'");
+                int minimumPinAmount = int.Parse(configurationsTable.Rows[0]["Value"].ToString());
+
+                configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
+                string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
+
+                if (UserExists(receiverNumber)) {
+
+                    if (CanTransfer(senderNumber, receiverNumber, "TTU")) {
+
+                        if (senderNumber != receiverNumber) {
+
+                            if (int.Parse(amount) >= minimumPinAmount) {
+
+                                if (HasPinBalance(senderNumber, int.Parse(amount))) {
+
+                                    if (!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "TTU")) {
+
+                                        RunDatabaseQuery("INSERT INTO history_ttu (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + referenceNumber + "')");
+                                        RunDatabaseQuery("UPDATE users SET Pins = Pins - " + amount + " WHERE PhoneNumber = '" + senderNumber + "'");
+                                        RunDatabaseQuery("UPDATE users SET Pins = Pins + " + amount + " WHERE PhoneNumber = '" + receiverNumber + "'");
+
+                                        QueueOutbound("You have issued " + amount + " Techno User Pin/s to " + receiverNumber + ". Available TU Pins: " + GetUserPins(senderNumber) + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm"), senderNumber, referenceNumber);
+                                        Thread.Sleep(2000);
+                                        QueueOutbound("You have received " + amount + " Techno User Pin/s from " + senderNumber + ". Available TU Pins: " + GetUserPins(receiverNumber) + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm"), receiverNumber, referenceNumber);
+                                    }
+                                    else {
+                                        QueueOutbound("TTU Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                                    }
+                                }
+                                else {
+                                    QueueOutbound("TTU Error: You have insufficient pins to complete the transaction.", senderNumber, referenceNumber);
+                                }
+                            }
+                            else {
+                                QueueOutbound("TTU Error: The minimum amount of Pin that can be transferred is " + FormatNumberWithComma(minimumPinAmount.ToString(), false) + " TUP.", senderNumber, referenceNumber);
+                            }
+                        }
+                        else {
+                            QueueOutbound("TTU Error: You can not transfer to your own account.", senderNumber, referenceNumber);
+                        }
+                    }
+                    else {
+                        QueueOutbound("TTU Error: You are not allowed to transfer to this account.", senderNumber, referenceNumber);
+                    }
+                }
+                else {
+                    QueueOutbound("TTU Error: Receiver is not registered in the system.", senderNumber, referenceNumber);
+                }
+            }
+            catch {
+                QueueOutbound("TTU Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
+            }
+        }
+
+        private void ProcessLoadingQueue(string senderNumber, string command, string referenceNumber) {
+
+            try {
+                string receiverNumber = command.Split(' ')[0].Trim();
+                string productCode = command.Split(' ')[1].Trim();
+
+                string receiverCarrier = GetCarrier(receiverNumber);
+
+                double incomePercentage, income;
+
+                DataTable configurationsTable;
+                DataTable productCodesTable; 
+
+                double productPrice;
+
+                if (ProductCodeExists(productCode, receiverCarrier)) {
+
+                    string query = "INSERT INTO loads (SenderNumber, ProductCode, ReceiverNumber, Carrier, Status, ReferenceNumber, DateTime) VALUES ('" + senderNumber + "', '" + productCode + "', '" + receiverNumber + "', '" + receiverCarrier + "', 'PENDING', '" + referenceNumber + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+
+                    productCodesTable = RunQueryDataTable("SELECT * FROM product_codes WHERE ProductCode = '" + productCode + "' AND Carrier = '" + receiverCarrier + "'");
+
+                    productPrice = double.Parse(productCodesTable.Rows[0]["Price"].ToString());
+
+                    if ((receiverCarrier == "SMART") || (receiverCarrier == "TNT")) {
+
+                        configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'SmartLoadPercentage'");
+
+                        incomePercentage = double.Parse(configurationsTable.Rows[0]["Value"].ToString());
+
+                        income = productPrice * incomePercentage;
+
+                        if (HasLoadCreditBalance(senderNumber, (productPrice - income).ToString())) {
+                            if (SmartPortActive) {
+                                RunDatabaseQuery(query);
+                            }
+                            else {
+                                QueueOutbound("Loading Error: Smart/TNT loading is currently unavailable. Please try again later.", senderNumber, referenceNumber);
+                            }
+                        }
+                        else {
+                            QueueOutbound("Loading Error: You have insufficient balance to complete the transaction.", senderNumber, referenceNumber);
+                        }
+                    }
+                    else if ((receiverCarrier == "GLOBE") || (receiverCarrier == "TM")) {
+
+                        configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'GlobeLoadPercentage'");
+
+                        incomePercentage = double.Parse(configurationsTable.Rows[0]["Value"].ToString());
+
+                        income = productPrice * incomePercentage;
+
+                        if (HasLoadCreditBalance(senderNumber, (productPrice - income).ToString())) {
+                            if (GlobePortOneActive || GlobePortTwoActive || GlobePortThreeActive) {
+                                RunDatabaseQuery(query);
+                            }
+                            else {
+                                QueueOutbound("Loading Error: Globe/TM loading is currently unavailable. Please try again later.", senderNumber, referenceNumber);
+                            }
+                        }
+                        else {
+                            QueueOutbound("Loading Error: You have insufficient balance to complete the transaction.", senderNumber, referenceNumber);
+                        }
+                    }
+                }
+                else {
+                    QueueOutbound("Loading Error: Invalid Product Code. Please use the correct product code", senderNumber, referenceNumber);
+                }
+            }
+            catch {
+                QueueOutbound("Loading Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
+            }
+        }
         #endregion
 
         #region THREAD - Process Outbounds
@@ -547,6 +1064,321 @@ namespace SerialSMSSender {
             }
         }
         #endregion
+
+        private void ProcessSmartLoadingQueue() {
+            while (true) {
+
+                string query = "SELECT * FROM loads WHERE Status = 'PENDING' AND (Carrier = 'SMART' OR Carrier = 'TNT' OR Carrier = 'PLDT' OR Carrier = 'CIGNAL')";
+
+                DataTable loadQueueTable = RunQueryDataTable(query);
+
+                foreach(DataRow row in loadQueueTable.Rows) {
+
+                    SmartRetailerIsSending = true;
+
+                    string productCodeQuery = "SELECT * FROM product_codes WHERE ProductCode = '" + row["ProductCode"].ToString() + "' AND Carrier = '" + row["Carrier"].ToString() + "'";
+
+                    DataTable productCodeTable = RunQueryDataTable(productCodeQuery);
+
+                    string senderNumber = row["SenderNumber"].ToString();
+                    string receiverNumber = row["ReceiverNumber"].ToString();
+                    string carrier = row["Carrier"].ToString();
+                    string referenceNumber = row["ReferenceNumber"].ToString();
+                    string price = productCodeTable.Rows[0]["Price"].ToString();
+
+                    if (carrier == "SMART") {
+
+                        string keyword = productCodeTable.Rows[0]["KeywordUSSD"].ToString();
+
+                        SendMessageViaSmart(keyword + " " + receiverNumber, "343");
+
+                        RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
+
+                        Thread.Sleep(2000);
+                    }
+
+                    if (carrier == "TNT") {
+
+                        string keyword = productCodeTable.Rows[0]["KeywordUSSD"].ToString();
+
+                        bool isRegularLoad = keyword.Contains("Load");
+
+                        if (isRegularLoad) {
+
+                            SendMessageViaSmart(keyword + " " + receiverNumber, "343");
+                        }
+                        else {
+
+                            SendMessageViaSmart(keyword + " " + receiverNumber, "4540");
+                        }
+
+                        RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
+
+                        Thread.Sleep(2000);
+                    }
+
+                    if (carrier == "PLDT") {
+
+                        string keyword = productCodeTable.Rows[0]["KeywordUSSD"].ToString();
+
+                        SendMessageViaSmart(keyword + " " + receiverNumber, "4122");
+
+                        RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
+
+                        Thread.Sleep(2000);
+                    }
+
+                    if (carrier == "CIGNAL") {
+
+                        string keyword = productCodeTable.Rows[0]["KeywordUSSD"].ToString();
+
+                        SendMessageViaSmart(keyword + " " + receiverNumber, "3443");
+
+                        RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
+
+                        Thread.Sleep(2000);
+                    }
+                }
+
+                SmartRetailerIsSending = false;
+
+                ReceiveMessageRetailerSmart();
+            }
+        }
+
+        private void ProcessGlobeLoadingQueue() {
+
+            while (true) {
+                string query = "SELECT * FROM loads WHERE Status = 'PENDING' AND (Carrier = 'GLOBE' OR Carrier = 'TM')";
+
+                DataTable loadQueueTable = RunQueryDataTable(query);
+
+                foreach (DataRow loadQueueRow in loadQueueTable.Rows) {
+
+                    string productCodeQuery = "SELECT * FROM product_codes WHERE ProductCode = '" + loadQueueRow["ProductCode"].ToString() + "' AND Carrier = '" + loadQueueRow["Carrier"].ToString() + "'";
+
+                    DataTable productCodeTable = RunQueryDataTable(productCodeQuery);
+
+                    string senderNumber = loadQueueRow["SenderNumber"].ToString();
+                    string receiverNumber = loadQueueRow["ReceiverNumber"].ToString();
+                    string carrier = loadQueueRow["Carrier"].ToString();
+                    string referenceNumber = loadQueueRow["ReferenceNumber"].ToString();
+                    string price = productCodeTable.Rows[0]["Price"].ToString();
+                    string USSDPattern = productCodeTable.Rows[0]["KeywordUSSD"].ToString();
+                    
+                    if (!GlobeOnePortDialingUSSD) {
+
+                        GlobeOnePortDialingUSSD = true;
+                        Thread dialGlobePortOneUSSDThread = new Thread(() => GlobeOneDialUSSD(USSDPattern, receiverNumber));
+                        dialGlobePortOneUSSDThread.Start();
+                        RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
+                    }
+                    else if (!GlobeTwoPortDialingUSSD) {
+
+                        GlobeTwoPortDialingUSSD = true;
+                        Thread dialGlobePortTwoUSSDThread = new Thread(() => GlobeTwoDialUSSD(USSDPattern, receiverNumber));
+                        dialGlobePortTwoUSSDThread.Start();
+                        RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
+                    }
+                    else if (!GlobeThreePortDialingUSSD) {
+
+                        GlobeThreePortDialingUSSD = true;
+                        Thread dialGlobePortThreeUSSDThread = new Thread(() => GlobeThreeDialUSSD(USSDPattern, receiverNumber));
+                        dialGlobePortThreeUSSDThread.Start();
+                        RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
+                    }
+                }
+
+                if (!GlobeOnePortDialingUSSD) {
+                    ReceiveMessageRetailerGlobeOne();
+                }
+
+                if (!GlobeTwoPortDialingUSSD) {
+                    ReceiveMessageRetailerGlobeTwo();
+                }
+
+                if (!GlobeThreePortDialingUSSD) {
+                    ReceiveMessageRetailerGlobeThree();
+                }
+            }
+        }
+
+        private void GlobeOneDialUSSD(string USSDPattern, string phoneNumber) {
+
+            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'GlobeUSSD'");
+
+            string globeUSSDNumber = configurationsTable.Rows[0]["Value"].ToString();
+
+            string[] USSDReply = USSDPattern.Replace("n", phoneNumber).Split('/');
+            int USSDCounter = 0;
+
+            bool stillProcessing = true;
+
+            try {
+                using (SerialPort globePort = new SerialPort(GlobeRetailerOnePort, 115200)) {
+
+                    globePort.Open();
+                    Thread.Sleep(200);
+                    globePort.NewLine = Environment.NewLine;
+                    globePort.Write("AT\r\n");
+                    Thread.Sleep(200);
+                    globePort.Write("AT\r\n");
+                    Thread.Sleep(200);
+                    globePort.Write("AT+CMGF=1\r\n");
+                    Thread.Sleep(200);
+                    globePort.Write("AT+CUSD=1,\"" + globeUSSDNumber + "\", 15\r\n");
+                    Thread.Sleep(200);
+
+                    while (stillProcessing) {
+                        string existing = globePort.ReadExisting();
+
+                        this.Invoke((MethodInvoker)delegate {
+                            homeTextBoxGlobe.Text = homeTextBoxGlobe.Text + existing;
+                            homeTextBoxGlobe.SelectionStart = homeTextBoxGlobe.Text.Length;
+                            homeTextBoxGlobe.ScrollToCaret();
+                        });
+
+                        if (existing.Contains("+CUSD:")) {
+                            if(existing.Contains("Enter 11")) {
+                                USSDCounter = 1;
+                            }
+                            existing = "";
+                            globePort.Write("AT+CUSD=1,\"" + USSDReply[USSDCounter] + "\", 15\r\n");
+                            USSDCounter++;
+                        }
+
+                        if (USSDCounter == USSDReply.Length) {
+                            USSDCounter = 0;
+                            stillProcessing = false;
+                        }
+                    }
+                    globePort.Close();
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+
+            GlobeOnePortDialingUSSD = false;
+        }
+
+        private void GlobeTwoDialUSSD(string USSDPattern, string phoneNumber) {
+
+            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'GlobeUSSD'");
+
+            string globeUSSDNumber = configurationsTable.Rows[0]["Value"].ToString();
+
+            string[] USSDReply = USSDPattern.Replace("n", phoneNumber).Split('/');
+            int USSDCounter = 0;
+
+            bool stillProcessing = true;
+
+            try {
+                using (SerialPort globeTwoPort = new SerialPort(GlobeRetailerTwoPort, 115200)) {
+
+                    globeTwoPort.Open();
+                    Thread.Sleep(200);
+                    globeTwoPort.NewLine = Environment.NewLine;
+                    globeTwoPort.Write("AT\r\n");
+                    Thread.Sleep(200);
+                    globeTwoPort.Write("AT\r\n");
+                    Thread.Sleep(200);
+                    globeTwoPort.Write("AT+CMGF=1\r\n");
+                    Thread.Sleep(200);
+                    globeTwoPort.Write("AT+CUSD=1,\"" + globeUSSDNumber + "\", 15\r\n");
+                    Thread.Sleep(200);
+
+                    while (stillProcessing) {
+                        string existing = globeTwoPort.ReadExisting();
+
+                        this.Invoke((MethodInvoker)delegate {
+                            homeTextBoxGlobe.Text = homeTextBoxGlobe.Text + existing;
+                            homeTextBoxGlobe.SelectionStart = homeTextBoxGlobe.Text.Length;
+                            homeTextBoxGlobe.ScrollToCaret();
+                        });
+
+                        if (existing.Contains("+CUSD:")) {
+                            if (existing.Contains("Enter 11")) {
+                                USSDCounter = 1;
+                            }
+                            existing = "";
+                            globeTwoPort.Write("AT+CUSD=1,\"" + USSDReply[USSDCounter] + "\", 15\r\n");
+                            USSDCounter++;
+                        }
+
+                        if (USSDCounter == USSDReply.Length) {
+                            USSDCounter = 0;
+                            stillProcessing = false;
+                        }
+                    }
+                    globeTwoPort.Close();
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+
+            GlobeTwoPortDialingUSSD = false;
+        }
+
+        private void GlobeThreeDialUSSD(string USSDPattern, string phoneNumber) {
+
+            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'GlobeUSSD'");
+
+            string globeUSSDNumber = configurationsTable.Rows[0]["Value"].ToString();
+
+            string[] USSDReply = USSDPattern.Replace("n", phoneNumber).Split('/');
+            int USSDCounter = 0;
+
+            bool stillProcessing = true;
+
+            try {
+                using (SerialPort globeThreePort = new SerialPort(GlobeRetailerThreePort, 115200)) {
+
+                    globeThreePort.Open();
+                    Thread.Sleep(200);
+                    globeThreePort.NewLine = Environment.NewLine;
+                    globeThreePort.Write("AT\r\n");
+                    Thread.Sleep(200);
+                    globeThreePort.Write("AT\r\n");
+                    Thread.Sleep(200);
+                    globeThreePort.Write("AT+CMGF=1\r\n");
+                    Thread.Sleep(200);
+                    globeThreePort.Write("AT+CUSD=1,\"" + globeUSSDNumber + "\", 15\r\n");
+                    Thread.Sleep(200);
+
+                    while (stillProcessing) {
+                        string existing = globeThreePort.ReadExisting();
+
+                        this.Invoke((MethodInvoker)delegate {
+                            homeTextBoxGlobe.Text = homeTextBoxGlobe.Text + existing;
+                            homeTextBoxGlobe.SelectionStart = homeTextBoxGlobe.Text.Length;
+                            homeTextBoxGlobe.ScrollToCaret();
+                        });
+
+                        if (existing.Contains("+CUSD:")) {
+                            if (existing.Contains("Enter 11")) {
+                                USSDCounter = 1;
+                            }
+                            existing = "";
+                            globeThreePort.Write("AT+CUSD=1,\"" + USSDReply[USSDCounter] + "\", 15\r\n");
+                            USSDCounter++;
+                        }
+
+                        if (USSDCounter == USSDReply.Length) {
+                            USSDCounter = 0;
+                            stillProcessing = false;
+                        }
+                    }
+                    globeThreePort.Close();
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
+
+            GlobeOnePortDialingUSSD = false;
+        }
 
         #region METHODS - User Manipulation
         private void RegisterUser(string username, string password, string phoneNumber, string fullName, string birthDate, string address, string role, string activatedBy) {
@@ -603,6 +1435,41 @@ namespace SerialSMSSender {
 
         private void QueueOutbound(string message, string receiverNumber, string referenceNumber) {
             RunDatabaseQuery("INSERT INTO outbounds (Message, ReceiverNumber, Status, DateTime, ReferenceNumber) VALUES ('" + message + "', '" + receiverNumber + "', 'PENDING', '" + DateTime.Now.ToString("yyyy-MM-dd h:mm:ss") + "', '" + referenceNumber + "')");
+        }
+
+        private void SendMessageViaSmart(string message, string recepient) {
+            try {
+                using (SerialPort smsPort = new SerialPort(SmartRetailerPort, 115200)) {
+
+                    smsPort.Open();
+                    Thread.Sleep(200);
+                    smsPort.NewLine = Environment.NewLine;
+                    smsPort.Write("AT\r\n");
+                    Thread.Sleep(200);
+                    smsPort.Write("AT+CMGF=1\r");
+                    Thread.Sleep(200);
+                    smsPort.Write("AT+CMGS=\"" + recepient + "\"\r\n");
+                    Thread.Sleep(200);
+                    smsPort.Write(message + "\x1A");
+                    Thread.Sleep(200);
+
+                    string existing = smsPort.ReadExisting();
+
+                    this.Invoke((MethodInvoker)delegate {
+                        homeTextBoxSmart.Text = homeTextBoxSmart.Text + existing;
+                        homeTextBoxSmart.SelectionStart = homeTextBoxSmart.Text.Length;
+                        homeTextBoxSmart.ScrollToCaret();
+                    });
+                    if (existing.Contains("AT+CMGS")) {
+
+                    }
+
+                    smsPort.Close();
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show(error.Message);
+            }
         }
         #endregion
 
@@ -688,14 +1555,9 @@ namespace SerialSMSSender {
 
             MySqlDataReader myReader = commandDatabase.ExecuteReader();
 
-            try {
-                myReader.Read();
-                if (myReader["COUNT(PhoneNumber)"].ToString() == "1") {
-                    userExists = true;
-                }
-            }
-            catch (Exception error) {
-                MessageBox.Show(error.Message);
+            myReader.Read();
+            if (myReader["COUNT(PhoneNumber)"].ToString() == "1") {
+                userExists = true;
             }
 
             return userExists;
@@ -895,13 +1757,13 @@ namespace SerialSMSSender {
 
         private int GetRoleRank(string role) {
             
-            string query = "SELECT Value FROM configurations WHERE Parameter = '" + char.ToUpper(role.ToLower()[0]) + role.ToLower().Substring(1) + "Rank'";
+            string query = "SELECT RoleRank FROM roles WHERE Role = '" + role + "'";
             int rank = 0;
 
-            DataTable dataTableBalance = RunQueryDataTable(query);
+            DataTable dataTableRole = RunQueryDataTable(query);
 
-            if(dataTableBalance.Rows.Count > 0) {
-                rank = int.Parse(dataTableBalance.Rows[0]["Value"].ToString());
+            if(dataTableRole.Rows.Count > 0) {
+                rank = int.Parse(dataTableRole.Rows[0]["RoleRank"].ToString());
             }
 
             return rank;
@@ -918,7 +1780,7 @@ namespace SerialSMSSender {
             int receiverRank = GetRoleRank(receiverRole);
 
             if (type == "TTU") {
-                if (senderRank == 0) {
+                if (senderRank == 1) {
                     canTransfer = false;
                 }
                 else if (senderRank >= receiverRank) {
@@ -935,6 +1797,148 @@ namespace SerialSMSSender {
             }
             return canTransfer;
         }
+
+        private bool HasLoadCreditBalance(string phoneNumber, string amount) {
+
+            bool hasLoadCreditBalance = false;
+
+            double balance = 0;
+
+            string query = "SELECT Balance FROM users WHERE PhoneNumber = '" + phoneNumber + "'";
+
+            DataTable dataTableBalance = RunQueryDataTable(query);
+
+            if (dataTableBalance.Rows.Count > 0) {
+                balance = double.Parse(dataTableBalance.Rows[0]["Balance"].ToString());
+            }
+
+            hasLoadCreditBalance = double.Parse(amount) <= balance;
+
+            return hasLoadCreditBalance;
+        }
+
+        private bool HasPinBalance(string phoneNumber, int amount) {
+
+            bool hasPinBalance = false;
+
+            int balance = 0;
+
+            string query = "SELECT Pins FROM users WHERE PhoneNumber = '" + phoneNumber + "'";
+
+            DataTable userTable = RunQueryDataTable(query);
+
+            if (userTable.Rows.Count > 0) {
+                balance = int.Parse(userTable.Rows[0]["Pins"].ToString());
+            }
+
+            hasPinBalance = (balance >= amount);
+
+            return hasPinBalance;
+        }
+
+        private double GetPercentOfIncomeTLC(string senderNumber, string receiverNumber) {
+
+            double percentage = 0;
+
+            string senderRole = GetUserRole(senderNumber);
+            string receiverRole = GetUserRole(receiverNumber);
+
+            int senderRank = GetRoleRank(senderRole);
+            int receiverRank = GetRoleRank(receiverRole);
+
+            string query;
+
+            if (senderRank == receiverRank) {
+                percentage = 0;
+            }
+            else {
+                DataTable dataTablePercentage;
+
+                for (int i = 0; i < (senderRank - receiverRank); i++) {
+
+                    query = "SELECT TLCIncomePercentage FROM roles WHERE RoleRank = '" + (i + receiverRank).ToString() + "'";
+
+                    dataTablePercentage = RunQueryDataTable(query);
+
+                    percentage = percentage + double.Parse(dataTablePercentage.Rows[0]["TLCIncomePercentage"].ToString());
+                }
+            }
+
+            return percentage;
+        }
+
+        private bool HasSameTransactionWithin30Minutes(string senderNumber, string receiverNumber, string amount, string type) {
+
+            bool hasSameTransactionWithin30Minutes = false;
+
+            double repeatTransactionMinutes;
+
+            string query = "SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'";
+            DataTable configurationsTable = RunQueryDataTable(query);
+
+            repeatTransactionMinutes = double.Parse(configurationsTable.Rows[0]["Value"].ToString());
+
+            if (type == "TLC") {
+                query = "SELECT DateTime FROM history_tlc WHERE SenderNumber = '" + senderNumber + "' AND ReceiverNumber = '" + receiverNumber + "' AND Amount LIKE '%" + amount + "%' AND DateTime >= NOW() - INTERVAL " + repeatTransactionMinutes + " MINUTE";
+            }
+            else if (type == "TTU") {
+                query = "SELECT DateTime FROM history_ttu WHERE SenderNumber = '" + senderNumber + "' AND ReceiverNumber = '" + receiverNumber + "' AND Amount = '" + amount + "' AND DateTime >= NOW() - INTERVAL " + repeatTransactionMinutes + " MINUTE";
+            }
+            else if (type == "LOAD") {
+
+            }
+            
+            DataTable tlcHistoryTable = RunQueryDataTable(query);
+
+            if (tlcHistoryTable.Rows.Count > 0) {
+                hasSameTransactionWithin30Minutes = true;
+            }
+
+            return hasSameTransactionWithin30Minutes;
+        }
+
+        private string GetUserBalance(string phoneNumber) {
+
+            string balance;
+
+            string query = "SELECT Balance FROM users WHERE PhoneNumber = '" + phoneNumber + "'";
+
+            DataTable userTable = RunQueryDataTable(query);
+
+            balance = userTable.Rows[0]["Balance"].ToString();
+
+            return balance;
+        }
+
+        private string GetCarrier(string phoneNumber) {
+            string carrier;
+
+            string prefix = phoneNumber.Substring(0, 4);
+
+            string query = "SELECT Carrier FROM carriers WHERE Number = '" + prefix + "'";
+
+            DataTable carrierTable = RunQueryDataTable(query);
+
+            carrier = carrierTable.Rows[0]["Carrier"].ToString();
+
+            return carrier;
+        }
+
+        private bool ProductCodeExists(string productCode, string carrier) {
+
+            bool productCodeExists = false;
+
+            string query = "SELECT * FROM product_codes WHERE ProductCode = '" + productCode + "' AND Carrier = '" + carrier + "'";
+
+            DataTable productCodeTable = RunQueryDataTable(query);
+
+            if (productCodeTable.Rows.Count > 0) {
+
+                productCodeExists = true;
+            }
+
+            return productCodeExists;
+        }
         #endregion
 
         #region METHODS - Ports
@@ -949,15 +1953,8 @@ namespace SerialSMSSender {
             databaseConnection.Open();
 
             MySqlDataReader myReader = commandDatabase.ExecuteReader();
-
-            try {
-                myReader.Read();
-                this.GateWayOnePort = myReader["Value"].ToString();
-            }
-            catch (Exception error) {
-                MessageBox.Show(error.Message);
-            }
-
+            myReader.Read();
+            this.GateWayOnePort = myReader["Value"].ToString();
             databaseConnection.Close();
 
 
@@ -968,15 +1965,8 @@ namespace SerialSMSSender {
             databaseConnection.Open();
 
             myReader = commandDatabase.ExecuteReader();
-
-            try {
-                myReader.Read();
-                this.GateWayTwoPort = myReader["Value"].ToString();
-            }
-            catch (Exception error) {
-                MessageBox.Show(error.Message);
-            }
-
+            myReader.Read();
+            this.GateWayTwoPort = myReader["Value"].ToString();
             databaseConnection.Close();
 
             //SENDER ONE PORT ASSIGNING
@@ -984,17 +1974,10 @@ namespace SerialSMSSender {
             commandDatabase = new MySqlCommand(query, databaseConnection);
 
             databaseConnection.Open();
-
             myReader = commandDatabase.ExecuteReader();
 
-            try {
-                myReader.Read();
-                this.SenderOnePort = myReader["Value"].ToString();
-            }
-            catch (Exception error) {
-                MessageBox.Show(error.Message);
-            }
-
+            myReader.Read();
+            this.SenderOnePort = myReader["Value"].ToString();
             databaseConnection.Close();
 
             //SENDER TWO PORT ASSIGNING
@@ -1002,23 +1985,64 @@ namespace SerialSMSSender {
             commandDatabase = new MySqlCommand(query, databaseConnection);
 
             databaseConnection.Open();
-
             myReader = commandDatabase.ExecuteReader();
 
-            try {
-                myReader.Read();
-                this.SenderTwoPort = myReader["Value"].ToString();
-            }
-            catch (Exception error) {
-                MessageBox.Show(error.Message);
-            }
+            myReader.Read();
+            this.SenderTwoPort = myReader["Value"].ToString();
+            databaseConnection.Close();
 
+            //GLOBE RETAILER ONE PORT ASSIGNING
+            query = "SELECT Value FROM configurations WHERE Parameter = 'GlobeRetailerOnePort'";
+            commandDatabase = new MySqlCommand(query, databaseConnection);
+
+            databaseConnection.Open();
+            myReader = commandDatabase.ExecuteReader();
+
+            myReader.Read();
+            this.GlobeRetailerOnePort = myReader["Value"].ToString();
+            databaseConnection.Close();
+
+            //GLOBE RETAILER TWO PORT ASSIGNING
+            query = "SELECT Value FROM configurations WHERE Parameter = 'GlobeRetailerTwoPort'";
+            commandDatabase = new MySqlCommand(query, databaseConnection);
+
+            databaseConnection.Open();
+            myReader = commandDatabase.ExecuteReader();
+
+            myReader.Read();
+            this.GlobeRetailerTwoPort = myReader["Value"].ToString();
+            databaseConnection.Close();
+
+            //GLOBE RETAILER THREE PORT ASSIGNING
+            query = "SELECT Value FROM configurations WHERE Parameter = 'GlobeRetailerThreePort'";
+            commandDatabase = new MySqlCommand(query, databaseConnection);
+
+            databaseConnection.Open();
+            myReader = commandDatabase.ExecuteReader();
+
+            myReader.Read();
+            this.GlobeRetailerThreePort = myReader["Value"].ToString();
+            databaseConnection.Close();
+
+            //SMART RETAILER PORT ASSIGNING
+            query = "SELECT Value FROM configurations WHERE Parameter = 'SmartRetailerPort'";
+            commandDatabase = new MySqlCommand(query, databaseConnection);
+
+            databaseConnection.Open();
+            myReader = commandDatabase.ExecuteReader();
+
+            myReader.Read();
+            this.SmartRetailerPort = myReader["Value"].ToString();
             databaseConnection.Close();
 
             //MessageBox.Show("GateWayone = " + this.GateWayOnePort);
             //MessageBox.Show("GateWaytwoPort = " + this.GateWayTwoPort);
             //MessageBox.Show("Sender one = " + this.SenderOnePort);
             //MessageBox.Show("sender two = " + this.SenderTwoPort);
+            //MessageBox.Show("Globe One = " + this.GlobeRetailerOnePort);
+            //MessageBox.Show("Globe Two = " + this.GlobeRetailerTwoPort);
+            //MessageBox.Show("Globe Three = " + this.GlobeRetailerThreePort);
+            //MessageBox.Show("Smart Port = " + this.SmartRetailerPort);
         }
 
         private void ClearMessagesOnGateWay(string port) {
@@ -1226,6 +2250,30 @@ namespace SerialSMSSender {
 
                 MessageBox.Show("SMS Sender Two has been Deactivated");
             }
+        }
+
+        private double GetPercentIncomeLoad(string type) {
+
+            string parameter = "";
+
+            if(type == "SMART") {
+                parameter = "SmartLoadPercentage";
+            }
+            else if (type == "GLOBE") {
+                parameter = "GlobeLoadPercentage";
+            }
+
+            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = '" + parameter + "'");
+
+            return double.Parse(configurationsTable.Rows[0]["Value"].ToString());
+        }
+
+        private string GetCurrentDateTime() {
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        private void DeductLoadCredit(string phoneNumber, string amount) {
+            RunDatabaseQuery("UPDATE users SET Balance = '" + (double.Parse(GetUserBalance(phoneNumber)) - double.Parse(amount)).ToString() + "' WHERE PhoneNumber = '" + phoneNumber + "'");
         }
         #endregion
     }

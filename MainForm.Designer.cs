@@ -82,6 +82,11 @@ namespace SerialSMSSender {
             this.homeTextBoxReceiving = new System.Windows.Forms.TextBox();
             this.homeGroupBoxSending = new System.Windows.Forms.GroupBox();
             this.homeTextBoxSending = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.homeGroupBoxGlobe = new System.Windows.Forms.GroupBox();
+            this.homeGroupBoxSmart = new System.Windows.Forms.GroupBox();
+            this.homeTextBoxGlobe = new System.Windows.Forms.TextBox();
+            this.homeTextBoxSmart = new System.Windows.Forms.TextBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.mainTabController.SuspendLayout();
             this.tabPageHome.SuspendLayout();
@@ -107,6 +112,9 @@ namespace SerialSMSSender {
             this.homeTableLayoutPanelTextBoxes.SuspendLayout();
             this.homeGroupBoxReceiving.SuspendLayout();
             this.homeGroupBoxSending.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.homeGroupBoxGlobe.SuspendLayout();
+            this.homeGroupBoxSmart.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -156,6 +164,7 @@ namespace SerialSMSSender {
             this.homeTableLayoutPanel.Controls.Add(this.groupBox1, 0, 1);
             this.homeTableLayoutPanel.Controls.Add(this.homeGroupBoxToggles, 0, 0);
             this.homeTableLayoutPanel.Controls.Add(this.homeTableLayoutPanelTextBoxes, 1, 0);
+            this.homeTableLayoutPanel.Controls.Add(this.tableLayoutPanel7, 1, 1);
             this.homeTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeTableLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
@@ -778,7 +787,7 @@ namespace SerialSMSSender {
             // homeTextBoxReceiving
             // 
             this.homeTextBoxReceiving.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeTextBoxReceiving.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeTextBoxReceiving.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeTextBoxReceiving.Location = new System.Drawing.Point(3, 19);
             this.homeTextBoxReceiving.Multiline = true;
             this.homeTextBoxReceiving.Name = "homeTextBoxReceiving";
@@ -802,7 +811,7 @@ namespace SerialSMSSender {
             // homeTextBoxSending
             // 
             this.homeTextBoxSending.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeTextBoxSending.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeTextBoxSending.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeTextBoxSending.Location = new System.Drawing.Point(3, 19);
             this.homeTextBoxSending.Multiline = true;
             this.homeTextBoxSending.Name = "homeTextBoxSending";
@@ -810,6 +819,68 @@ namespace SerialSMSSender {
             this.homeTextBoxSending.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.homeTextBoxSending.Size = new System.Drawing.Size(391, 316);
             this.homeTextBoxSending.TabIndex = 9;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.homeGroupBoxGlobe, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.homeGroupBoxSmart, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(241, 347);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(800, 339);
+            this.tableLayoutPanel7.TabIndex = 3;
+            // 
+            // homeGroupBoxGlobe
+            // 
+            this.homeGroupBoxGlobe.Controls.Add(this.homeTextBoxGlobe);
+            this.homeGroupBoxGlobe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homeGroupBoxGlobe.Location = new System.Drawing.Point(3, 3);
+            this.homeGroupBoxGlobe.Name = "homeGroupBoxGlobe";
+            this.homeGroupBoxGlobe.Size = new System.Drawing.Size(394, 333);
+            this.homeGroupBoxGlobe.TabIndex = 0;
+            this.homeGroupBoxGlobe.TabStop = false;
+            this.homeGroupBoxGlobe.Text = "Modem Responses (GLOBE)";
+            // 
+            // homeGroupBoxSmart
+            // 
+            this.homeGroupBoxSmart.Controls.Add(this.homeTextBoxSmart);
+            this.homeGroupBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homeGroupBoxSmart.Location = new System.Drawing.Point(403, 3);
+            this.homeGroupBoxSmart.Name = "homeGroupBoxSmart";
+            this.homeGroupBoxSmart.Size = new System.Drawing.Size(394, 333);
+            this.homeGroupBoxSmart.TabIndex = 1;
+            this.homeGroupBoxSmart.TabStop = false;
+            this.homeGroupBoxSmart.Text = "Modem Responses (SMART)";
+            // 
+            // homeTextBoxGlobe
+            // 
+            this.homeTextBoxGlobe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homeTextBoxGlobe.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeTextBoxGlobe.Location = new System.Drawing.Point(3, 19);
+            this.homeTextBoxGlobe.Multiline = true;
+            this.homeTextBoxGlobe.Name = "homeTextBoxGlobe";
+            this.homeTextBoxGlobe.ReadOnly = true;
+            this.homeTextBoxGlobe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.homeTextBoxGlobe.Size = new System.Drawing.Size(388, 311);
+            this.homeTextBoxGlobe.TabIndex = 0;
+            // 
+            // homeTextBoxSmart
+            // 
+            this.homeTextBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homeTextBoxSmart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeTextBoxSmart.Location = new System.Drawing.Point(3, 19);
+            this.homeTextBoxSmart.Multiline = true;
+            this.homeTextBoxSmart.Name = "homeTextBoxSmart";
+            this.homeTextBoxSmart.ReadOnly = true;
+            this.homeTextBoxSmart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.homeTextBoxSmart.Size = new System.Drawing.Size(388, 311);
+            this.homeTextBoxSmart.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -861,6 +932,11 @@ namespace SerialSMSSender {
             this.homeGroupBoxReceiving.PerformLayout();
             this.homeGroupBoxSending.ResumeLayout(false);
             this.homeGroupBoxSending.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.homeGroupBoxGlobe.ResumeLayout(false);
+            this.homeGroupBoxGlobe.PerformLayout();
+            this.homeGroupBoxSmart.ResumeLayout(false);
+            this.homeGroupBoxSmart.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -924,6 +1000,11 @@ namespace SerialSMSSender {
         private System.Windows.Forms.Label homeGlobeThreeStatus;
         private System.Windows.Forms.Label homeGlobeTwoStatus;
         private System.Windows.Forms.Label homeGlobeOneStatus;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.GroupBox homeGroupBoxGlobe;
+        private System.Windows.Forms.TextBox homeTextBoxGlobe;
+        private System.Windows.Forms.GroupBox homeGroupBoxSmart;
+        private System.Windows.Forms.TextBox homeTextBoxSmart;
     }
 }
 
