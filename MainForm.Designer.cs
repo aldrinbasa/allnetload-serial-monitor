@@ -84,9 +84,113 @@ namespace SerialSMSSender {
             this.homeTextBoxSending = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.homeGroupBoxGlobe = new System.Windows.Forms.GroupBox();
-            this.homeGroupBoxSmart = new System.Windows.Forms.GroupBox();
             this.homeTextBoxGlobe = new System.Windows.Forms.TextBox();
+            this.homeGroupBoxSmart = new System.Windows.Forms.GroupBox();
             this.homeTextBoxSmart = new System.Windows.Forms.TextBox();
+            this.tabPageHelp = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.HelpDataGridView = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.helpLabelReply = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.helpLabelOutputStatus = new System.Windows.Forms.Label();
+            this.helpLabelStatus = new System.Windows.Forms.Label();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.helpLabelOutputDateIssued = new System.Windows.Forms.Label();
+            this.helpLabelDateIssued = new System.Windows.Forms.Label();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.helpLabelOutputReferenceNumber = new System.Windows.Forms.Label();
+            this.helpLabelReferenceNumber = new System.Windows.Forms.Label();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.helpLabelOutputDateOfIncident = new System.Windows.Forms.Label();
+            this.helpLabelDateOfIncident = new System.Windows.Forms.Label();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.helpLabelOutputCode = new System.Windows.Forms.Label();
+            this.helpLabelCode = new System.Windows.Forms.Label();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.helpLabelSenderNumber = new System.Windows.Forms.Label();
+            this.helpLabelOutputSenderNumber = new System.Windows.Forms.Label();
+            this.helpTextBoxReply = new System.Windows.Forms.TextBox();
+            this.helpButtonSend = new System.Windows.Forms.Button();
+            this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsGroupBoxPorts = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsSimPortsLabelGateWayOne = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.settingsPortsLabelGateWayOne = new System.Windows.Forms.TextBox();
+            this.settingsPortsLabelGateWayTwo = new System.Windows.Forms.TextBox();
+            this.settingsPortsLabelSenderOne = new System.Windows.Forms.TextBox();
+            this.settingsPortsLabelSenderTwo = new System.Windows.Forms.TextBox();
+            this.settingsPortsLabelGlobeOne = new System.Windows.Forms.TextBox();
+            this.settingsPortsLabelGlobeTwo = new System.Windows.Forms.TextBox();
+            this.settingsPortsLabelGlobeThree = new System.Windows.Forms.TextBox();
+            this.settingsPortsLabelSmart = new System.Windows.Forms.TextBox();
+            this.settingsPortsButtonSaveSmart = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGateWayOne = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGateWayTwo = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSenderOne = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveSenderTwo = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGlobeOne = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGlobeTwo = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGlobeThree = new System.Windows.Forms.Button();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsPortsButtonSaveGlobeLoading = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveSmartLoading = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.settingsPortsTextBoxSmartLoading = new System.Windows.Forms.TextBox();
+            this.settingsPortsTextBoxGlobeLoading = new System.Windows.Forms.TextBox();
+            this.settingsPortsTextBoxGSATLoading = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.settingsPortsButtonSaveGSATLoading = new System.Windows.Forms.Button();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.B_GlobeUSSD = new System.Windows.Forms.Button();
+            this.B_GSATAvailable = new System.Windows.Forms.Button();
+            this.B_HelpSoundPath = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TB_HelpSoundPath = new System.Windows.Forms.TextBox();
+            this.TB_GSATAvailable = new System.Windows.Forms.TextBox();
+            this.TB_GlobeUSSD = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.TB_RepeatTransaction = new System.Windows.Forms.TextBox();
+            this.B_RepeatTransaction = new System.Windows.Forms.Button();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.B_Dealer = new System.Windows.Forms.Button();
+            this.B_Distributor = new System.Windows.Forms.Button();
+            this.B_Retailer = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TB_Retailer = new System.Windows.Forms.TextBox();
+            this.TB_Distributor = new System.Windows.Forms.TextBox();
+            this.TB_Dealer = new System.Windows.Forms.TextBox();
+            this.TB_Mobile = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.B_Mobile = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.TB_MinimumTLC = new System.Windows.Forms.TextBox();
+            this.TB_Provincial = new System.Windows.Forms.TextBox();
+            this.TB_City = new System.Windows.Forms.TextBox();
+            this.TB_MinimumTTU = new System.Windows.Forms.TextBox();
+            this.B_MinimumTTU = new System.Windows.Forms.Button();
+            this.B_City = new System.Windows.Forms.Button();
+            this.B_Provincial = new System.Windows.Forms.Button();
+            this.B_MinimumTLC = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.mainTabController.SuspendLayout();
             this.tabPageHome.SuspendLayout();
@@ -115,6 +219,26 @@ namespace SerialSMSSender {
             this.tableLayoutPanel7.SuspendLayout();
             this.homeGroupBoxGlobe.SuspendLayout();
             this.homeGroupBoxSmart.SuspendLayout();
+            this.tabPageHelp.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpDataGridView)).BeginInit();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.tabPageSettings.SuspendLayout();
+            this.tableLayoutPanel16.SuspendLayout();
+            this.settingsGroupBoxPorts.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -136,6 +260,8 @@ namespace SerialSMSSender {
             // mainTabController
             // 
             this.mainTabController.Controls.Add(this.tabPageHome);
+            this.mainTabController.Controls.Add(this.tabPageHelp);
+            this.mainTabController.Controls.Add(this.tabPageSettings);
             this.mainTabController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabController.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainTabController.Location = new System.Drawing.Point(3, 3);
@@ -832,7 +958,7 @@ namespace SerialSMSSender {
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 339F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(800, 339);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
@@ -847,17 +973,6 @@ namespace SerialSMSSender {
             this.homeGroupBoxGlobe.TabStop = false;
             this.homeGroupBoxGlobe.Text = "Modem Responses (GLOBE)";
             // 
-            // homeGroupBoxSmart
-            // 
-            this.homeGroupBoxSmart.Controls.Add(this.homeTextBoxSmart);
-            this.homeGroupBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeGroupBoxSmart.Location = new System.Drawing.Point(403, 3);
-            this.homeGroupBoxSmart.Name = "homeGroupBoxSmart";
-            this.homeGroupBoxSmart.Size = new System.Drawing.Size(394, 333);
-            this.homeGroupBoxSmart.TabIndex = 1;
-            this.homeGroupBoxSmart.TabStop = false;
-            this.homeGroupBoxSmart.Text = "Modem Responses (SMART)";
-            // 
             // homeTextBoxGlobe
             // 
             this.homeTextBoxGlobe.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -870,6 +985,17 @@ namespace SerialSMSSender {
             this.homeTextBoxGlobe.Size = new System.Drawing.Size(388, 311);
             this.homeTextBoxGlobe.TabIndex = 0;
             // 
+            // homeGroupBoxSmart
+            // 
+            this.homeGroupBoxSmart.Controls.Add(this.homeTextBoxSmart);
+            this.homeGroupBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homeGroupBoxSmart.Location = new System.Drawing.Point(403, 3);
+            this.homeGroupBoxSmart.Name = "homeGroupBoxSmart";
+            this.homeGroupBoxSmart.Size = new System.Drawing.Size(394, 333);
+            this.homeGroupBoxSmart.TabIndex = 1;
+            this.homeGroupBoxSmart.TabStop = false;
+            this.homeGroupBoxSmart.Text = "Modem Responses (SMART)";
+            // 
             // homeTextBoxSmart
             // 
             this.homeTextBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -881,6 +1007,1226 @@ namespace SerialSMSSender {
             this.homeTextBoxSmart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.homeTextBoxSmart.Size = new System.Drawing.Size(388, 311);
             this.homeTextBoxSmart.TabIndex = 1;
+            // 
+            // tabPageHelp
+            // 
+            this.tabPageHelp.Controls.Add(this.tableLayoutPanel8);
+            this.tabPageHelp.Location = new System.Drawing.Point(4, 24);
+            this.tabPageHelp.Name = "tabPageHelp";
+            this.tabPageHelp.Size = new System.Drawing.Size(1050, 695);
+            this.tabPageHelp.TabIndex = 1;
+            this.tabPageHelp.Text = "Help";
+            this.tabPageHelp.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.04762F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.95238F));
+            this.tableLayoutPanel8.Controls.Add(this.HelpDataGridView, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 695F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1050, 695);
+            this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // HelpDataGridView
+            // 
+            this.HelpDataGridView.AllowUserToAddRows = false;
+            this.HelpDataGridView.AllowUserToDeleteRows = false;
+            this.HelpDataGridView.AllowUserToResizeColumns = false;
+            this.HelpDataGridView.AllowUserToResizeRows = false;
+            this.HelpDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.HelpDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HelpDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HelpDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.HelpDataGridView.Location = new System.Drawing.Point(245, 3);
+            this.HelpDataGridView.Name = "HelpDataGridView";
+            this.HelpDataGridView.RowHeadersVisible = false;
+            this.HelpDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.HelpDataGridView.Size = new System.Drawing.Size(802, 689);
+            this.HelpDataGridView.TabIndex = 0;
+            this.HelpDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HelpDataGridView_CellContentDoubleClick);
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.helpLabelReply, 0, 6);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel15, 0, 5);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel14, 0, 4);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel13, 0, 3);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel12, 0, 2);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel11, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.helpTextBoxReply, 0, 7);
+            this.tableLayoutPanel9.Controls.Add(this.helpButtonSend, 0, 8);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 9;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.36575F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.724238F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(236, 689);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // helpLabelReply
+            // 
+            this.helpLabelReply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.helpLabelReply.AutoSize = true;
+            this.helpLabelReply.Location = new System.Drawing.Point(3, 384);
+            this.helpLabelReply.Name = "helpLabelReply";
+            this.helpLabelReply.Size = new System.Drawing.Size(39, 15);
+            this.helpLabelReply.TabIndex = 6;
+            this.helpLabelReply.Text = "Reply:";
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 2;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.55319F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.44681F));
+            this.tableLayoutPanel15.Controls.Add(this.helpLabelOutputStatus, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.helpLabelStatus, 0, 0);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(0, 285);
+            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 1;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(236, 57);
+            this.tableLayoutPanel15.TabIndex = 5;
+            // 
+            // helpLabelOutputStatus
+            // 
+            this.helpLabelOutputStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.helpLabelOutputStatus.AutoSize = true;
+            this.helpLabelOutputStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelOutputStatus.Location = new System.Drawing.Point(168, 21);
+            this.helpLabelOutputStatus.Name = "helpLabelOutputStatus";
+            this.helpLabelOutputStatus.Size = new System.Drawing.Size(0, 15);
+            this.helpLabelOutputStatus.TabIndex = 2;
+            // 
+            // helpLabelStatus
+            // 
+            this.helpLabelStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.helpLabelStatus.AutoSize = true;
+            this.helpLabelStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelStatus.Location = new System.Drawing.Point(52, 21);
+            this.helpLabelStatus.Name = "helpLabelStatus";
+            this.helpLabelStatus.Size = new System.Drawing.Size(45, 15);
+            this.helpLabelStatus.TabIndex = 1;
+            this.helpLabelStatus.Text = "Status:";
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.97872F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.02128F));
+            this.tableLayoutPanel14.Controls.Add(this.helpLabelOutputDateIssued, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.helpLabelDateIssued, 0, 0);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 228);
+            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 1;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(236, 57);
+            this.tableLayoutPanel14.TabIndex = 4;
+            // 
+            // helpLabelOutputDateIssued
+            // 
+            this.helpLabelOutputDateIssued.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.helpLabelOutputDateIssued.AutoSize = true;
+            this.helpLabelOutputDateIssued.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelOutputDateIssued.Location = new System.Drawing.Point(168, 21);
+            this.helpLabelOutputDateIssued.Name = "helpLabelOutputDateIssued";
+            this.helpLabelOutputDateIssued.Size = new System.Drawing.Size(0, 15);
+            this.helpLabelOutputDateIssued.TabIndex = 2;
+            // 
+            // helpLabelDateIssued
+            // 
+            this.helpLabelDateIssued.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.helpLabelDateIssued.AutoSize = true;
+            this.helpLabelDateIssued.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelDateIssued.Location = new System.Drawing.Point(23, 21);
+            this.helpLabelDateIssued.Name = "helpLabelDateIssued";
+            this.helpLabelDateIssued.Size = new System.Drawing.Size(75, 15);
+            this.helpLabelDateIssued.TabIndex = 1;
+            this.helpLabelDateIssued.Text = "Date Issued:";
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 2;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.40425F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.59575F));
+            this.tableLayoutPanel13.Controls.Add(this.helpLabelOutputReferenceNumber, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.helpLabelReferenceNumber, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 171);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 1;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(236, 57);
+            this.tableLayoutPanel13.TabIndex = 3;
+            // 
+            // helpLabelOutputReferenceNumber
+            // 
+            this.helpLabelOutputReferenceNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.helpLabelOutputReferenceNumber.AutoSize = true;
+            this.helpLabelOutputReferenceNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelOutputReferenceNumber.Location = new System.Drawing.Point(169, 21);
+            this.helpLabelOutputReferenceNumber.Name = "helpLabelOutputReferenceNumber";
+            this.helpLabelOutputReferenceNumber.Size = new System.Drawing.Size(0, 15);
+            this.helpLabelOutputReferenceNumber.TabIndex = 2;
+            // 
+            // helpLabelReferenceNumber
+            // 
+            this.helpLabelReferenceNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.helpLabelReferenceNumber.AutoSize = true;
+            this.helpLabelReferenceNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelReferenceNumber.Location = new System.Drawing.Point(51, 21);
+            this.helpLabelReferenceNumber.Name = "helpLabelReferenceNumber";
+            this.helpLabelReferenceNumber.Size = new System.Drawing.Size(48, 15);
+            this.helpLabelReferenceNumber.TabIndex = 1;
+            this.helpLabelReferenceNumber.Text = "Ref.No:";
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 2;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.65957F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.34043F));
+            this.tableLayoutPanel12.Controls.Add(this.helpLabelOutputDateOfIncident, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.helpLabelDateOfIncident, 0, 0);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 114);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 1;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(235, 57);
+            this.tableLayoutPanel12.TabIndex = 2;
+            // 
+            // helpLabelOutputDateOfIncident
+            // 
+            this.helpLabelOutputDateOfIncident.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.helpLabelOutputDateOfIncident.AutoSize = true;
+            this.helpLabelOutputDateOfIncident.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelOutputDateOfIncident.Location = new System.Drawing.Point(173, 21);
+            this.helpLabelOutputDateOfIncident.Name = "helpLabelOutputDateOfIncident";
+            this.helpLabelOutputDateOfIncident.Size = new System.Drawing.Size(0, 15);
+            this.helpLabelOutputDateOfIncident.TabIndex = 2;
+            // 
+            // helpLabelDateOfIncident
+            // 
+            this.helpLabelDateOfIncident.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.helpLabelDateOfIncident.AutoSize = true;
+            this.helpLabelDateOfIncident.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelDateOfIncident.Location = new System.Drawing.Point(7, 21);
+            this.helpLabelDateOfIncident.Name = "helpLabelDateOfIncident";
+            this.helpLabelDateOfIncident.Size = new System.Drawing.Size(101, 15);
+            this.helpLabelDateOfIncident.TabIndex = 1;
+            this.helpLabelDateOfIncident.Text = "Date of Incident:";
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 2;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.40425F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.59575F));
+            this.tableLayoutPanel11.Controls.Add(this.helpLabelOutputCode, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.helpLabelCode, 0, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 57);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(236, 57);
+            this.tableLayoutPanel11.TabIndex = 1;
+            // 
+            // helpLabelOutputCode
+            // 
+            this.helpLabelOutputCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.helpLabelOutputCode.AutoSize = true;
+            this.helpLabelOutputCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelOutputCode.Location = new System.Drawing.Point(169, 21);
+            this.helpLabelOutputCode.Name = "helpLabelOutputCode";
+            this.helpLabelOutputCode.Size = new System.Drawing.Size(0, 15);
+            this.helpLabelOutputCode.TabIndex = 2;
+            // 
+            // helpLabelCode
+            // 
+            this.helpLabelCode.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.helpLabelCode.AutoSize = true;
+            this.helpLabelCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelCode.Location = new System.Drawing.Point(61, 21);
+            this.helpLabelCode.Name = "helpLabelCode";
+            this.helpLabelCode.Size = new System.Drawing.Size(38, 15);
+            this.helpLabelCode.TabIndex = 1;
+            this.helpLabelCode.Text = "Code:";
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.40425F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.59575F));
+            this.tableLayoutPanel10.Controls.Add(this.helpLabelSenderNumber, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.helpLabelOutputSenderNumber, 1, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(236, 57);
+            this.tableLayoutPanel10.TabIndex = 0;
+            // 
+            // helpLabelSenderNumber
+            // 
+            this.helpLabelSenderNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.helpLabelSenderNumber.AutoSize = true;
+            this.helpLabelSenderNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelSenderNumber.Location = new System.Drawing.Point(49, 21);
+            this.helpLabelSenderNumber.Name = "helpLabelSenderNumber";
+            this.helpLabelSenderNumber.Size = new System.Drawing.Size(50, 15);
+            this.helpLabelSenderNumber.TabIndex = 0;
+            this.helpLabelSenderNumber.Text = "Sender:";
+            // 
+            // helpLabelOutputSenderNumber
+            // 
+            this.helpLabelOutputSenderNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.helpLabelOutputSenderNumber.AutoSize = true;
+            this.helpLabelOutputSenderNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelOutputSenderNumber.Location = new System.Drawing.Point(169, 21);
+            this.helpLabelOutputSenderNumber.Name = "helpLabelOutputSenderNumber";
+            this.helpLabelOutputSenderNumber.Size = new System.Drawing.Size(0, 15);
+            this.helpLabelOutputSenderNumber.TabIndex = 1;
+            // 
+            // helpTextBoxReply
+            // 
+            this.helpTextBoxReply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.helpTextBoxReply.Location = new System.Drawing.Point(3, 402);
+            this.helpTextBoxReply.Multiline = true;
+            this.helpTextBoxReply.Name = "helpTextBoxReply";
+            this.helpTextBoxReply.Size = new System.Drawing.Size(230, 216);
+            this.helpTextBoxReply.TabIndex = 7;
+            // 
+            // helpButtonSend
+            // 
+            this.helpButtonSend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.helpButtonSend.AutoSize = true;
+            this.helpButtonSend.Location = new System.Drawing.Point(80, 642);
+            this.helpButtonSend.Name = "helpButtonSend";
+            this.helpButtonSend.Size = new System.Drawing.Size(75, 25);
+            this.helpButtonSend.TabIndex = 8;
+            this.helpButtonSend.Text = "Send";
+            this.helpButtonSend.UseVisualStyleBackColor = true;
+            this.helpButtonSend.Click += new System.EventHandler(this.helpButtonSend_Click);
+            // 
+            // tabPageSettings
+            // 
+            this.tabPageSettings.Controls.Add(this.tableLayoutPanel16);
+            this.tabPageSettings.Location = new System.Drawing.Point(4, 24);
+            this.tabPageSettings.Name = "tabPageSettings";
+            this.tabPageSettings.Size = new System.Drawing.Size(1050, 695);
+            this.tabPageSettings.TabIndex = 2;
+            this.tabPageSettings.Text = "Settings";
+            this.tabPageSettings.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel16
+            // 
+            this.tableLayoutPanel16.ColumnCount = 2;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.Controls.Add(this.groupBox6, 1, 1);
+            this.tableLayoutPanel16.Controls.Add(this.groupBox5, 0, 1);
+            this.tableLayoutPanel16.Controls.Add(this.groupBox4, 1, 0);
+            this.tableLayoutPanel16.Controls.Add(this.settingsGroupBoxPorts, 0, 0);
+            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 2;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(1050, 695);
+            this.tableLayoutPanel16.TabIndex = 0;
+            // 
+            // settingsGroupBoxPorts
+            // 
+            this.settingsGroupBoxPorts.Controls.Add(this.tableLayoutPanel17);
+            this.settingsGroupBoxPorts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsGroupBoxPorts.Location = new System.Drawing.Point(3, 3);
+            this.settingsGroupBoxPorts.Name = "settingsGroupBoxPorts";
+            this.settingsGroupBoxPorts.Size = new System.Drawing.Size(519, 341);
+            this.settingsGroupBoxPorts.TabIndex = 0;
+            this.settingsGroupBoxPorts.TabStop = false;
+            this.settingsGroupBoxPorts.Text = "SIM PORTS";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.tableLayoutPanel18);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(528, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(519, 341);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Percentage Values";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.tableLayoutPanel19);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(3, 350);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(519, 342);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Miscellaneous";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.tableLayoutPanel20);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(528, 350);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(519, 342);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Member Values";
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 3;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeThree, 2, 6);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeTwo, 2, 5);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeOne, 2, 4);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveSenderTwo, 2, 3);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSenderOne, 2, 2);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGateWayTwo, 2, 1);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGateWayOne, 2, 0);
+            this.tableLayoutPanel17.Controls.Add(this.settingsSimPortsLabelGateWayOne, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel17.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel17.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel17.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutPanel17.Controls.Add(this.label5, 0, 5);
+            this.tableLayoutPanel17.Controls.Add(this.label6, 0, 6);
+            this.tableLayoutPanel17.Controls.Add(this.label7, 0, 7);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGateWayOne, 1, 0);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGateWayTwo, 1, 1);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSenderOne, 1, 2);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSenderTwo, 1, 3);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeOne, 1, 4);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeTwo, 1, 5);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeThree, 1, 6);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSmart, 1, 7);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveSmart, 2, 7);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 8;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(513, 319);
+            this.tableLayoutPanel17.TabIndex = 0;
+            // 
+            // settingsSimPortsLabelGateWayOne
+            // 
+            this.settingsSimPortsLabelGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.settingsSimPortsLabelGateWayOne.AutoSize = true;
+            this.settingsSimPortsLabelGateWayOne.Location = new System.Drawing.Point(32, 12);
+            this.settingsSimPortsLabelGateWayOne.Name = "settingsSimPortsLabelGateWayOne";
+            this.settingsSimPortsLabelGateWayOne.Size = new System.Drawing.Size(80, 15);
+            this.settingsSimPortsLabelGateWayOne.TabIndex = 0;
+            this.settingsSimPortsLabelGateWayOne.Text = "Gateway One:";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Gateway Two:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Sender Port One:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 129);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Sender Port Two:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 168);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 15);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Globe Port One";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 207);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 15);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Globe Port Two:";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 246);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 15);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Globe Port Three:";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(46, 288);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 15);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Smart Port:";
+            // 
+            // settingsPortsLabelGateWayOne
+            // 
+            this.settingsPortsLabelGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGateWayOne.Location = new System.Drawing.Point(127, 8);
+            this.settingsPortsLabelGateWayOne.Name = "settingsPortsLabelGateWayOne";
+            this.settingsPortsLabelGateWayOne.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGateWayOne.TabIndex = 8;
+            // 
+            // settingsPortsLabelGateWayTwo
+            // 
+            this.settingsPortsLabelGateWayTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGateWayTwo.Location = new System.Drawing.Point(127, 47);
+            this.settingsPortsLabelGateWayTwo.Name = "settingsPortsLabelGateWayTwo";
+            this.settingsPortsLabelGateWayTwo.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGateWayTwo.TabIndex = 9;
+            // 
+            // settingsPortsLabelSenderOne
+            // 
+            this.settingsPortsLabelSenderOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelSenderOne.Location = new System.Drawing.Point(127, 86);
+            this.settingsPortsLabelSenderOne.Name = "settingsPortsLabelSenderOne";
+            this.settingsPortsLabelSenderOne.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelSenderOne.TabIndex = 10;
+            // 
+            // settingsPortsLabelSenderTwo
+            // 
+            this.settingsPortsLabelSenderTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelSenderTwo.Location = new System.Drawing.Point(127, 125);
+            this.settingsPortsLabelSenderTwo.Name = "settingsPortsLabelSenderTwo";
+            this.settingsPortsLabelSenderTwo.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelSenderTwo.TabIndex = 11;
+            // 
+            // settingsPortsLabelGlobeOne
+            // 
+            this.settingsPortsLabelGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGlobeOne.Location = new System.Drawing.Point(127, 164);
+            this.settingsPortsLabelGlobeOne.Name = "settingsPortsLabelGlobeOne";
+            this.settingsPortsLabelGlobeOne.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGlobeOne.TabIndex = 12;
+            // 
+            // settingsPortsLabelGlobeTwo
+            // 
+            this.settingsPortsLabelGlobeTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGlobeTwo.Location = new System.Drawing.Point(127, 203);
+            this.settingsPortsLabelGlobeTwo.Name = "settingsPortsLabelGlobeTwo";
+            this.settingsPortsLabelGlobeTwo.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGlobeTwo.TabIndex = 13;
+            // 
+            // settingsPortsLabelGlobeThree
+            // 
+            this.settingsPortsLabelGlobeThree.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGlobeThree.Location = new System.Drawing.Point(127, 242);
+            this.settingsPortsLabelGlobeThree.Name = "settingsPortsLabelGlobeThree";
+            this.settingsPortsLabelGlobeThree.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGlobeThree.TabIndex = 14;
+            // 
+            // settingsPortsLabelSmart
+            // 
+            this.settingsPortsLabelSmart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelSmart.Location = new System.Drawing.Point(127, 284);
+            this.settingsPortsLabelSmart.Name = "settingsPortsLabelSmart";
+            this.settingsPortsLabelSmart.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelSmart.TabIndex = 15;
+            // 
+            // settingsPortsButtonSaveSmart
+            // 
+            this.settingsPortsButtonSaveSmart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveSmart.Location = new System.Drawing.Point(392, 284);
+            this.settingsPortsButtonSaveSmart.Name = "settingsPortsButtonSaveSmart";
+            this.settingsPortsButtonSaveSmart.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveSmart.TabIndex = 16;
+            this.settingsPortsButtonSaveSmart.Text = "Save";
+            this.settingsPortsButtonSaveSmart.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveSmart.Click += new System.EventHandler(this.settingsPortsButtonSaveSmart_Click);
+            // 
+            // settingsPortsButtonSaveGateWayOne
+            // 
+            this.settingsPortsButtonSaveGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGateWayOne.Location = new System.Drawing.Point(392, 8);
+            this.settingsPortsButtonSaveGateWayOne.Name = "settingsPortsButtonSaveGateWayOne";
+            this.settingsPortsButtonSaveGateWayOne.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGateWayOne.TabIndex = 17;
+            this.settingsPortsButtonSaveGateWayOne.Text = "Save";
+            this.settingsPortsButtonSaveGateWayOne.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGateWayOne.Click += new System.EventHandler(this.settingsPortsButtonSaveGateWayOne_Click);
+            // 
+            // settingsPortsButtonSaveGateWayTwo
+            // 
+            this.settingsPortsButtonSaveGateWayTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGateWayTwo.Location = new System.Drawing.Point(392, 47);
+            this.settingsPortsButtonSaveGateWayTwo.Name = "settingsPortsButtonSaveGateWayTwo";
+            this.settingsPortsButtonSaveGateWayTwo.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGateWayTwo.TabIndex = 18;
+            this.settingsPortsButtonSaveGateWayTwo.Text = "Save";
+            this.settingsPortsButtonSaveGateWayTwo.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGateWayTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveGateWayTwo_Click);
+            // 
+            // settingsPortsButtonSenderOne
+            // 
+            this.settingsPortsButtonSenderOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSenderOne.Location = new System.Drawing.Point(392, 86);
+            this.settingsPortsButtonSenderOne.Name = "settingsPortsButtonSenderOne";
+            this.settingsPortsButtonSenderOne.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSenderOne.TabIndex = 19;
+            this.settingsPortsButtonSenderOne.Text = "Save";
+            this.settingsPortsButtonSenderOne.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSenderOne.Click += new System.EventHandler(this.settingsPortsButtonSenderOne_Click);
+            // 
+            // settingsPortsButtonSaveSenderTwo
+            // 
+            this.settingsPortsButtonSaveSenderTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveSenderTwo.Location = new System.Drawing.Point(392, 125);
+            this.settingsPortsButtonSaveSenderTwo.Name = "settingsPortsButtonSaveSenderTwo";
+            this.settingsPortsButtonSaveSenderTwo.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveSenderTwo.TabIndex = 20;
+            this.settingsPortsButtonSaveSenderTwo.Text = "Save";
+            this.settingsPortsButtonSaveSenderTwo.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveSenderTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveSenderTwo_Click);
+            // 
+            // settingsPortsButtonSaveGlobeOne
+            // 
+            this.settingsPortsButtonSaveGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeOne.Location = new System.Drawing.Point(392, 164);
+            this.settingsPortsButtonSaveGlobeOne.Name = "settingsPortsButtonSaveGlobeOne";
+            this.settingsPortsButtonSaveGlobeOne.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeOne.TabIndex = 21;
+            this.settingsPortsButtonSaveGlobeOne.Text = "Save";
+            this.settingsPortsButtonSaveGlobeOne.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeOne.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeOne_Click);
+            // 
+            // settingsPortsButtonSaveGlobeTwo
+            // 
+            this.settingsPortsButtonSaveGlobeTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeTwo.Location = new System.Drawing.Point(392, 203);
+            this.settingsPortsButtonSaveGlobeTwo.Name = "settingsPortsButtonSaveGlobeTwo";
+            this.settingsPortsButtonSaveGlobeTwo.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeTwo.TabIndex = 22;
+            this.settingsPortsButtonSaveGlobeTwo.Text = "Save";
+            this.settingsPortsButtonSaveGlobeTwo.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeTwo_Click);
+            // 
+            // settingsPortsButtonSaveGlobeThree
+            // 
+            this.settingsPortsButtonSaveGlobeThree.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeThree.Location = new System.Drawing.Point(392, 242);
+            this.settingsPortsButtonSaveGlobeThree.Name = "settingsPortsButtonSaveGlobeThree";
+            this.settingsPortsButtonSaveGlobeThree.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeThree.TabIndex = 23;
+            this.settingsPortsButtonSaveGlobeThree.Text = "Save";
+            this.settingsPortsButtonSaveGlobeThree.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeThree.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeThree_Click);
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 3;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveGSATLoading, 2, 2);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveGlobeLoading, 2, 1);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveSmartLoading, 2, 0);
+            this.tableLayoutPanel18.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.label9, 0, 1);
+            this.tableLayoutPanel18.Controls.Add(this.label10, 0, 2);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxSmartLoading, 1, 0);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGlobeLoading, 1, 1);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGSATLoading, 1, 2);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 3;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(513, 319);
+            this.tableLayoutPanel18.TabIndex = 1;
+            // 
+            // settingsPortsButtonSaveGlobeLoading
+            // 
+            this.settingsPortsButtonSaveGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeLoading.Location = new System.Drawing.Point(392, 147);
+            this.settingsPortsButtonSaveGlobeLoading.Name = "settingsPortsButtonSaveGlobeLoading";
+            this.settingsPortsButtonSaveGlobeLoading.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeLoading.TabIndex = 18;
+            this.settingsPortsButtonSaveGlobeLoading.Text = "Save";
+            this.settingsPortsButtonSaveGlobeLoading.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeLoading_Click);
+            // 
+            // settingsPortsButtonSaveSmartLoading
+            // 
+            this.settingsPortsButtonSaveSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveSmartLoading.Location = new System.Drawing.Point(392, 41);
+            this.settingsPortsButtonSaveSmartLoading.Name = "settingsPortsButtonSaveSmartLoading";
+            this.settingsPortsButtonSaveSmartLoading.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveSmartLoading.TabIndex = 17;
+            this.settingsPortsButtonSaveSmartLoading.Text = "Save";
+            this.settingsPortsButtonSaveSmartLoading.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveSmartLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveSmartLoading_Click);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(25, 45);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 15);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Smart Loading:";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(25, 151);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 15);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Globe Loading:";
+            // 
+            // settingsPortsTextBoxSmartLoading
+            // 
+            this.settingsPortsTextBoxSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsTextBoxSmartLoading.Location = new System.Drawing.Point(127, 41);
+            this.settingsPortsTextBoxSmartLoading.Name = "settingsPortsTextBoxSmartLoading";
+            this.settingsPortsTextBoxSmartLoading.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsTextBoxSmartLoading.TabIndex = 8;
+            // 
+            // settingsPortsTextBoxGlobeLoading
+            // 
+            this.settingsPortsTextBoxGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsTextBoxGlobeLoading.Location = new System.Drawing.Point(127, 147);
+            this.settingsPortsTextBoxGlobeLoading.Name = "settingsPortsTextBoxGlobeLoading";
+            this.settingsPortsTextBoxGlobeLoading.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsTextBoxGlobeLoading.TabIndex = 9;
+            // 
+            // settingsPortsTextBoxGSATLoading
+            // 
+            this.settingsPortsTextBoxGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsTextBoxGSATLoading.Location = new System.Drawing.Point(127, 254);
+            this.settingsPortsTextBoxGSATLoading.Name = "settingsPortsTextBoxGSATLoading";
+            this.settingsPortsTextBoxGSATLoading.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsTextBoxGSATLoading.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(32, 258);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 15);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "GSAT Loading";
+            // 
+            // settingsPortsButtonSaveGSATLoading
+            // 
+            this.settingsPortsButtonSaveGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGSATLoading.Location = new System.Drawing.Point(392, 254);
+            this.settingsPortsButtonSaveGSATLoading.Name = "settingsPortsButtonSaveGSATLoading";
+            this.settingsPortsButtonSaveGSATLoading.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGSATLoading.TabIndex = 19;
+            this.settingsPortsButtonSaveGSATLoading.Text = "Save";
+            this.settingsPortsButtonSaveGSATLoading.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGSATLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveGSATLoading_Click);
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 3;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
+            this.tableLayoutPanel19.Controls.Add(this.B_GlobeUSSD, 2, 2);
+            this.tableLayoutPanel19.Controls.Add(this.B_GSATAvailable, 2, 1);
+            this.tableLayoutPanel19.Controls.Add(this.B_HelpSoundPath, 2, 0);
+            this.tableLayoutPanel19.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel19.Controls.Add(this.label13, 0, 2);
+            this.tableLayoutPanel19.Controls.Add(this.TB_HelpSoundPath, 1, 0);
+            this.tableLayoutPanel19.Controls.Add(this.TB_GSATAvailable, 1, 1);
+            this.tableLayoutPanel19.Controls.Add(this.TB_GlobeUSSD, 1, 2);
+            this.tableLayoutPanel19.Controls.Add(this.TB_RepeatTransaction, 1, 3);
+            this.tableLayoutPanel19.Controls.Add(this.label14, 0, 3);
+            this.tableLayoutPanel19.Controls.Add(this.B_RepeatTransaction, 2, 3);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 4;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(513, 320);
+            this.tableLayoutPanel19.TabIndex = 2;
+            // 
+            // B_GlobeUSSD
+            // 
+            this.B_GlobeUSSD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_GlobeUSSD.Location = new System.Drawing.Point(391, 188);
+            this.B_GlobeUSSD.Name = "B_GlobeUSSD";
+            this.B_GlobeUSSD.Size = new System.Drawing.Size(104, 23);
+            this.B_GlobeUSSD.TabIndex = 19;
+            this.B_GlobeUSSD.Text = "Save";
+            this.B_GlobeUSSD.UseVisualStyleBackColor = true;
+            this.B_GlobeUSSD.Click += new System.EventHandler(this.B_GlobeUSSD_Click);
+            // 
+            // B_GSATAvailable
+            // 
+            this.B_GSATAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_GSATAvailable.Location = new System.Drawing.Point(391, 108);
+            this.B_GSATAvailable.Name = "B_GSATAvailable";
+            this.B_GSATAvailable.Size = new System.Drawing.Size(104, 23);
+            this.B_GSATAvailable.TabIndex = 18;
+            this.B_GSATAvailable.Text = "Save";
+            this.B_GSATAvailable.UseVisualStyleBackColor = true;
+            this.B_GSATAvailable.Click += new System.EventHandler(this.B_GSATAvailable_Click);
+            // 
+            // B_HelpSoundPath
+            // 
+            this.B_HelpSoundPath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_HelpSoundPath.Location = new System.Drawing.Point(391, 28);
+            this.B_HelpSoundPath.Name = "B_HelpSoundPath";
+            this.B_HelpSoundPath.Size = new System.Drawing.Size(104, 23);
+            this.B_HelpSoundPath.TabIndex = 17;
+            this.B_HelpSoundPath.Text = "Save";
+            this.B_HelpSoundPath.UseVisualStyleBackColor = true;
+            this.B_HelpSoundPath.Click += new System.EventHandler(this.B_HelpSoundPath_Click);
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 15);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Help Sound Path:";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(23, 112);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(88, 15);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "GSAT Available:";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(39, 192);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 15);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Globe USSD:";
+            // 
+            // TB_HelpSoundPath
+            // 
+            this.TB_HelpSoundPath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_HelpSoundPath.Location = new System.Drawing.Point(126, 28);
+            this.TB_HelpSoundPath.Name = "TB_HelpSoundPath";
+            this.TB_HelpSoundPath.Size = new System.Drawing.Size(236, 23);
+            this.TB_HelpSoundPath.TabIndex = 8;
+            // 
+            // TB_GSATAvailable
+            // 
+            this.TB_GSATAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_GSATAvailable.Location = new System.Drawing.Point(126, 108);
+            this.TB_GSATAvailable.Name = "TB_GSATAvailable";
+            this.TB_GSATAvailable.Size = new System.Drawing.Size(236, 23);
+            this.TB_GSATAvailable.TabIndex = 9;
+            // 
+            // TB_GlobeUSSD
+            // 
+            this.TB_GlobeUSSD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_GlobeUSSD.Location = new System.Drawing.Point(126, 188);
+            this.TB_GlobeUSSD.Name = "TB_GlobeUSSD";
+            this.TB_GlobeUSSD.Size = new System.Drawing.Size(236, 23);
+            this.TB_GlobeUSSD.TabIndex = 10;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(5, 265);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(106, 30);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Repeat Transaction (Minutes):";
+            // 
+            // TB_RepeatTransaction
+            // 
+            this.TB_RepeatTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_RepeatTransaction.Location = new System.Drawing.Point(126, 268);
+            this.TB_RepeatTransaction.Name = "TB_RepeatTransaction";
+            this.TB_RepeatTransaction.Size = new System.Drawing.Size(236, 23);
+            this.TB_RepeatTransaction.TabIndex = 21;
+            // 
+            // B_RepeatTransaction
+            // 
+            this.B_RepeatTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_RepeatTransaction.Location = new System.Drawing.Point(391, 268);
+            this.B_RepeatTransaction.Name = "B_RepeatTransaction";
+            this.B_RepeatTransaction.Size = new System.Drawing.Size(104, 23);
+            this.B_RepeatTransaction.TabIndex = 22;
+            this.B_RepeatTransaction.Text = "Save";
+            this.B_RepeatTransaction.UseVisualStyleBackColor = true;
+            this.B_RepeatTransaction.Click += new System.EventHandler(this.B_RepeatTransaction_Click);
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 3;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.86745F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.03704F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
+            this.tableLayoutPanel20.Controls.Add(this.B_MinimumTLC, 2, 6);
+            this.tableLayoutPanel20.Controls.Add(this.B_Provincial, 2, 5);
+            this.tableLayoutPanel20.Controls.Add(this.label22, 0, 7);
+            this.tableLayoutPanel20.Controls.Add(this.B_Dealer, 2, 2);
+            this.tableLayoutPanel20.Controls.Add(this.B_Distributor, 2, 1);
+            this.tableLayoutPanel20.Controls.Add(this.B_Retailer, 2, 0);
+            this.tableLayoutPanel20.Controls.Add(this.label15, 0, 0);
+            this.tableLayoutPanel20.Controls.Add(this.label16, 0, 1);
+            this.tableLayoutPanel20.Controls.Add(this.label17, 0, 2);
+            this.tableLayoutPanel20.Controls.Add(this.TB_Retailer, 1, 0);
+            this.tableLayoutPanel20.Controls.Add(this.TB_Distributor, 1, 1);
+            this.tableLayoutPanel20.Controls.Add(this.TB_Dealer, 1, 2);
+            this.tableLayoutPanel20.Controls.Add(this.TB_Mobile, 1, 3);
+            this.tableLayoutPanel20.Controls.Add(this.label18, 0, 3);
+            this.tableLayoutPanel20.Controls.Add(this.B_Mobile, 2, 3);
+            this.tableLayoutPanel20.Controls.Add(this.label19, 0, 6);
+            this.tableLayoutPanel20.Controls.Add(this.label20, 0, 5);
+            this.tableLayoutPanel20.Controls.Add(this.label21, 0, 4);
+            this.tableLayoutPanel20.Controls.Add(this.TB_MinimumTLC, 1, 6);
+            this.tableLayoutPanel20.Controls.Add(this.TB_Provincial, 1, 5);
+            this.tableLayoutPanel20.Controls.Add(this.TB_City, 1, 4);
+            this.tableLayoutPanel20.Controls.Add(this.TB_MinimumTTU, 1, 7);
+            this.tableLayoutPanel20.Controls.Add(this.B_MinimumTTU, 2, 7);
+            this.tableLayoutPanel20.Controls.Add(this.B_City, 2, 4);
+            this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.RowCount = 8;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(513, 320);
+            this.tableLayoutPanel20.TabIndex = 3;
+            // 
+            // B_Dealer
+            // 
+            this.B_Dealer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_Dealer.Location = new System.Drawing.Point(391, 88);
+            this.B_Dealer.Name = "B_Dealer";
+            this.B_Dealer.Size = new System.Drawing.Size(104, 23);
+            this.B_Dealer.TabIndex = 19;
+            this.B_Dealer.Text = "Save";
+            this.B_Dealer.UseVisualStyleBackColor = true;
+            this.B_Dealer.Click += new System.EventHandler(this.B_Dealer_Click);
+            // 
+            // B_Distributor
+            // 
+            this.B_Distributor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_Distributor.Location = new System.Drawing.Point(391, 48);
+            this.B_Distributor.Name = "B_Distributor";
+            this.B_Distributor.Size = new System.Drawing.Size(104, 23);
+            this.B_Distributor.TabIndex = 18;
+            this.B_Distributor.Text = "Save";
+            this.B_Distributor.UseVisualStyleBackColor = true;
+            this.B_Distributor.Click += new System.EventHandler(this.B_Distributor_Click);
+            // 
+            // B_Retailer
+            // 
+            this.B_Retailer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_Retailer.Location = new System.Drawing.Point(391, 8);
+            this.B_Retailer.Name = "B_Retailer";
+            this.B_Retailer.Size = new System.Drawing.Size(104, 23);
+            this.B_Retailer.TabIndex = 17;
+            this.B_Retailer.Text = "Save";
+            this.B_Retailer.UseVisualStyleBackColor = true;
+            this.B_Retailer.Click += new System.EventHandler(this.B_Retailer_Click);
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(24, 12);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(157, 15);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Registration Pins (RETAILER):";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(178, 15);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Registration Pins (DISTRIBUTOR):";
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(31, 92);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(150, 15);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Registration Pins (DEALER):";
+            // 
+            // TB_Retailer
+            // 
+            this.TB_Retailer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_Retailer.Location = new System.Drawing.Point(187, 8);
+            this.TB_Retailer.Name = "TB_Retailer";
+            this.TB_Retailer.Size = new System.Drawing.Size(184, 23);
+            this.TB_Retailer.TabIndex = 8;
+            // 
+            // TB_Distributor
+            // 
+            this.TB_Distributor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_Distributor.Location = new System.Drawing.Point(187, 48);
+            this.TB_Distributor.Name = "TB_Distributor";
+            this.TB_Distributor.Size = new System.Drawing.Size(184, 23);
+            this.TB_Distributor.TabIndex = 9;
+            // 
+            // TB_Dealer
+            // 
+            this.TB_Dealer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_Dealer.Location = new System.Drawing.Point(187, 88);
+            this.TB_Dealer.Name = "TB_Dealer";
+            this.TB_Dealer.Size = new System.Drawing.Size(184, 23);
+            this.TB_Dealer.TabIndex = 10;
+            // 
+            // TB_Mobile
+            // 
+            this.TB_Mobile.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_Mobile.Location = new System.Drawing.Point(187, 128);
+            this.TB_Mobile.Name = "TB_Mobile";
+            this.TB_Mobile.Size = new System.Drawing.Size(184, 23);
+            this.TB_Mobile.TabIndex = 21;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(30, 132);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(151, 15);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "Registration Pins (MOBILE):";
+            // 
+            // B_Mobile
+            // 
+            this.B_Mobile.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_Mobile.Location = new System.Drawing.Point(391, 128);
+            this.B_Mobile.Name = "B_Mobile";
+            this.B_Mobile.Size = new System.Drawing.Size(104, 23);
+            this.B_Mobile.TabIndex = 22;
+            this.B_Mobile.Text = "Save";
+            this.B_Mobile.UseVisualStyleBackColor = true;
+            this.B_Mobile.Click += new System.EventHandler(this.B_Mobile_Click);
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(95, 252);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(86, 15);
+            this.label19.TabIndex = 23;
+            this.label19.Text = "Minimum TLC:";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(5, 212);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(176, 15);
+            this.label20.TabIndex = 24;
+            this.label20.Text = "Registration Pins (PROVINCIAL):";
+            // 
+            // label21
+            // 
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(48, 172);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(133, 15);
+            this.label21.TabIndex = 25;
+            this.label21.Text = "Registration Pins (CITY):";
+            // 
+            // label22
+            // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(95, 292);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(86, 15);
+            this.label22.TabIndex = 26;
+            this.label22.Text = "Minimum TTU:";
+            // 
+            // TB_MinimumTLC
+            // 
+            this.TB_MinimumTLC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_MinimumTLC.Location = new System.Drawing.Point(187, 248);
+            this.TB_MinimumTLC.Name = "TB_MinimumTLC";
+            this.TB_MinimumTLC.Size = new System.Drawing.Size(184, 23);
+            this.TB_MinimumTLC.TabIndex = 27;
+            // 
+            // TB_Provincial
+            // 
+            this.TB_Provincial.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_Provincial.Location = new System.Drawing.Point(187, 208);
+            this.TB_Provincial.Name = "TB_Provincial";
+            this.TB_Provincial.Size = new System.Drawing.Size(184, 23);
+            this.TB_Provincial.TabIndex = 28;
+            // 
+            // TB_City
+            // 
+            this.TB_City.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_City.Location = new System.Drawing.Point(187, 168);
+            this.TB_City.Name = "TB_City";
+            this.TB_City.Size = new System.Drawing.Size(184, 23);
+            this.TB_City.TabIndex = 29;
+            // 
+            // TB_MinimumTTU
+            // 
+            this.TB_MinimumTTU.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_MinimumTTU.Location = new System.Drawing.Point(187, 288);
+            this.TB_MinimumTTU.Name = "TB_MinimumTTU";
+            this.TB_MinimumTTU.Size = new System.Drawing.Size(184, 23);
+            this.TB_MinimumTTU.TabIndex = 30;
+            // 
+            // B_MinimumTTU
+            // 
+            this.B_MinimumTTU.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_MinimumTTU.Location = new System.Drawing.Point(391, 288);
+            this.B_MinimumTTU.Name = "B_MinimumTTU";
+            this.B_MinimumTTU.Size = new System.Drawing.Size(104, 23);
+            this.B_MinimumTTU.TabIndex = 31;
+            this.B_MinimumTTU.Text = "Save";
+            this.B_MinimumTTU.UseVisualStyleBackColor = true;
+            this.B_MinimumTTU.Click += new System.EventHandler(this.B_MinimumTTU_Click);
+            // 
+            // B_City
+            // 
+            this.B_City.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_City.Location = new System.Drawing.Point(391, 168);
+            this.B_City.Name = "B_City";
+            this.B_City.Size = new System.Drawing.Size(104, 23);
+            this.B_City.TabIndex = 32;
+            this.B_City.Text = "Save";
+            this.B_City.UseVisualStyleBackColor = true;
+            this.B_City.Click += new System.EventHandler(this.B_City_Click);
+            // 
+            // B_Provincial
+            // 
+            this.B_Provincial.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_Provincial.Location = new System.Drawing.Point(391, 208);
+            this.B_Provincial.Name = "B_Provincial";
+            this.B_Provincial.Size = new System.Drawing.Size(104, 23);
+            this.B_Provincial.TabIndex = 33;
+            this.B_Provincial.Text = "Save";
+            this.B_Provincial.UseVisualStyleBackColor = true;
+            this.B_Provincial.Click += new System.EventHandler(this.B_Provincial_Click);
+            // 
+            // B_MinimumTLC
+            // 
+            this.B_MinimumTLC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_MinimumTLC.Location = new System.Drawing.Point(391, 248);
+            this.B_MinimumTLC.Name = "B_MinimumTLC";
+            this.B_MinimumTLC.Size = new System.Drawing.Size(104, 23);
+            this.B_MinimumTLC.TabIndex = 34;
+            this.B_MinimumTLC.Text = "Save";
+            this.B_MinimumTLC.UseVisualStyleBackColor = true;
+            this.B_MinimumTLC.Click += new System.EventHandler(this.B_MinimumTLC_Click);
             // 
             // MainForm
             // 
@@ -937,6 +2283,37 @@ namespace SerialSMSSender {
             this.homeGroupBoxGlobe.PerformLayout();
             this.homeGroupBoxSmart.ResumeLayout(false);
             this.homeGroupBoxSmart.PerformLayout();
+            this.tabPageHelp.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.HelpDataGridView)).EndInit();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
+            this.tabPageSettings.ResumeLayout(false);
+            this.tableLayoutPanel16.ResumeLayout(false);
+            this.settingsGroupBoxPorts.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.tableLayoutPanel17.PerformLayout();
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel18.PerformLayout();
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
+            this.tableLayoutPanel20.ResumeLayout(false);
+            this.tableLayoutPanel20.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1005,6 +2382,110 @@ namespace SerialSMSSender {
         private System.Windows.Forms.TextBox homeTextBoxGlobe;
         private System.Windows.Forms.GroupBox homeGroupBoxSmart;
         private System.Windows.Forms.TextBox homeTextBoxSmart;
+        private System.Windows.Forms.TabPage tabPageSettings;
+        private System.Windows.Forms.TabPage tabPageHelp;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.DataGridView HelpDataGridView;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Label helpLabelReply;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label helpLabelStatus;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label helpLabelDateIssued;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.Label helpLabelReferenceNumber;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label helpLabelDateOfIncident;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Label helpLabelCode;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Label helpLabelSenderNumber;
+        private System.Windows.Forms.TextBox helpTextBoxReply;
+        private System.Windows.Forms.Button helpButtonSend;
+        private System.Windows.Forms.Label helpLabelOutputStatus;
+        private System.Windows.Forms.Label helpLabelOutputDateIssued;
+        private System.Windows.Forms.Label helpLabelOutputReferenceNumber;
+        private System.Windows.Forms.Label helpLabelOutputDateOfIncident;
+        private System.Windows.Forms.Label helpLabelOutputCode;
+        private System.Windows.Forms.Label helpLabelOutputSenderNumber;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox settingsGroupBoxPorts;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.Button settingsPortsButtonSaveGlobeThree;
+        private System.Windows.Forms.Button settingsPortsButtonSaveGlobeTwo;
+        private System.Windows.Forms.Button settingsPortsButtonSaveGlobeOne;
+        private System.Windows.Forms.Button settingsPortsButtonSaveSenderTwo;
+        private System.Windows.Forms.Button settingsPortsButtonSenderOne;
+        private System.Windows.Forms.Button settingsPortsButtonSaveGateWayTwo;
+        private System.Windows.Forms.Button settingsPortsButtonSaveGateWayOne;
+        private System.Windows.Forms.Label settingsSimPortsLabelGateWayOne;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox settingsPortsLabelGateWayOne;
+        private System.Windows.Forms.TextBox settingsPortsLabelGateWayTwo;
+        private System.Windows.Forms.TextBox settingsPortsLabelSenderOne;
+        private System.Windows.Forms.TextBox settingsPortsLabelSenderTwo;
+        private System.Windows.Forms.TextBox settingsPortsLabelGlobeOne;
+        private System.Windows.Forms.TextBox settingsPortsLabelGlobeTwo;
+        private System.Windows.Forms.TextBox settingsPortsLabelGlobeThree;
+        private System.Windows.Forms.TextBox settingsPortsLabelSmart;
+        private System.Windows.Forms.Button settingsPortsButtonSaveSmart;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.Button settingsPortsButtonSaveGSATLoading;
+        private System.Windows.Forms.Button settingsPortsButtonSaveGlobeLoading;
+        private System.Windows.Forms.Button settingsPortsButtonSaveSmartLoading;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox settingsPortsTextBoxSmartLoading;
+        private System.Windows.Forms.TextBox settingsPortsTextBoxGlobeLoading;
+        private System.Windows.Forms.TextBox settingsPortsTextBoxGSATLoading;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.Button B_GlobeUSSD;
+        private System.Windows.Forms.Button B_GSATAvailable;
+        private System.Windows.Forms.Button B_HelpSoundPath;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox TB_HelpSoundPath;
+        private System.Windows.Forms.TextBox TB_GSATAvailable;
+        private System.Windows.Forms.TextBox TB_GlobeUSSD;
+        private System.Windows.Forms.TextBox TB_RepeatTransaction;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button B_RepeatTransaction;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.Button B_MinimumTLC;
+        private System.Windows.Forms.Button B_Provincial;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button B_Dealer;
+        private System.Windows.Forms.Button B_Distributor;
+        private System.Windows.Forms.Button B_Retailer;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox TB_Retailer;
+        private System.Windows.Forms.TextBox TB_Distributor;
+        private System.Windows.Forms.TextBox TB_Dealer;
+        private System.Windows.Forms.TextBox TB_Mobile;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button B_Mobile;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox TB_MinimumTLC;
+        private System.Windows.Forms.TextBox TB_Provincial;
+        private System.Windows.Forms.TextBox TB_City;
+        private System.Windows.Forms.TextBox TB_MinimumTTU;
+        private System.Windows.Forms.Button B_MinimumTTU;
+        private System.Windows.Forms.Button B_City;
     }
 }
 

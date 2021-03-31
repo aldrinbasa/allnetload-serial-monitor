@@ -126,14 +126,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SerialSMSSender.exe" size="249312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SerialSMSSender.exe" size="296928">
       <assemblyIdentity name="SerialSMSSender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BbwlqqRzt3E3jQnsRjQP2Tfb6OHj8vQ7sMM35lP6/n4=</dsig:DigestValue>
+        <dsig:DigestValue>6qMvh8xze0Ojbv1q4n7uDBDeCMy3oyuZB6qywRDvlHQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
