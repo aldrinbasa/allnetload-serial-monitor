@@ -128,32 +128,34 @@ namespace SerialSMSSender {
 
                             string commandType = commandSent.Split(' ')[0].Trim();
 
-                            if (IsCharactersOnly(commandType)) {
+                            if(commandSent != "") {
 
-                                commandType.ToUpper();
+                                if (IsCharactersOnly(commandType)) {
 
-                                if (commandType == "REP") {
-                                    if (IsCharactersOnly(commandSent.Split(' ')[1].Trim())) {
-                                        commandType = commandType + " " + commandSent.Split(' ')[1].Trim();
-                                    }
-                                    else {
-                                        commandType = commandType + " " + "LOAD";
+                                    commandType.ToUpper();
+
+                                    if (commandType == "REP") {
+                                        if (IsCharactersOnly(commandSent.Split(' ')[1].Trim())) {
+                                            commandType = commandType + " " + commandSent.Split(' ')[1].Trim();
+                                        }
+                                        else {
+                                            commandType = commandType + " " + "LOAD";
+                                        }
                                     }
                                 }
-                            }
-                            else {
-                                commandType = "LOAD";
-                            }
+                                else {
+                                    commandType = "LOAD";
+                                }
 
-                            commandType = commandType.ToUpper();
+                                commandType = commandType.ToUpper();
 
-
-                            if (UserExists(senderNumber)) {
-                                RunDatabaseQuery("INSERT INTO commands (SenderNumber, Command, DateTime, Status, ReferenceNumber, CommandType) VALUES('" + senderNumber + "', '" + commandSent + "', '" + dateTime + "', 'PENDING', '" + referenceNumber + "', '" + commandType + "')");
-                            }
-                            else {
-                                if (commandType == "LOGIN") {
+                                if (UserExists(senderNumber)) {
                                     RunDatabaseQuery("INSERT INTO commands (SenderNumber, Command, DateTime, Status, ReferenceNumber, CommandType) VALUES('" + senderNumber + "', '" + commandSent + "', '" + dateTime + "', 'PENDING', '" + referenceNumber + "', '" + commandType + "')");
+                                }
+                                else {
+                                    if (commandType == "LOGIN") {
+                                        RunDatabaseQuery("INSERT INTO commands (SenderNumber, Command, DateTime, Status, ReferenceNumber, CommandType) VALUES('" + senderNumber + "', '" + commandSent + "', '" + dateTime + "', 'PENDING', '" + referenceNumber + "', '" + commandType + "')");
+                                    }
                                 }
                             }
                         }
@@ -208,29 +210,31 @@ namespace SerialSMSSender {
 
                             string commandType = commandSent.Split(' ')[0].Trim();
 
-                            if (IsCharactersOnly(commandType)) {
-                                if (commandType == "REP") {
-                                    if (IsCharactersOnly(commandSent.Split(' ')[1].Trim())) {
-                                        commandType = commandType + " " + commandSent.Split(' ')[1].Trim();
-                                    }
-                                    else {
-                                        commandType = commandType + " " + "LOAD";
+                            if(commandSent != "") {
+
+                                if (IsCharactersOnly(commandType)) {
+                                    if (commandType == "REP") {
+                                        if (IsCharactersOnly(commandSent.Split(' ')[1].Trim())) {
+                                            commandType = commandType + " " + commandSent.Split(' ')[1].Trim();
+                                        }
+                                        else {
+                                            commandType = commandType + " " + "LOAD";
+                                        }
                                     }
                                 }
-                            }
-                            else {
-                                commandType = "LOAD";
-                            }
+                                else {
+                                    commandType = "LOAD";
+                                }
 
-                            commandType = commandType.ToUpper();
+                                commandType = commandType.ToUpper();
 
-
-                            if (UserExists(senderNumber)) {
-                                RunDatabaseQuery("INSERT INTO commands (SenderNumber, Command, DateTime, Status, ReferenceNumber, CommandType) VALUES('" + senderNumber + "', '" + commandSent + "', '" + dateTime + "', 'PENDING', '" + referenceNumber + "', '" + commandType + "')");
-                            }
-                            else {
-                                if (commandType == "LOGIN") {
+                                if (UserExists(senderNumber)) {
                                     RunDatabaseQuery("INSERT INTO commands (SenderNumber, Command, DateTime, Status, ReferenceNumber, CommandType) VALUES('" + senderNumber + "', '" + commandSent + "', '" + dateTime + "', 'PENDING', '" + referenceNumber + "', '" + commandType + "')");
+                                }
+                                else {
+                                    if (commandType == "LOGIN") {
+                                        RunDatabaseQuery("INSERT INTO commands (SenderNumber, Command, DateTime, Status, ReferenceNumber, CommandType) VALUES('" + senderNumber + "', '" + commandSent + "', '" + dateTime + "', 'PENDING', '" + referenceNumber + "', '" + commandType + "')");
+                                    }
                                 }
                             }
                         }
@@ -326,9 +330,21 @@ namespace SerialSMSSender {
                         ProcessHelp(senderNumber, command, referenceNumber);
                     }
                     else if (commandType == "LOGIN") {
-                        ProcessLogin(senderNumber, command, referenceNumber);
+
+                        string receiverNumber = command.Split(' ')[1];
+                        string amount = command.Split(' ')[2];
+
+                        DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
+                        string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
+
+                        if (!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "LOAD")) {
+                            ProcessLogin(senderNumber, command, referenceNumber);
+                        }
+                        else {
+                            QueueOutbound("Login Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                        }
                     }
-                    else if (commandType == "GSAT") {
+                    else if (commandType == "TV") {
                         ProcessGSAT(senderNumber, command, referenceNumber);
                     }
                     else if (commandType == "REP TLC") {
@@ -345,6 +361,11 @@ namespace SerialSMSSender {
                         command = command.Replace("REP", "").Trim();
 
                         ProcessLoadingQueue(senderNumber, command, referenceNumber);
+                    }
+                    else if (commandType == "REP LOGIN") {
+                        command = command.Replace("REP", "").Trim();
+
+                        ProcessLogin(senderNumber, command, referenceNumber);
                     }
                     else {
                         QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
@@ -404,7 +425,7 @@ namespace SerialSMSSender {
 
                                 DeductPin(senderNumber, "1");
 
-                                message = numberToRegister + " has been registered as a Techno User.";
+                                message = numberToRegister + " has been registered as a Techno User. Remaining TU Pins: " + GetUserPins(senderNumber);
                                 QueueOutbound(message, senderNumber, referenceNumber);
 
                                 Thread.Sleep(2000);
@@ -428,7 +449,8 @@ namespace SerialSMSSender {
                     QueueOutbound("Registration Error: Number already registered.", senderNumber, referenceNumber);
                 }
             }
-            catch {
+            catch (Exception error){
+                MessageBox.Show(error.Message);
                 QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
@@ -465,12 +487,12 @@ namespace SerialSMSSender {
                                             RegisterUser(username, password, numberToRegister, completeName, birthDate, address, role, senderNumber);
                                             UseActivationCode(activationCode, username);
 
-                                            message = numberToRegister + " has been registered as a Techno User.";
+                                            message = "Congratulations! " + numberToRegister + " has been registered as a " + role + ".";
                                             QueueOutbound(message, senderNumber, referenceNumber);
 
                                             Thread.Sleep(2000);
 
-                                            message = "Congratulations! You are now registered as Techno User. With USERNAME: " + username + " and PW: " + password + ". NEVER share this information to anyone. You may refer to the product guide for transactions. You now have " + GetNumberOfRegistrationPins(role) + " pins";
+                                            message = "Congratulations! You are now registered as " + role + ". With USERNAME: " + username + " and PW: " + password + ". NEVER share this information to anyone. You may refer to the product guide for transactions. You now have " + GetNumberOfRegistrationPins(role) + " pins";
                                             QueueOutbound(message, numberToRegister, referenceNumber);
 
                                             Thread.Sleep(2000);
@@ -799,7 +821,8 @@ namespace SerialSMSSender {
                     QueueOutbound("Loading Error: Invalid Product Code. Please use the correct product code", senderNumber, referenceNumber);
                 }
             }
-            catch {
+            catch (Exception error){
+                MessageBox.Show(error.Message);
                 QueueOutbound("Loading Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
@@ -869,7 +892,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error){
-                MessageBox.Show(error.Message);
                 QueueOutbound("Help Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
@@ -960,7 +982,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error){
-                MessageBox.Show(error.Message);
                 QueueOutbound("GSAT Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
@@ -1158,7 +1179,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
         #endregion
@@ -1274,7 +1294,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             GlobeOnePortDialingUSSD = false;
@@ -1333,7 +1352,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             GlobeTwoPortDialingUSSD = false;
@@ -1392,7 +1410,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             GlobeOnePortDialingUSSD = false;
@@ -1465,7 +1482,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
 
@@ -1536,7 +1552,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
 
@@ -1618,7 +1633,7 @@ namespace SerialSMSSender {
             int pins = int.Parse(GetNumberOfRegistrationPins(role));
             string query;
 
-            query = "INSERT INTO users VALUES (null, '" + username + "', '" + password + "', '" + phoneNumber + "', '" + fullName + "', '" + birthDate + "', '" + address + "', '" + role + "', '" + activatedBy + "', 0, 0, '" + pins + "')";
+            query = "INSERT INTO users VALUES (null, '" + username + "', '" + password + "', '" + phoneNumber + "', '" + fullName + "', '" + birthDate + "', '" + address + "', '" + role + "', '" + activatedBy + "', 0, 0, '" + pins + "', '" + GetCurrentDateTime() + "')";
 
             RunDatabaseQuery(query);
         } 
@@ -1778,17 +1793,12 @@ namespace SerialSMSSender {
 
         private bool UserExists(string number) {
             bool userExists = false;
-            string query = "SELECT COUNT(PhoneNumber) FROM users WHERE PhoneNumber = '" + number + "'";
 
-            MySqlConnection databaseConnection = new MySqlConnection(this.MySQLConnectionString);
-            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            string query = "SELECT * FROM users WHERE PhoneNumber = '" + number + "'";
 
-            databaseConnection.Open();
+            DataTable userTable = RunQueryDataTable(query);
 
-            MySqlDataReader myReader = commandDatabase.ExecuteReader();
-
-            myReader.Read();
-            if (myReader["COUNT(PhoneNumber)"].ToString() == "1") {
+            if (userTable.Rows.Count > 0) {
                 userExists = true;
             }
 
@@ -1830,11 +1840,20 @@ namespace SerialSMSSender {
         }
 
         private bool DateValid(string date) {
-            string month = date.Split('-')[0];
-            string day = date.Split('-')[1];
-            string year = date.Split('-')[2];
 
-            bool validDate = (((int.Parse(month) <= 12) && (int.Parse(month) > 0)) && (year.Length == 4)) && ((int.Parse(day) > 0) && (int.Parse(day) <= 31));
+            bool validDate = false;
+
+            try {
+                string month = date.Split('-')[0];
+                string day = date.Split('-')[1];
+                string year = date.Split('-')[2];
+
+                validDate = (((int.Parse(month) <= 12) && (int.Parse(month) > 0)) && (year.Length == 4)) && ((int.Parse(day) > 0) && (int.Parse(day) <= 31));
+            }
+            catch {
+                validDate = false;
+            }
+
 
             return validDate;
         }
@@ -2151,7 +2170,7 @@ namespace SerialSMSSender {
         }
 
         private string GetCarrier(string phoneNumber) {
-            string carrier;
+            string carrier = "";
 
             string prefix = phoneNumber.Substring(0, 4);
 
@@ -2159,7 +2178,12 @@ namespace SerialSMSSender {
 
             DataTable carrierTable = RunQueryDataTable(query);
 
-            carrier = carrierTable.Rows[0]["Carrier"].ToString();
+            if(carrierTable.Rows.Count > 0) {
+                carrier = carrierTable.Rows[0]["Carrier"].ToString();
+            }
+            else {
+                MessageBox.Show(phoneNumber + " is not listed in the carriers. Please Update.");
+            }
 
             return carrier;
         }
@@ -2621,7 +2645,10 @@ namespace SerialSMSSender {
 
             DataTable helpTable = RunQueryDataTable("SELECT * FROM help WHERE SenderNumber = '" + senderNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
 
-            helpLabelOutputSenderNumber.Text = helpTable.Rows[0]["SenderNumber"].ToString();
+            DataTable userTable = RunQueryDataTable("SELECT * FROM users WHERE PhoneNumber = '" + senderNumber + "'");
+
+            helpLabelOutputSenderNumber.Text = userTable.Rows[0]["Username"].ToString();
+
             helpLabelOutputCode.Text = helpTable.Rows[0]["Code"].ToString();
             helpLabelOutputDateOfIncident.Text = helpTable.Rows[0]["DateOfIncident"].ToString();
             helpLabelOutputReferenceNumber.Text = helpTable.Rows[0]["ReferenceNumber"].ToString();
@@ -2725,7 +2752,6 @@ namespace SerialSMSSender {
             configurationsTable = RunQueryDataTable("SELECT * FROM configurations WHERE Parameter = 'MinimumTTU'");
             TB_MinimumTTU.Text = configurationsTable.Rows[0]["Value"].ToString();
         }
-        #endregion
 
         private void settingsPortsButtonSaveGateWayOne_Click(object sender, EventArgs e) {
 
@@ -2887,5 +2913,6 @@ namespace SerialSMSSender {
             MessageBox.Show("Updated");
             LoadSettingsValues();
         }
+        #endregion
     }
 }

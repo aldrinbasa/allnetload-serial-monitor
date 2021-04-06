@@ -114,11 +114,66 @@ namespace SerialSMSSender {
             this.helpButtonSend = new System.Windows.Forms.Button();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.settingsGroupBoxPorts = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.B_MinimumTLC = new System.Windows.Forms.Button();
+            this.B_Provincial = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.B_Dealer = new System.Windows.Forms.Button();
+            this.B_Distributor = new System.Windows.Forms.Button();
+            this.B_Retailer = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TB_Retailer = new System.Windows.Forms.TextBox();
+            this.TB_Distributor = new System.Windows.Forms.TextBox();
+            this.TB_Dealer = new System.Windows.Forms.TextBox();
+            this.TB_Mobile = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.B_Mobile = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.TB_MinimumTLC = new System.Windows.Forms.TextBox();
+            this.TB_Provincial = new System.Windows.Forms.TextBox();
+            this.TB_City = new System.Windows.Forms.TextBox();
+            this.TB_MinimumTTU = new System.Windows.Forms.TextBox();
+            this.B_MinimumTTU = new System.Windows.Forms.Button();
+            this.B_City = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.B_GlobeUSSD = new System.Windows.Forms.Button();
+            this.B_GSATAvailable = new System.Windows.Forms.Button();
+            this.B_HelpSoundPath = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TB_HelpSoundPath = new System.Windows.Forms.TextBox();
+            this.TB_GSATAvailable = new System.Windows.Forms.TextBox();
+            this.TB_GlobeUSSD = new System.Windows.Forms.TextBox();
+            this.TB_RepeatTransaction = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.B_RepeatTransaction = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsPortsButtonSaveGSATLoading = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGlobeLoading = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveSmartLoading = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.settingsPortsTextBoxSmartLoading = new System.Windows.Forms.TextBox();
+            this.settingsPortsTextBoxGlobeLoading = new System.Windows.Forms.TextBox();
+            this.settingsPortsTextBoxGSATLoading = new System.Windows.Forms.TextBox();
+            this.settingsGroupBoxPorts = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsPortsButtonSaveGlobeThree = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGlobeTwo = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGlobeOne = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveSenderTwo = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSenderOne = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGateWayTwo = new System.Windows.Forms.Button();
+            this.settingsPortsButtonSaveGateWayOne = new System.Windows.Forms.Button();
             this.settingsSimPortsLabelGateWayOne = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -136,61 +191,6 @@ namespace SerialSMSSender {
             this.settingsPortsLabelGlobeThree = new System.Windows.Forms.TextBox();
             this.settingsPortsLabelSmart = new System.Windows.Forms.TextBox();
             this.settingsPortsButtonSaveSmart = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSaveGateWayOne = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSaveGateWayTwo = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSenderOne = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSaveSenderTwo = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSaveGlobeOne = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSaveGlobeTwo = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSaveGlobeThree = new System.Windows.Forms.Button();
-            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
-            this.settingsPortsButtonSaveGlobeLoading = new System.Windows.Forms.Button();
-            this.settingsPortsButtonSaveSmartLoading = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.settingsPortsTextBoxSmartLoading = new System.Windows.Forms.TextBox();
-            this.settingsPortsTextBoxGlobeLoading = new System.Windows.Forms.TextBox();
-            this.settingsPortsTextBoxGSATLoading = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.settingsPortsButtonSaveGSATLoading = new System.Windows.Forms.Button();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.B_GlobeUSSD = new System.Windows.Forms.Button();
-            this.B_GSATAvailable = new System.Windows.Forms.Button();
-            this.B_HelpSoundPath = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.TB_HelpSoundPath = new System.Windows.Forms.TextBox();
-            this.TB_GSATAvailable = new System.Windows.Forms.TextBox();
-            this.TB_GlobeUSSD = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.TB_RepeatTransaction = new System.Windows.Forms.TextBox();
-            this.B_RepeatTransaction = new System.Windows.Forms.Button();
-            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
-            this.B_Dealer = new System.Windows.Forms.Button();
-            this.B_Distributor = new System.Windows.Forms.Button();
-            this.B_Retailer = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.TB_Retailer = new System.Windows.Forms.TextBox();
-            this.TB_Distributor = new System.Windows.Forms.TextBox();
-            this.TB_Dealer = new System.Windows.Forms.TextBox();
-            this.TB_Mobile = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.B_Mobile = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.TB_MinimumTLC = new System.Windows.Forms.TextBox();
-            this.TB_Provincial = new System.Windows.Forms.TextBox();
-            this.TB_City = new System.Windows.Forms.TextBox();
-            this.TB_MinimumTTU = new System.Windows.Forms.TextBox();
-            this.B_MinimumTTU = new System.Windows.Forms.Button();
-            this.B_City = new System.Windows.Forms.Button();
-            this.B_Provincial = new System.Windows.Forms.Button();
-            this.B_MinimumTLC = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.mainTabController.SuspendLayout();
             this.tabPageHome.SuspendLayout();
@@ -231,14 +231,14 @@ namespace SerialSMSSender {
             this.tableLayoutPanel10.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
-            this.settingsGroupBoxPorts.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
-            this.tableLayoutPanel18.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.settingsGroupBoxPorts.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -1047,7 +1047,7 @@ namespace SerialSMSSender {
             this.HelpDataGridView.Location = new System.Drawing.Point(245, 3);
             this.HelpDataGridView.Name = "HelpDataGridView";
             this.HelpDataGridView.RowHeadersVisible = false;
-            this.HelpDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.HelpDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.HelpDataGridView.Size = new System.Drawing.Size(802, 689);
             this.HelpDataGridView.TabIndex = 0;
             this.HelpDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HelpDataGridView_CellContentDoubleClick);
@@ -1367,39 +1367,6 @@ namespace SerialSMSSender {
             this.tableLayoutPanel16.Size = new System.Drawing.Size(1050, 695);
             this.tableLayoutPanel16.TabIndex = 0;
             // 
-            // settingsGroupBoxPorts
-            // 
-            this.settingsGroupBoxPorts.Controls.Add(this.tableLayoutPanel17);
-            this.settingsGroupBoxPorts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsGroupBoxPorts.Location = new System.Drawing.Point(3, 3);
-            this.settingsGroupBoxPorts.Name = "settingsGroupBoxPorts";
-            this.settingsGroupBoxPorts.Size = new System.Drawing.Size(519, 341);
-            this.settingsGroupBoxPorts.TabIndex = 0;
-            this.settingsGroupBoxPorts.TabStop = false;
-            this.settingsGroupBoxPorts.Text = "SIM PORTS";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.tableLayoutPanel18);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(528, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(519, 341);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Percentage Values";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.tableLayoutPanel19);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(3, 350);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(519, 342);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Miscellaneous";
-            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.tableLayoutPanel20);
@@ -1410,545 +1377,6 @@ namespace SerialSMSSender {
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Member Values";
-            // 
-            // tableLayoutPanel17
-            // 
-            this.tableLayoutPanel17.ColumnCount = 3;
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeThree, 2, 6);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeTwo, 2, 5);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeOne, 2, 4);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveSenderTwo, 2, 3);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSenderOne, 2, 2);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGateWayTwo, 2, 1);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGateWayOne, 2, 0);
-            this.tableLayoutPanel17.Controls.Add(this.settingsSimPortsLabelGateWayOne, 0, 0);
-            this.tableLayoutPanel17.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel17.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel17.Controls.Add(this.label3, 0, 3);
-            this.tableLayoutPanel17.Controls.Add(this.label4, 0, 4);
-            this.tableLayoutPanel17.Controls.Add(this.label5, 0, 5);
-            this.tableLayoutPanel17.Controls.Add(this.label6, 0, 6);
-            this.tableLayoutPanel17.Controls.Add(this.label7, 0, 7);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGateWayOne, 1, 0);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGateWayTwo, 1, 1);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSenderOne, 1, 2);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSenderTwo, 1, 3);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeOne, 1, 4);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeTwo, 1, 5);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeThree, 1, 6);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSmart, 1, 7);
-            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveSmart, 2, 7);
-            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
-            this.tableLayoutPanel17.RowCount = 8;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(513, 319);
-            this.tableLayoutPanel17.TabIndex = 0;
-            // 
-            // settingsSimPortsLabelGateWayOne
-            // 
-            this.settingsSimPortsLabelGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.settingsSimPortsLabelGateWayOne.AutoSize = true;
-            this.settingsSimPortsLabelGateWayOne.Location = new System.Drawing.Point(32, 12);
-            this.settingsSimPortsLabelGateWayOne.Name = "settingsSimPortsLabelGateWayOne";
-            this.settingsSimPortsLabelGateWayOne.Size = new System.Drawing.Size(80, 15);
-            this.settingsSimPortsLabelGateWayOne.TabIndex = 0;
-            this.settingsSimPortsLabelGateWayOne.Text = "Gateway One:";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Gateway Two:";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Sender Port One:";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 129);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 15);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Sender Port Two:";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 168);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 15);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Globe Port One";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 207);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 15);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Globe Port Two:";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 246);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 15);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Globe Port Three:";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 288);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 15);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Smart Port:";
-            // 
-            // settingsPortsLabelGateWayOne
-            // 
-            this.settingsPortsLabelGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelGateWayOne.Location = new System.Drawing.Point(127, 8);
-            this.settingsPortsLabelGateWayOne.Name = "settingsPortsLabelGateWayOne";
-            this.settingsPortsLabelGateWayOne.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelGateWayOne.TabIndex = 8;
-            // 
-            // settingsPortsLabelGateWayTwo
-            // 
-            this.settingsPortsLabelGateWayTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelGateWayTwo.Location = new System.Drawing.Point(127, 47);
-            this.settingsPortsLabelGateWayTwo.Name = "settingsPortsLabelGateWayTwo";
-            this.settingsPortsLabelGateWayTwo.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelGateWayTwo.TabIndex = 9;
-            // 
-            // settingsPortsLabelSenderOne
-            // 
-            this.settingsPortsLabelSenderOne.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelSenderOne.Location = new System.Drawing.Point(127, 86);
-            this.settingsPortsLabelSenderOne.Name = "settingsPortsLabelSenderOne";
-            this.settingsPortsLabelSenderOne.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelSenderOne.TabIndex = 10;
-            // 
-            // settingsPortsLabelSenderTwo
-            // 
-            this.settingsPortsLabelSenderTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelSenderTwo.Location = new System.Drawing.Point(127, 125);
-            this.settingsPortsLabelSenderTwo.Name = "settingsPortsLabelSenderTwo";
-            this.settingsPortsLabelSenderTwo.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelSenderTwo.TabIndex = 11;
-            // 
-            // settingsPortsLabelGlobeOne
-            // 
-            this.settingsPortsLabelGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelGlobeOne.Location = new System.Drawing.Point(127, 164);
-            this.settingsPortsLabelGlobeOne.Name = "settingsPortsLabelGlobeOne";
-            this.settingsPortsLabelGlobeOne.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelGlobeOne.TabIndex = 12;
-            // 
-            // settingsPortsLabelGlobeTwo
-            // 
-            this.settingsPortsLabelGlobeTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelGlobeTwo.Location = new System.Drawing.Point(127, 203);
-            this.settingsPortsLabelGlobeTwo.Name = "settingsPortsLabelGlobeTwo";
-            this.settingsPortsLabelGlobeTwo.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelGlobeTwo.TabIndex = 13;
-            // 
-            // settingsPortsLabelGlobeThree
-            // 
-            this.settingsPortsLabelGlobeThree.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelGlobeThree.Location = new System.Drawing.Point(127, 242);
-            this.settingsPortsLabelGlobeThree.Name = "settingsPortsLabelGlobeThree";
-            this.settingsPortsLabelGlobeThree.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelGlobeThree.TabIndex = 14;
-            // 
-            // settingsPortsLabelSmart
-            // 
-            this.settingsPortsLabelSmart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsLabelSmart.Location = new System.Drawing.Point(127, 284);
-            this.settingsPortsLabelSmart.Name = "settingsPortsLabelSmart";
-            this.settingsPortsLabelSmart.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsLabelSmart.TabIndex = 15;
-            // 
-            // settingsPortsButtonSaveSmart
-            // 
-            this.settingsPortsButtonSaveSmart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveSmart.Location = new System.Drawing.Point(392, 284);
-            this.settingsPortsButtonSaveSmart.Name = "settingsPortsButtonSaveSmart";
-            this.settingsPortsButtonSaveSmart.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveSmart.TabIndex = 16;
-            this.settingsPortsButtonSaveSmart.Text = "Save";
-            this.settingsPortsButtonSaveSmart.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveSmart.Click += new System.EventHandler(this.settingsPortsButtonSaveSmart_Click);
-            // 
-            // settingsPortsButtonSaveGateWayOne
-            // 
-            this.settingsPortsButtonSaveGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGateWayOne.Location = new System.Drawing.Point(392, 8);
-            this.settingsPortsButtonSaveGateWayOne.Name = "settingsPortsButtonSaveGateWayOne";
-            this.settingsPortsButtonSaveGateWayOne.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveGateWayOne.TabIndex = 17;
-            this.settingsPortsButtonSaveGateWayOne.Text = "Save";
-            this.settingsPortsButtonSaveGateWayOne.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveGateWayOne.Click += new System.EventHandler(this.settingsPortsButtonSaveGateWayOne_Click);
-            // 
-            // settingsPortsButtonSaveGateWayTwo
-            // 
-            this.settingsPortsButtonSaveGateWayTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGateWayTwo.Location = new System.Drawing.Point(392, 47);
-            this.settingsPortsButtonSaveGateWayTwo.Name = "settingsPortsButtonSaveGateWayTwo";
-            this.settingsPortsButtonSaveGateWayTwo.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveGateWayTwo.TabIndex = 18;
-            this.settingsPortsButtonSaveGateWayTwo.Text = "Save";
-            this.settingsPortsButtonSaveGateWayTwo.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveGateWayTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveGateWayTwo_Click);
-            // 
-            // settingsPortsButtonSenderOne
-            // 
-            this.settingsPortsButtonSenderOne.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSenderOne.Location = new System.Drawing.Point(392, 86);
-            this.settingsPortsButtonSenderOne.Name = "settingsPortsButtonSenderOne";
-            this.settingsPortsButtonSenderOne.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSenderOne.TabIndex = 19;
-            this.settingsPortsButtonSenderOne.Text = "Save";
-            this.settingsPortsButtonSenderOne.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSenderOne.Click += new System.EventHandler(this.settingsPortsButtonSenderOne_Click);
-            // 
-            // settingsPortsButtonSaveSenderTwo
-            // 
-            this.settingsPortsButtonSaveSenderTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveSenderTwo.Location = new System.Drawing.Point(392, 125);
-            this.settingsPortsButtonSaveSenderTwo.Name = "settingsPortsButtonSaveSenderTwo";
-            this.settingsPortsButtonSaveSenderTwo.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveSenderTwo.TabIndex = 20;
-            this.settingsPortsButtonSaveSenderTwo.Text = "Save";
-            this.settingsPortsButtonSaveSenderTwo.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveSenderTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveSenderTwo_Click);
-            // 
-            // settingsPortsButtonSaveGlobeOne
-            // 
-            this.settingsPortsButtonSaveGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGlobeOne.Location = new System.Drawing.Point(392, 164);
-            this.settingsPortsButtonSaveGlobeOne.Name = "settingsPortsButtonSaveGlobeOne";
-            this.settingsPortsButtonSaveGlobeOne.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveGlobeOne.TabIndex = 21;
-            this.settingsPortsButtonSaveGlobeOne.Text = "Save";
-            this.settingsPortsButtonSaveGlobeOne.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveGlobeOne.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeOne_Click);
-            // 
-            // settingsPortsButtonSaveGlobeTwo
-            // 
-            this.settingsPortsButtonSaveGlobeTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGlobeTwo.Location = new System.Drawing.Point(392, 203);
-            this.settingsPortsButtonSaveGlobeTwo.Name = "settingsPortsButtonSaveGlobeTwo";
-            this.settingsPortsButtonSaveGlobeTwo.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveGlobeTwo.TabIndex = 22;
-            this.settingsPortsButtonSaveGlobeTwo.Text = "Save";
-            this.settingsPortsButtonSaveGlobeTwo.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveGlobeTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeTwo_Click);
-            // 
-            // settingsPortsButtonSaveGlobeThree
-            // 
-            this.settingsPortsButtonSaveGlobeThree.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGlobeThree.Location = new System.Drawing.Point(392, 242);
-            this.settingsPortsButtonSaveGlobeThree.Name = "settingsPortsButtonSaveGlobeThree";
-            this.settingsPortsButtonSaveGlobeThree.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveGlobeThree.TabIndex = 23;
-            this.settingsPortsButtonSaveGlobeThree.Text = "Save";
-            this.settingsPortsButtonSaveGlobeThree.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveGlobeThree.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeThree_Click);
-            // 
-            // tableLayoutPanel18
-            // 
-            this.tableLayoutPanel18.ColumnCount = 3;
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
-            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveGSATLoading, 2, 2);
-            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveGlobeLoading, 2, 1);
-            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveSmartLoading, 2, 0);
-            this.tableLayoutPanel18.Controls.Add(this.label8, 0, 0);
-            this.tableLayoutPanel18.Controls.Add(this.label9, 0, 1);
-            this.tableLayoutPanel18.Controls.Add(this.label10, 0, 2);
-            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxSmartLoading, 1, 0);
-            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGlobeLoading, 1, 1);
-            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGSATLoading, 1, 2);
-            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
-            this.tableLayoutPanel18.RowCount = 3;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(513, 319);
-            this.tableLayoutPanel18.TabIndex = 1;
-            // 
-            // settingsPortsButtonSaveGlobeLoading
-            // 
-            this.settingsPortsButtonSaveGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGlobeLoading.Location = new System.Drawing.Point(392, 147);
-            this.settingsPortsButtonSaveGlobeLoading.Name = "settingsPortsButtonSaveGlobeLoading";
-            this.settingsPortsButtonSaveGlobeLoading.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveGlobeLoading.TabIndex = 18;
-            this.settingsPortsButtonSaveGlobeLoading.Text = "Save";
-            this.settingsPortsButtonSaveGlobeLoading.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveGlobeLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeLoading_Click);
-            // 
-            // settingsPortsButtonSaveSmartLoading
-            // 
-            this.settingsPortsButtonSaveSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveSmartLoading.Location = new System.Drawing.Point(392, 41);
-            this.settingsPortsButtonSaveSmartLoading.Name = "settingsPortsButtonSaveSmartLoading";
-            this.settingsPortsButtonSaveSmartLoading.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveSmartLoading.TabIndex = 17;
-            this.settingsPortsButtonSaveSmartLoading.Text = "Save";
-            this.settingsPortsButtonSaveSmartLoading.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveSmartLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveSmartLoading_Click);
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 45);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 15);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Smart Loading:";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(25, 151);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 15);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Globe Loading:";
-            // 
-            // settingsPortsTextBoxSmartLoading
-            // 
-            this.settingsPortsTextBoxSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsTextBoxSmartLoading.Location = new System.Drawing.Point(127, 41);
-            this.settingsPortsTextBoxSmartLoading.Name = "settingsPortsTextBoxSmartLoading";
-            this.settingsPortsTextBoxSmartLoading.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsTextBoxSmartLoading.TabIndex = 8;
-            // 
-            // settingsPortsTextBoxGlobeLoading
-            // 
-            this.settingsPortsTextBoxGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsTextBoxGlobeLoading.Location = new System.Drawing.Point(127, 147);
-            this.settingsPortsTextBoxGlobeLoading.Name = "settingsPortsTextBoxGlobeLoading";
-            this.settingsPortsTextBoxGlobeLoading.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsTextBoxGlobeLoading.TabIndex = 9;
-            // 
-            // settingsPortsTextBoxGSATLoading
-            // 
-            this.settingsPortsTextBoxGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsTextBoxGSATLoading.Location = new System.Drawing.Point(127, 254);
-            this.settingsPortsTextBoxGSATLoading.Name = "settingsPortsTextBoxGSATLoading";
-            this.settingsPortsTextBoxGSATLoading.Size = new System.Drawing.Size(236, 23);
-            this.settingsPortsTextBoxGSATLoading.TabIndex = 10;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(32, 258);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 15);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "GSAT Loading";
-            // 
-            // settingsPortsButtonSaveGSATLoading
-            // 
-            this.settingsPortsButtonSaveGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGSATLoading.Location = new System.Drawing.Point(392, 254);
-            this.settingsPortsButtonSaveGSATLoading.Name = "settingsPortsButtonSaveGSATLoading";
-            this.settingsPortsButtonSaveGSATLoading.Size = new System.Drawing.Size(104, 23);
-            this.settingsPortsButtonSaveGSATLoading.TabIndex = 19;
-            this.settingsPortsButtonSaveGSATLoading.Text = "Save";
-            this.settingsPortsButtonSaveGSATLoading.UseVisualStyleBackColor = true;
-            this.settingsPortsButtonSaveGSATLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveGSATLoading_Click);
-            // 
-            // tableLayoutPanel19
-            // 
-            this.tableLayoutPanel19.ColumnCount = 3;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
-            this.tableLayoutPanel19.Controls.Add(this.B_GlobeUSSD, 2, 2);
-            this.tableLayoutPanel19.Controls.Add(this.B_GSATAvailable, 2, 1);
-            this.tableLayoutPanel19.Controls.Add(this.B_HelpSoundPath, 2, 0);
-            this.tableLayoutPanel19.Controls.Add(this.label11, 0, 0);
-            this.tableLayoutPanel19.Controls.Add(this.label12, 0, 1);
-            this.tableLayoutPanel19.Controls.Add(this.label13, 0, 2);
-            this.tableLayoutPanel19.Controls.Add(this.TB_HelpSoundPath, 1, 0);
-            this.tableLayoutPanel19.Controls.Add(this.TB_GSATAvailable, 1, 1);
-            this.tableLayoutPanel19.Controls.Add(this.TB_GlobeUSSD, 1, 2);
-            this.tableLayoutPanel19.Controls.Add(this.TB_RepeatTransaction, 1, 3);
-            this.tableLayoutPanel19.Controls.Add(this.label14, 0, 3);
-            this.tableLayoutPanel19.Controls.Add(this.B_RepeatTransaction, 2, 3);
-            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 4;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(513, 320);
-            this.tableLayoutPanel19.TabIndex = 2;
-            // 
-            // B_GlobeUSSD
-            // 
-            this.B_GlobeUSSD.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.B_GlobeUSSD.Location = new System.Drawing.Point(391, 188);
-            this.B_GlobeUSSD.Name = "B_GlobeUSSD";
-            this.B_GlobeUSSD.Size = new System.Drawing.Size(104, 23);
-            this.B_GlobeUSSD.TabIndex = 19;
-            this.B_GlobeUSSD.Text = "Save";
-            this.B_GlobeUSSD.UseVisualStyleBackColor = true;
-            this.B_GlobeUSSD.Click += new System.EventHandler(this.B_GlobeUSSD_Click);
-            // 
-            // B_GSATAvailable
-            // 
-            this.B_GSATAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.B_GSATAvailable.Location = new System.Drawing.Point(391, 108);
-            this.B_GSATAvailable.Name = "B_GSATAvailable";
-            this.B_GSATAvailable.Size = new System.Drawing.Size(104, 23);
-            this.B_GSATAvailable.TabIndex = 18;
-            this.B_GSATAvailable.Text = "Save";
-            this.B_GSATAvailable.UseVisualStyleBackColor = true;
-            this.B_GSATAvailable.Click += new System.EventHandler(this.B_GSATAvailable_Click);
-            // 
-            // B_HelpSoundPath
-            // 
-            this.B_HelpSoundPath.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.B_HelpSoundPath.Location = new System.Drawing.Point(391, 28);
-            this.B_HelpSoundPath.Name = "B_HelpSoundPath";
-            this.B_HelpSoundPath.Size = new System.Drawing.Size(104, 23);
-            this.B_HelpSoundPath.TabIndex = 17;
-            this.B_HelpSoundPath.Text = "Save";
-            this.B_HelpSoundPath.UseVisualStyleBackColor = true;
-            this.B_HelpSoundPath.Click += new System.EventHandler(this.B_HelpSoundPath_Click);
-            // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(99, 15);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Help Sound Path:";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(23, 112);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 15);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "GSAT Available:";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(39, 192);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 15);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Globe USSD:";
-            // 
-            // TB_HelpSoundPath
-            // 
-            this.TB_HelpSoundPath.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TB_HelpSoundPath.Location = new System.Drawing.Point(126, 28);
-            this.TB_HelpSoundPath.Name = "TB_HelpSoundPath";
-            this.TB_HelpSoundPath.Size = new System.Drawing.Size(236, 23);
-            this.TB_HelpSoundPath.TabIndex = 8;
-            // 
-            // TB_GSATAvailable
-            // 
-            this.TB_GSATAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TB_GSATAvailable.Location = new System.Drawing.Point(126, 108);
-            this.TB_GSATAvailable.Name = "TB_GSATAvailable";
-            this.TB_GSATAvailable.Size = new System.Drawing.Size(236, 23);
-            this.TB_GSATAvailable.TabIndex = 9;
-            // 
-            // TB_GlobeUSSD
-            // 
-            this.TB_GlobeUSSD.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TB_GlobeUSSD.Location = new System.Drawing.Point(126, 188);
-            this.TB_GlobeUSSD.Name = "TB_GlobeUSSD";
-            this.TB_GlobeUSSD.Size = new System.Drawing.Size(236, 23);
-            this.TB_GlobeUSSD.TabIndex = 10;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(5, 265);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(106, 30);
-            this.label14.TabIndex = 20;
-            this.label14.Text = "Repeat Transaction (Minutes):";
-            // 
-            // TB_RepeatTransaction
-            // 
-            this.TB_RepeatTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TB_RepeatTransaction.Location = new System.Drawing.Point(126, 268);
-            this.TB_RepeatTransaction.Name = "TB_RepeatTransaction";
-            this.TB_RepeatTransaction.Size = new System.Drawing.Size(236, 23);
-            this.TB_RepeatTransaction.TabIndex = 21;
-            // 
-            // B_RepeatTransaction
-            // 
-            this.B_RepeatTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.B_RepeatTransaction.Location = new System.Drawing.Point(391, 268);
-            this.B_RepeatTransaction.Name = "B_RepeatTransaction";
-            this.B_RepeatTransaction.Size = new System.Drawing.Size(104, 23);
-            this.B_RepeatTransaction.TabIndex = 22;
-            this.B_RepeatTransaction.Text = "Save";
-            this.B_RepeatTransaction.UseVisualStyleBackColor = true;
-            this.B_RepeatTransaction.Click += new System.EventHandler(this.B_RepeatTransaction_Click);
             // 
             // tableLayoutPanel20
             // 
@@ -1995,6 +1423,38 @@ namespace SerialSMSSender {
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel20.Size = new System.Drawing.Size(513, 320);
             this.tableLayoutPanel20.TabIndex = 3;
+            // 
+            // B_MinimumTLC
+            // 
+            this.B_MinimumTLC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_MinimumTLC.Location = new System.Drawing.Point(391, 248);
+            this.B_MinimumTLC.Name = "B_MinimumTLC";
+            this.B_MinimumTLC.Size = new System.Drawing.Size(104, 23);
+            this.B_MinimumTLC.TabIndex = 34;
+            this.B_MinimumTLC.Text = "Save";
+            this.B_MinimumTLC.UseVisualStyleBackColor = true;
+            this.B_MinimumTLC.Click += new System.EventHandler(this.B_MinimumTLC_Click);
+            // 
+            // B_Provincial
+            // 
+            this.B_Provincial.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_Provincial.Location = new System.Drawing.Point(391, 208);
+            this.B_Provincial.Name = "B_Provincial";
+            this.B_Provincial.Size = new System.Drawing.Size(104, 23);
+            this.B_Provincial.TabIndex = 33;
+            this.B_Provincial.Text = "Save";
+            this.B_Provincial.UseVisualStyleBackColor = true;
+            this.B_Provincial.Click += new System.EventHandler(this.B_Provincial_Click);
+            // 
+            // label22
+            // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(95, 292);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(86, 15);
+            this.label22.TabIndex = 26;
+            this.label22.Text = "Minimum TTU:";
             // 
             // B_Dealer
             // 
@@ -2142,16 +1602,6 @@ namespace SerialSMSSender {
             this.label21.TabIndex = 25;
             this.label21.Text = "Registration Pins (CITY):";
             // 
-            // label22
-            // 
-            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(95, 292);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(86, 15);
-            this.label22.TabIndex = 26;
-            this.label22.Text = "Minimum TTU:";
-            // 
             // TB_MinimumTLC
             // 
             this.TB_MinimumTLC.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -2206,27 +1656,577 @@ namespace SerialSMSSender {
             this.B_City.UseVisualStyleBackColor = true;
             this.B_City.Click += new System.EventHandler(this.B_City_Click);
             // 
-            // B_Provincial
+            // groupBox5
             // 
-            this.B_Provincial.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.B_Provincial.Location = new System.Drawing.Point(391, 208);
-            this.B_Provincial.Name = "B_Provincial";
-            this.B_Provincial.Size = new System.Drawing.Size(104, 23);
-            this.B_Provincial.TabIndex = 33;
-            this.B_Provincial.Text = "Save";
-            this.B_Provincial.UseVisualStyleBackColor = true;
-            this.B_Provincial.Click += new System.EventHandler(this.B_Provincial_Click);
+            this.groupBox5.Controls.Add(this.tableLayoutPanel19);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(3, 350);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(519, 342);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Miscellaneous";
             // 
-            // B_MinimumTLC
+            // tableLayoutPanel19
             // 
-            this.B_MinimumTLC.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.B_MinimumTLC.Location = new System.Drawing.Point(391, 248);
-            this.B_MinimumTLC.Name = "B_MinimumTLC";
-            this.B_MinimumTLC.Size = new System.Drawing.Size(104, 23);
-            this.B_MinimumTLC.TabIndex = 34;
-            this.B_MinimumTLC.Text = "Save";
-            this.B_MinimumTLC.UseVisualStyleBackColor = true;
-            this.B_MinimumTLC.Click += new System.EventHandler(this.B_MinimumTLC_Click);
+            this.tableLayoutPanel19.ColumnCount = 3;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
+            this.tableLayoutPanel19.Controls.Add(this.B_GlobeUSSD, 2, 2);
+            this.tableLayoutPanel19.Controls.Add(this.B_GSATAvailable, 2, 1);
+            this.tableLayoutPanel19.Controls.Add(this.B_HelpSoundPath, 2, 0);
+            this.tableLayoutPanel19.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel19.Controls.Add(this.label13, 0, 2);
+            this.tableLayoutPanel19.Controls.Add(this.TB_HelpSoundPath, 1, 0);
+            this.tableLayoutPanel19.Controls.Add(this.TB_GSATAvailable, 1, 1);
+            this.tableLayoutPanel19.Controls.Add(this.TB_GlobeUSSD, 1, 2);
+            this.tableLayoutPanel19.Controls.Add(this.TB_RepeatTransaction, 1, 3);
+            this.tableLayoutPanel19.Controls.Add(this.label14, 0, 3);
+            this.tableLayoutPanel19.Controls.Add(this.B_RepeatTransaction, 2, 3);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 4;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(513, 320);
+            this.tableLayoutPanel19.TabIndex = 2;
+            // 
+            // B_GlobeUSSD
+            // 
+            this.B_GlobeUSSD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_GlobeUSSD.Location = new System.Drawing.Point(391, 188);
+            this.B_GlobeUSSD.Name = "B_GlobeUSSD";
+            this.B_GlobeUSSD.Size = new System.Drawing.Size(104, 23);
+            this.B_GlobeUSSD.TabIndex = 19;
+            this.B_GlobeUSSD.Text = "Save";
+            this.B_GlobeUSSD.UseVisualStyleBackColor = true;
+            this.B_GlobeUSSD.Click += new System.EventHandler(this.B_GlobeUSSD_Click);
+            // 
+            // B_GSATAvailable
+            // 
+            this.B_GSATAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_GSATAvailable.Location = new System.Drawing.Point(391, 108);
+            this.B_GSATAvailable.Name = "B_GSATAvailable";
+            this.B_GSATAvailable.Size = new System.Drawing.Size(104, 23);
+            this.B_GSATAvailable.TabIndex = 18;
+            this.B_GSATAvailable.Text = "Save";
+            this.B_GSATAvailable.UseVisualStyleBackColor = true;
+            this.B_GSATAvailable.Click += new System.EventHandler(this.B_GSATAvailable_Click);
+            // 
+            // B_HelpSoundPath
+            // 
+            this.B_HelpSoundPath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_HelpSoundPath.Location = new System.Drawing.Point(391, 28);
+            this.B_HelpSoundPath.Name = "B_HelpSoundPath";
+            this.B_HelpSoundPath.Size = new System.Drawing.Size(104, 23);
+            this.B_HelpSoundPath.TabIndex = 17;
+            this.B_HelpSoundPath.Text = "Save";
+            this.B_HelpSoundPath.UseVisualStyleBackColor = true;
+            this.B_HelpSoundPath.Click += new System.EventHandler(this.B_HelpSoundPath_Click);
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 15);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Help Sound Path:";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(23, 112);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(88, 15);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "GSAT Available:";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(39, 192);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 15);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Globe USSD:";
+            // 
+            // TB_HelpSoundPath
+            // 
+            this.TB_HelpSoundPath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_HelpSoundPath.Location = new System.Drawing.Point(125, 28);
+            this.TB_HelpSoundPath.Name = "TB_HelpSoundPath";
+            this.TB_HelpSoundPath.Size = new System.Drawing.Size(236, 23);
+            this.TB_HelpSoundPath.TabIndex = 8;
+            // 
+            // TB_GSATAvailable
+            // 
+            this.TB_GSATAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_GSATAvailable.Location = new System.Drawing.Point(125, 108);
+            this.TB_GSATAvailable.Name = "TB_GSATAvailable";
+            this.TB_GSATAvailable.Size = new System.Drawing.Size(236, 23);
+            this.TB_GSATAvailable.TabIndex = 9;
+            // 
+            // TB_GlobeUSSD
+            // 
+            this.TB_GlobeUSSD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_GlobeUSSD.Location = new System.Drawing.Point(125, 188);
+            this.TB_GlobeUSSD.Name = "TB_GlobeUSSD";
+            this.TB_GlobeUSSD.Size = new System.Drawing.Size(236, 23);
+            this.TB_GlobeUSSD.TabIndex = 10;
+            // 
+            // TB_RepeatTransaction
+            // 
+            this.TB_RepeatTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TB_RepeatTransaction.Location = new System.Drawing.Point(125, 268);
+            this.TB_RepeatTransaction.Name = "TB_RepeatTransaction";
+            this.TB_RepeatTransaction.Size = new System.Drawing.Size(236, 23);
+            this.TB_RepeatTransaction.TabIndex = 21;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(5, 265);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(106, 30);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Repeat Transaction (Minutes):";
+            // 
+            // B_RepeatTransaction
+            // 
+            this.B_RepeatTransaction.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.B_RepeatTransaction.Location = new System.Drawing.Point(391, 268);
+            this.B_RepeatTransaction.Name = "B_RepeatTransaction";
+            this.B_RepeatTransaction.Size = new System.Drawing.Size(104, 23);
+            this.B_RepeatTransaction.TabIndex = 22;
+            this.B_RepeatTransaction.Text = "Save";
+            this.B_RepeatTransaction.UseVisualStyleBackColor = true;
+            this.B_RepeatTransaction.Click += new System.EventHandler(this.B_RepeatTransaction_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.tableLayoutPanel18);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(528, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(519, 341);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Percentage Values";
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 3;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveGSATLoading, 2, 2);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveGlobeLoading, 2, 1);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsButtonSaveSmartLoading, 2, 0);
+            this.tableLayoutPanel18.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.label9, 0, 1);
+            this.tableLayoutPanel18.Controls.Add(this.label10, 0, 2);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxSmartLoading, 1, 0);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGlobeLoading, 1, 1);
+            this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGSATLoading, 1, 2);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 3;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(513, 319);
+            this.tableLayoutPanel18.TabIndex = 1;
+            // 
+            // settingsPortsButtonSaveGSATLoading
+            // 
+            this.settingsPortsButtonSaveGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGSATLoading.Location = new System.Drawing.Point(391, 254);
+            this.settingsPortsButtonSaveGSATLoading.Name = "settingsPortsButtonSaveGSATLoading";
+            this.settingsPortsButtonSaveGSATLoading.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGSATLoading.TabIndex = 19;
+            this.settingsPortsButtonSaveGSATLoading.Text = "Save";
+            this.settingsPortsButtonSaveGSATLoading.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGSATLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveGSATLoading_Click);
+            // 
+            // settingsPortsButtonSaveGlobeLoading
+            // 
+            this.settingsPortsButtonSaveGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeLoading.Location = new System.Drawing.Point(391, 147);
+            this.settingsPortsButtonSaveGlobeLoading.Name = "settingsPortsButtonSaveGlobeLoading";
+            this.settingsPortsButtonSaveGlobeLoading.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeLoading.TabIndex = 18;
+            this.settingsPortsButtonSaveGlobeLoading.Text = "Save";
+            this.settingsPortsButtonSaveGlobeLoading.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeLoading_Click);
+            // 
+            // settingsPortsButtonSaveSmartLoading
+            // 
+            this.settingsPortsButtonSaveSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveSmartLoading.Location = new System.Drawing.Point(391, 41);
+            this.settingsPortsButtonSaveSmartLoading.Name = "settingsPortsButtonSaveSmartLoading";
+            this.settingsPortsButtonSaveSmartLoading.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveSmartLoading.TabIndex = 17;
+            this.settingsPortsButtonSaveSmartLoading.Text = "Save";
+            this.settingsPortsButtonSaveSmartLoading.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveSmartLoading.Click += new System.EventHandler(this.settingsPortsButtonSaveSmartLoading_Click);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 45);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 15);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Smart Loading:";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 151);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 15);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Globe Loading:";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(31, 258);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 15);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "GSAT Loading";
+            // 
+            // settingsPortsTextBoxSmartLoading
+            // 
+            this.settingsPortsTextBoxSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsTextBoxSmartLoading.Location = new System.Drawing.Point(125, 41);
+            this.settingsPortsTextBoxSmartLoading.Name = "settingsPortsTextBoxSmartLoading";
+            this.settingsPortsTextBoxSmartLoading.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsTextBoxSmartLoading.TabIndex = 8;
+            // 
+            // settingsPortsTextBoxGlobeLoading
+            // 
+            this.settingsPortsTextBoxGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsTextBoxGlobeLoading.Location = new System.Drawing.Point(125, 147);
+            this.settingsPortsTextBoxGlobeLoading.Name = "settingsPortsTextBoxGlobeLoading";
+            this.settingsPortsTextBoxGlobeLoading.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsTextBoxGlobeLoading.TabIndex = 9;
+            // 
+            // settingsPortsTextBoxGSATLoading
+            // 
+            this.settingsPortsTextBoxGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsTextBoxGSATLoading.Location = new System.Drawing.Point(125, 254);
+            this.settingsPortsTextBoxGSATLoading.Name = "settingsPortsTextBoxGSATLoading";
+            this.settingsPortsTextBoxGSATLoading.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsTextBoxGSATLoading.TabIndex = 10;
+            // 
+            // settingsGroupBoxPorts
+            // 
+            this.settingsGroupBoxPorts.Controls.Add(this.tableLayoutPanel17);
+            this.settingsGroupBoxPorts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsGroupBoxPorts.Location = new System.Drawing.Point(3, 3);
+            this.settingsGroupBoxPorts.Name = "settingsGroupBoxPorts";
+            this.settingsGroupBoxPorts.Size = new System.Drawing.Size(519, 341);
+            this.settingsGroupBoxPorts.TabIndex = 0;
+            this.settingsGroupBoxPorts.TabStop = false;
+            this.settingsGroupBoxPorts.Text = "SIM PORTS";
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 3;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.90059F));
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeThree, 2, 6);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeTwo, 2, 5);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGlobeOne, 2, 4);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveSenderTwo, 2, 3);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSenderOne, 2, 2);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGateWayTwo, 2, 1);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveGateWayOne, 2, 0);
+            this.tableLayoutPanel17.Controls.Add(this.settingsSimPortsLabelGateWayOne, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel17.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel17.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel17.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutPanel17.Controls.Add(this.label5, 0, 5);
+            this.tableLayoutPanel17.Controls.Add(this.label6, 0, 6);
+            this.tableLayoutPanel17.Controls.Add(this.label7, 0, 7);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGateWayOne, 1, 0);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGateWayTwo, 1, 1);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSenderOne, 1, 2);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSenderTwo, 1, 3);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeOne, 1, 4);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeTwo, 1, 5);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelGlobeThree, 1, 6);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsLabelSmart, 1, 7);
+            this.tableLayoutPanel17.Controls.Add(this.settingsPortsButtonSaveSmart, 2, 7);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 8;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(513, 319);
+            this.tableLayoutPanel17.TabIndex = 0;
+            // 
+            // settingsPortsButtonSaveGlobeThree
+            // 
+            this.settingsPortsButtonSaveGlobeThree.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeThree.Location = new System.Drawing.Point(391, 242);
+            this.settingsPortsButtonSaveGlobeThree.Name = "settingsPortsButtonSaveGlobeThree";
+            this.settingsPortsButtonSaveGlobeThree.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeThree.TabIndex = 23;
+            this.settingsPortsButtonSaveGlobeThree.Text = "Save";
+            this.settingsPortsButtonSaveGlobeThree.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeThree.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeThree_Click);
+            // 
+            // settingsPortsButtonSaveGlobeTwo
+            // 
+            this.settingsPortsButtonSaveGlobeTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeTwo.Location = new System.Drawing.Point(391, 203);
+            this.settingsPortsButtonSaveGlobeTwo.Name = "settingsPortsButtonSaveGlobeTwo";
+            this.settingsPortsButtonSaveGlobeTwo.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeTwo.TabIndex = 22;
+            this.settingsPortsButtonSaveGlobeTwo.Text = "Save";
+            this.settingsPortsButtonSaveGlobeTwo.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeTwo_Click);
+            // 
+            // settingsPortsButtonSaveGlobeOne
+            // 
+            this.settingsPortsButtonSaveGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGlobeOne.Location = new System.Drawing.Point(391, 164);
+            this.settingsPortsButtonSaveGlobeOne.Name = "settingsPortsButtonSaveGlobeOne";
+            this.settingsPortsButtonSaveGlobeOne.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGlobeOne.TabIndex = 21;
+            this.settingsPortsButtonSaveGlobeOne.Text = "Save";
+            this.settingsPortsButtonSaveGlobeOne.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGlobeOne.Click += new System.EventHandler(this.settingsPortsButtonSaveGlobeOne_Click);
+            // 
+            // settingsPortsButtonSaveSenderTwo
+            // 
+            this.settingsPortsButtonSaveSenderTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveSenderTwo.Location = new System.Drawing.Point(391, 125);
+            this.settingsPortsButtonSaveSenderTwo.Name = "settingsPortsButtonSaveSenderTwo";
+            this.settingsPortsButtonSaveSenderTwo.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveSenderTwo.TabIndex = 20;
+            this.settingsPortsButtonSaveSenderTwo.Text = "Save";
+            this.settingsPortsButtonSaveSenderTwo.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveSenderTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveSenderTwo_Click);
+            // 
+            // settingsPortsButtonSenderOne
+            // 
+            this.settingsPortsButtonSenderOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSenderOne.Location = new System.Drawing.Point(391, 86);
+            this.settingsPortsButtonSenderOne.Name = "settingsPortsButtonSenderOne";
+            this.settingsPortsButtonSenderOne.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSenderOne.TabIndex = 19;
+            this.settingsPortsButtonSenderOne.Text = "Save";
+            this.settingsPortsButtonSenderOne.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSenderOne.Click += new System.EventHandler(this.settingsPortsButtonSenderOne_Click);
+            // 
+            // settingsPortsButtonSaveGateWayTwo
+            // 
+            this.settingsPortsButtonSaveGateWayTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGateWayTwo.Location = new System.Drawing.Point(391, 47);
+            this.settingsPortsButtonSaveGateWayTwo.Name = "settingsPortsButtonSaveGateWayTwo";
+            this.settingsPortsButtonSaveGateWayTwo.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGateWayTwo.TabIndex = 18;
+            this.settingsPortsButtonSaveGateWayTwo.Text = "Save";
+            this.settingsPortsButtonSaveGateWayTwo.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGateWayTwo.Click += new System.EventHandler(this.settingsPortsButtonSaveGateWayTwo_Click);
+            // 
+            // settingsPortsButtonSaveGateWayOne
+            // 
+            this.settingsPortsButtonSaveGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveGateWayOne.Location = new System.Drawing.Point(391, 8);
+            this.settingsPortsButtonSaveGateWayOne.Name = "settingsPortsButtonSaveGateWayOne";
+            this.settingsPortsButtonSaveGateWayOne.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveGateWayOne.TabIndex = 17;
+            this.settingsPortsButtonSaveGateWayOne.Text = "Save";
+            this.settingsPortsButtonSaveGateWayOne.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveGateWayOne.Click += new System.EventHandler(this.settingsPortsButtonSaveGateWayOne_Click);
+            // 
+            // settingsSimPortsLabelGateWayOne
+            // 
+            this.settingsSimPortsLabelGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.settingsSimPortsLabelGateWayOne.AutoSize = true;
+            this.settingsSimPortsLabelGateWayOne.Location = new System.Drawing.Point(31, 12);
+            this.settingsSimPortsLabelGateWayOne.Name = "settingsSimPortsLabelGateWayOne";
+            this.settingsSimPortsLabelGateWayOne.Size = new System.Drawing.Size(80, 15);
+            this.settingsSimPortsLabelGateWayOne.TabIndex = 0;
+            this.settingsSimPortsLabelGateWayOne.Text = "Gateway One:";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Gateway Two:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Sender Port One:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 129);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Sender Port Two:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 168);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 15);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Globe Port One";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 207);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 15);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Globe Port Two:";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 246);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 15);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Globe Port Three:";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(45, 288);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 15);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Smart Port:";
+            // 
+            // settingsPortsLabelGateWayOne
+            // 
+            this.settingsPortsLabelGateWayOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGateWayOne.Location = new System.Drawing.Point(125, 8);
+            this.settingsPortsLabelGateWayOne.Name = "settingsPortsLabelGateWayOne";
+            this.settingsPortsLabelGateWayOne.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGateWayOne.TabIndex = 8;
+            // 
+            // settingsPortsLabelGateWayTwo
+            // 
+            this.settingsPortsLabelGateWayTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGateWayTwo.Location = new System.Drawing.Point(125, 47);
+            this.settingsPortsLabelGateWayTwo.Name = "settingsPortsLabelGateWayTwo";
+            this.settingsPortsLabelGateWayTwo.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGateWayTwo.TabIndex = 9;
+            // 
+            // settingsPortsLabelSenderOne
+            // 
+            this.settingsPortsLabelSenderOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelSenderOne.Location = new System.Drawing.Point(125, 86);
+            this.settingsPortsLabelSenderOne.Name = "settingsPortsLabelSenderOne";
+            this.settingsPortsLabelSenderOne.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelSenderOne.TabIndex = 10;
+            // 
+            // settingsPortsLabelSenderTwo
+            // 
+            this.settingsPortsLabelSenderTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelSenderTwo.Location = new System.Drawing.Point(125, 125);
+            this.settingsPortsLabelSenderTwo.Name = "settingsPortsLabelSenderTwo";
+            this.settingsPortsLabelSenderTwo.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelSenderTwo.TabIndex = 11;
+            // 
+            // settingsPortsLabelGlobeOne
+            // 
+            this.settingsPortsLabelGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGlobeOne.Location = new System.Drawing.Point(125, 164);
+            this.settingsPortsLabelGlobeOne.Name = "settingsPortsLabelGlobeOne";
+            this.settingsPortsLabelGlobeOne.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGlobeOne.TabIndex = 12;
+            // 
+            // settingsPortsLabelGlobeTwo
+            // 
+            this.settingsPortsLabelGlobeTwo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGlobeTwo.Location = new System.Drawing.Point(125, 203);
+            this.settingsPortsLabelGlobeTwo.Name = "settingsPortsLabelGlobeTwo";
+            this.settingsPortsLabelGlobeTwo.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGlobeTwo.TabIndex = 13;
+            // 
+            // settingsPortsLabelGlobeThree
+            // 
+            this.settingsPortsLabelGlobeThree.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelGlobeThree.Location = new System.Drawing.Point(125, 242);
+            this.settingsPortsLabelGlobeThree.Name = "settingsPortsLabelGlobeThree";
+            this.settingsPortsLabelGlobeThree.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelGlobeThree.TabIndex = 14;
+            // 
+            // settingsPortsLabelSmart
+            // 
+            this.settingsPortsLabelSmart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsLabelSmart.Location = new System.Drawing.Point(125, 284);
+            this.settingsPortsLabelSmart.Name = "settingsPortsLabelSmart";
+            this.settingsPortsLabelSmart.Size = new System.Drawing.Size(236, 23);
+            this.settingsPortsLabelSmart.TabIndex = 15;
+            // 
+            // settingsPortsButtonSaveSmart
+            // 
+            this.settingsPortsButtonSaveSmart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsPortsButtonSaveSmart.Location = new System.Drawing.Point(391, 284);
+            this.settingsPortsButtonSaveSmart.Name = "settingsPortsButtonSaveSmart";
+            this.settingsPortsButtonSaveSmart.Size = new System.Drawing.Size(104, 23);
+            this.settingsPortsButtonSaveSmart.TabIndex = 16;
+            this.settingsPortsButtonSaveSmart.Text = "Save";
+            this.settingsPortsButtonSaveSmart.UseVisualStyleBackColor = true;
+            this.settingsPortsButtonSaveSmart.Click += new System.EventHandler(this.settingsPortsButtonSaveSmart_Click);
             // 
             // MainForm
             // 
@@ -2236,7 +2236,6 @@ namespace SerialSMSSender {
             this.Controls.Add(this.mainTableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "All Net Load - Serial Monitor";
@@ -2302,18 +2301,18 @@ namespace SerialSMSSender {
             this.tableLayoutPanel10.PerformLayout();
             this.tabPageSettings.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
-            this.settingsGroupBoxPorts.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
-            this.tableLayoutPanel17.ResumeLayout(false);
-            this.tableLayoutPanel17.PerformLayout();
-            this.tableLayoutPanel18.ResumeLayout(false);
-            this.tableLayoutPanel18.PerformLayout();
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.tableLayoutPanel19.PerformLayout();
             this.tableLayoutPanel20.ResumeLayout(false);
             this.tableLayoutPanel20.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel18.PerformLayout();
+            this.settingsGroupBoxPorts.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.tableLayoutPanel17.PerformLayout();
             this.ResumeLayout(false);
 
         }
