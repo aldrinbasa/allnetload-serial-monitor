@@ -657,11 +657,15 @@ namespace SerialSMSSender {
 
                                     RunDatabaseQuery("INSERT INTO history_tlc (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + amount + "(" + amountToBeDeducted + ")', '" + numberToReceive + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + referenceNumber + "')");
 
-                                    QueueOutbound("You have issued P" + FormatNumberWithComma(amount, true) + "(" + FormatNumberWithComma(amountToBeDeducted.ToString(), true) + ") load credits to " + numberToReceive + ". New load wallet balance: P" + newSenderBalance + ". RefNo: " + referenceNumber + Environment.NewLine + "Date: " + DateTime.Now.ToString(), senderNumber, referenceNumber);
-
+                                    QueueOutbound("(1/2) You have issued P" + FormatNumberWithComma(amount, true) + "(" + FormatNumberWithComma(amountToBeDeducted.ToString(), true) + ") load credits to " + numberToReceive + ". New load wallet balance: P" + newSenderBalance + ".", senderNumber, referenceNumber);
                                     Thread.Sleep(2000);
-
-                                    QueueOutbound("You have received P" + FormatNumberWithComma(amount, true) + " load credits from " + senderNumber + ". New load credit balance: P" + FormatNumberWithComma(newReceiverBalance, true) + Environment.NewLine + " RefNo: " + referenceNumber, numberToReceive, referenceNumber);
+                                    QueueOutbound("(1/2) You have received P" + FormatNumberWithComma(amount, true) + " load credits from " + senderNumber + ". New load credit balance: P" + FormatNumberWithComma(newReceiverBalance, true) + ". ", numberToReceive, referenceNumber);
+                                    
+                                
+                                    Thread.Sleep(2000);
+                                    QueueOutbound("(2/2) RefNo: " + referenceNumber + ". " + "Date: " + DateTime.Now.ToString(), senderNumber, referenceNumber);
+                                    Thread.Sleep(2000);
+                                    QueueOutbound("(2/2) RefNo: " + referenceNumber + ". " + "Date: " + DateTime.Now.ToString(), numberToReceive, referenceNumber);
                                 }
                                 else {
                                     QueueOutbound("TLC Error: You have insufficient balance to complete the transaction.", senderNumber, referenceNumber);
@@ -776,7 +780,7 @@ namespace SerialSMSSender {
 
                     productPrice = double.Parse(productCodesTable.Rows[0]["Price"].ToString());
 
-                    if ((receiverCarrier == "SMART") || (receiverCarrier == "TNT")) {
+                    if ((receiverCarrier == "SMART") || (receiverCarrier == "TNT") || (receiverCarrier == "PLDT") || (receiverCarrier == "CIGNAL")) {
 
                         configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'SmartLoadPercentage'");
 
@@ -787,6 +791,19 @@ namespace SerialSMSSender {
                         if (HasLoadCreditBalance(senderNumber, (productPrice - income).ToString())) {
                             if (SmartPortActive) {
                                 RunDatabaseQuery(query);
+
+                                //DEDUCT FROM LOAD WALLET
+                                string amount = productCodesTable.Rows[0]["Price"].ToString();
+                                string systemResponse = "You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                QueueOutbound(systemResponse, senderNumber, referenceNumber);
+                                Thread.Sleep(2000);
+
+                                DeductLoadCredit(senderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString());
+                                RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("SMART")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
+                                amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
+                                
+                                RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber, SystemResponse) VALUES ('" + senderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + systemResponse + "')");
                             }
                             else {
                                 QueueOutbound("Loading Error: Smart/TNT loading is currently unavailable. Please try again later.", senderNumber, referenceNumber);
@@ -807,6 +824,19 @@ namespace SerialSMSSender {
                         if (HasLoadCreditBalance(senderNumber, (productPrice - income).ToString())) {
                             if (GlobePortOneActive || GlobePortTwoActive || GlobePortThreeActive) {
                                 RunDatabaseQuery(query);
+
+                                //DEDUCT FROM LOAD WALLET
+                                string amount = productCodesTable.Rows[0]["Price"].ToString();
+                                string systemResponse = "You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                QueueOutbound(systemResponse, senderNumber, referenceNumber);
+                                Thread.Sleep(2000);
+
+                                DeductLoadCredit(senderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
+                                RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
+                                amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ")";
+
+                                RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber, SystemResponse) VALUES ('" + senderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + systemResponse + "')");
                             }
                             else {
                                 QueueOutbound("Loading Error: Globe/TM loading is currently unavailable. Please try again later.", senderNumber, referenceNumber);
@@ -1162,18 +1192,9 @@ namespace SerialSMSSender {
                             string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
                             string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
                             string telecomResponse = messageContent;
-                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString());
-                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("SMART")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
-
-                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
-
-                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
-                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
-
-                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
-                            Thread.Sleep(2000);
+                            RunDatabaseQuery("DELETE FROM loads WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("UPDATE history_load SET TelecomResponse = '" + telecomResponse + "' WHERE ReferenceNumber = '" + referenceNumber + "'");
                         }
                     }
                 }
@@ -1465,18 +1486,9 @@ namespace SerialSMSSender {
                             string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
                             string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
                             string telecomResponse = messageContent;
-                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
-                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
-
-                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
-
-                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
-                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
-
-                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
-                            Thread.Sleep(2000);
+                            RunDatabaseQuery("DELETE FROM loads WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("UPDATE history_load SET TelecomResponse = '" + telecomResponse + "' WHERE ReferenceNumber = '" + referenceNumber + "'");
                         }
                     }
                 }
@@ -1535,18 +1547,9 @@ namespace SerialSMSSender {
                             string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
                             string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
                             string telecomResponse = messageContent;
-                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
-                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
-
-                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
-
-                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
-                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
-
-                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
-                            Thread.Sleep(2000);
+                            RunDatabaseQuery("DELETE FROM loads WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("UPDATE history_load SET TelecomResponse = '" + telecomResponse + "' WHERE ReferenceNumber = '" + referenceNumber + "'");
                         }
                     }
                 }
@@ -1605,18 +1608,9 @@ namespace SerialSMSSender {
                             string referenceNumber = loadsTable.Rows[0]["ReferenceNumber"].ToString();
                             string loaderNumber = loadsTable.Rows[0]["SenderNumber"].ToString();
                             string telecomResponse = messageContent;
-                            string systemResponse = "You have successfully loaded " + loadsTable.Rows[0]["ProductCode"].ToString() + " to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-                            DeductLoadCredit(loaderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
-                            RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + loaderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
-
-                            amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
-
-                            RunDatabaseQuery("UPDATE loads SET Status = 'DONE' WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
-                            RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNUmber, TelecomResponse, SystemResponse) VALUES ('" + loaderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + telecomResponse + "', '" + systemResponse + "')");
-
-                            QueueOutbound(systemResponse, loaderNumber, referenceNumber);
-                            Thread.Sleep(2000);
+                            RunDatabaseQuery("DELETE FROM loads WHERE ReceiverNumber = '" + receiverNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
+                            RunDatabaseQuery("UPDATE history_load SET TelecomResponse = '" + telecomResponse + "' WHERE ReferenceNumber = '" + referenceNumber + "'");
                         }
                     }
                 }
