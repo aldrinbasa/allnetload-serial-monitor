@@ -794,9 +794,11 @@ namespace SerialSMSSender {
 
                                 //DEDUCT FROM LOAD WALLET
                                 string amount = productCodesTable.Rows[0]["Price"].ToString();
-                                string systemResponse = "You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                string systemResponse = "(1/2) You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                                 QueueOutbound(systemResponse, senderNumber, referenceNumber);
+                                Thread.Sleep(2000);
+                                QueueOutbound("(2/2) New load wallet balance: P" + GetUserBalance(senderNumber), senderNumber, referenceNumber);
                                 Thread.Sleep(2000);
 
                                 DeductLoadCredit(senderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString());
@@ -827,9 +829,11 @@ namespace SerialSMSSender {
 
                                 //DEDUCT FROM LOAD WALLET
                                 string amount = productCodesTable.Rows[0]["Price"].ToString();
-                                string systemResponse = "You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                string systemResponse = "(1/2) You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                                 QueueOutbound(systemResponse, senderNumber, referenceNumber);
+                                Thread.Sleep(2000);
+                                QueueOutbound("(2/2) New load wallet balance: P" + GetUserBalance(senderNumber), senderNumber, referenceNumber);
                                 Thread.Sleep(2000);
 
                                 DeductLoadCredit(senderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
@@ -996,7 +1000,9 @@ namespace SerialSMSSender {
                             Thread.Sleep(2000);
                             QueueOutbound("(2/2) Ex.: GPINOY 1234567891000000 1234567891111111 Send to: 09088816061 09498890768 09498890769 09985897968 09173152381 09178540321.", receiverNumber, referenceNumber);
                             Thread.Sleep(2000);
-                            QueueOutbound(codeDescription + "(" + (price * (1 - income)).ToString() + ") has been loaded to " + receiverNumber + "." + Environment.NewLine + "New load wallet balance: " + GetUserBalance(senderNumber) + Environment.NewLine + "RefNo: " + referenceNumber + Environment.NewLine + GetCurrentDateTime(), senderNumber, referenceNumber);
+                            QueueOutbound("(1/2) " + codeDescription + "(" + (price * (1 - income)).ToString() + ") has been loaded to " + receiverNumber + ". " + "RefNo: " + referenceNumber + Environment.NewLine + GetCurrentDateTime(), senderNumber, referenceNumber);
+                            Thread.Sleep(2000);
+                            QueueOutbound("(2/2) new load wallet balance: P" + GetUserBalance(senderNumber), senderNumber, referenceNumber);
                             Thread.Sleep(2000);
                         }
                         else {
@@ -1056,7 +1062,7 @@ namespace SerialSMSSender {
                     }
                 }
 
-                Thread.Sleep(500);
+                Thread.Sleep(2000);
             }
         }
         #endregion
@@ -1183,7 +1189,7 @@ namespace SerialSMSSender {
 
                         RunDatabaseQuery("INSERT INTO messages_smart (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
 
-                        if (messageContent.Contains("has loaded")) {
+                        if (messageContent.Contains("loaded")) {
                             string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0].Trim());
                             string amount = messageContent.Split('(')[0].Trim().Split(' ').Last().Trim().Split('.')[0].Replace("P", "");
 
@@ -1477,7 +1483,7 @@ namespace SerialSMSSender {
 
                         RunDatabaseQuery("INSERT INTO messages_globe (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
 
-                        if (messageContent.Contains("has loaded")) {
+                        if (messageContent.Contains("loaded")) {
                             string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0]);
                             string amount = Regex.Replace(messageContent.Split(splitDisplacerLoaded, StringSplitOptions.None)[1].Trim().Split(' ')[0].Trim(), "[A-Za-z ]", "");
 
@@ -1538,7 +1544,7 @@ namespace SerialSMSSender {
 
                         RunDatabaseQuery("INSERT INTO messages_globe (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
 
-                        if (messageContent.Contains("has loaded")) {
+                        if (messageContent.Contains("loaded")) {
                             string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0]);
                             string amount = Regex.Replace(messageContent.Split(splitDisplacerLoaded, StringSplitOptions.None)[1].Trim().Split(' ')[0].Trim(), "[A-Za-z ]", "");
 
@@ -1599,7 +1605,7 @@ namespace SerialSMSSender {
 
                         RunDatabaseQuery("INSERT INTO messages_globe (Sender, Message, DateTime) VALUES ('" + senderNumber + "', '" + messageContent + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
 
-                        if (messageContent.Contains("has loaded")) {
+                        if (messageContent.Contains("loaded")) {
                             string receiverNumber = normalizeNumber(messageContent.Split(splitDisplacerTo, StringSplitOptions.None)[1].Trim().Split('.')[0]);
                             string amount = Regex.Replace(messageContent.Split(splitDisplacerLoaded, StringSplitOptions.None)[1].Trim().Split(' ')[0].Trim(), "[A-Za-z ]", "");
 
