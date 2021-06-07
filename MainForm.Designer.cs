@@ -191,6 +191,12 @@ namespace SerialSMSSender {
             this.settingsPortsLabelGlobeThree = new System.Windows.Forms.TextBox();
             this.settingsPortsLabelSmart = new System.Windows.Forms.TextBox();
             this.settingsPortsButtonSaveSmart = new System.Windows.Forms.Button();
+            this.tabPageInbox = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.inboxGroupBoxGlobe1 = new System.Windows.Forms.GroupBox();
+            this.inboxGroupBoxGlobe2 = new System.Windows.Forms.GroupBox();
+            this.inboxGroupBoxGlobe3 = new System.Windows.Forms.GroupBox();
+            this.inboxGroupBoxSmart = new System.Windows.Forms.GroupBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.mainTabController.SuspendLayout();
             this.tabPageHome.SuspendLayout();
@@ -239,6 +245,8 @@ namespace SerialSMSSender {
             this.tableLayoutPanel18.SuspendLayout();
             this.settingsGroupBoxPorts.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
+            this.tabPageInbox.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -261,6 +269,7 @@ namespace SerialSMSSender {
             // 
             this.mainTabController.Controls.Add(this.tabPageHome);
             this.mainTabController.Controls.Add(this.tabPageHelp);
+            this.mainTabController.Controls.Add(this.tabPageInbox);
             this.mainTabController.Controls.Add(this.tabPageSettings);
             this.mainTabController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabController.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2228,6 +2237,74 @@ namespace SerialSMSSender {
             this.settingsPortsButtonSaveSmart.UseVisualStyleBackColor = true;
             this.settingsPortsButtonSaveSmart.Click += new System.EventHandler(this.settingsPortsButtonSaveSmart_Click);
             // 
+            // tabPageInbox
+            // 
+            this.tabPageInbox.Controls.Add(this.tableLayoutPanel21);
+            this.tabPageInbox.Location = new System.Drawing.Point(4, 24);
+            this.tabPageInbox.Name = "tabPageInbox";
+            this.tabPageInbox.Size = new System.Drawing.Size(1050, 695);
+            this.tabPageInbox.TabIndex = 3;
+            this.tabPageInbox.Text = "Inbox";
+            this.tabPageInbox.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnCount = 2;
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxSmart, 1, 1);
+            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxGlobe3, 0, 1);
+            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxGlobe2, 1, 0);
+            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxGlobe1, 0, 0);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 2;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(1050, 695);
+            this.tableLayoutPanel21.TabIndex = 0;
+            // 
+            // inboxGroupBoxGlobe1
+            // 
+            this.inboxGroupBoxGlobe1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxGroupBoxGlobe1.Location = new System.Drawing.Point(3, 3);
+            this.inboxGroupBoxGlobe1.Name = "inboxGroupBoxGlobe1";
+            this.inboxGroupBoxGlobe1.Size = new System.Drawing.Size(519, 341);
+            this.inboxGroupBoxGlobe1.TabIndex = 0;
+            this.inboxGroupBoxGlobe1.TabStop = false;
+            this.inboxGroupBoxGlobe1.Text = "Globe (PORT 4)";
+            // 
+            // inboxGroupBoxGlobe2
+            // 
+            this.inboxGroupBoxGlobe2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxGroupBoxGlobe2.Location = new System.Drawing.Point(528, 3);
+            this.inboxGroupBoxGlobe2.Name = "inboxGroupBoxGlobe2";
+            this.inboxGroupBoxGlobe2.Size = new System.Drawing.Size(519, 341);
+            this.inboxGroupBoxGlobe2.TabIndex = 1;
+            this.inboxGroupBoxGlobe2.TabStop = false;
+            this.inboxGroupBoxGlobe2.Text = "Globe (PORT 5)";
+            // 
+            // inboxGroupBoxGlobe3
+            // 
+            this.inboxGroupBoxGlobe3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxGroupBoxGlobe3.Location = new System.Drawing.Point(3, 350);
+            this.inboxGroupBoxGlobe3.Name = "inboxGroupBoxGlobe3";
+            this.inboxGroupBoxGlobe3.Size = new System.Drawing.Size(519, 342);
+            this.inboxGroupBoxGlobe3.TabIndex = 2;
+            this.inboxGroupBoxGlobe3.TabStop = false;
+            this.inboxGroupBoxGlobe3.Text = "Globe (PORT 6)";
+            // 
+            // inboxGroupBoxSmart
+            // 
+            this.inboxGroupBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxGroupBoxSmart.Location = new System.Drawing.Point(528, 350);
+            this.inboxGroupBoxSmart.Name = "inboxGroupBoxSmart";
+            this.inboxGroupBoxSmart.Size = new System.Drawing.Size(519, 342);
+            this.inboxGroupBoxSmart.TabIndex = 3;
+            this.inboxGroupBoxSmart.TabStop = false;
+            this.inboxGroupBoxSmart.Text = "Smart (PORT 7)";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2313,6 +2390,8 @@ namespace SerialSMSSender {
             this.settingsGroupBoxPorts.ResumeLayout(false);
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
+            this.tabPageInbox.ResumeLayout(false);
+            this.tableLayoutPanel21.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2485,6 +2564,12 @@ namespace SerialSMSSender {
         private System.Windows.Forms.TextBox TB_MinimumTTU;
         private System.Windows.Forms.Button B_MinimumTTU;
         private System.Windows.Forms.Button B_City;
+        private System.Windows.Forms.TabPage tabPageInbox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
+        private System.Windows.Forms.GroupBox inboxGroupBoxSmart;
+        private System.Windows.Forms.GroupBox inboxGroupBoxGlobe3;
+        private System.Windows.Forms.GroupBox inboxGroupBoxGlobe2;
+        private System.Windows.Forms.GroupBox inboxGroupBoxGlobe1;
     }
 }
 

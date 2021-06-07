@@ -1,7 +1,6 @@
 E:\iLead\SerialSMSSender\bin\Debug\SerialSMSSender.exe.config
 E:\iLead\SerialSMSSender\bin\Debug\SerialSMSSender.exe
 E:\iLead\SerialSMSSender\bin\Debug\SerialSMSSender.pdb
-E:\iLead\SerialSMSSender\obj\Debug\SerialSMSSender.csprojAssemblyReference.cache
 E:\iLead\SerialSMSSender\obj\Debug\SerialSMSSender.MainForm.resources
 E:\iLead\SerialSMSSender\obj\Debug\SerialSMSSender.Properties.Resources.resources
 E:\iLead\SerialSMSSender\obj\Debug\SerialSMSSender.csproj.GenerateResource.cache
@@ -37,3 +36,4 @@ E:\iLead\SerialSMSSender\bin\Debug\SerialSMSSender.exe.manifest
 E:\iLead\SerialSMSSender\bin\Debug\SerialSMSSender.application
 E:\iLead\SerialSMSSender\obj\Debug\SerialSMSSender.exe.manifest
 E:\iLead\SerialSMSSender\obj\Debug\SerialSMSSender.application
+E:\iLead\SerialSMSSender\obj\Debug\SerialSMSSender.csprojAssemblyReference.cache

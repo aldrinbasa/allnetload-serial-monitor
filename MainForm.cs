@@ -163,7 +163,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
 
@@ -242,14 +241,13 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
         #endregion
 
         #region THREAD - Process Commands
         private void ProcessCommands() {
-            while (true) {
+        while (true) {
                 string query = "SELECT * FROM commands WHERE Status = 'PENDING'";
 
                 DataTable dataTable = RunQueryDataTable(query);
@@ -262,118 +260,123 @@ namespace SerialSMSSender {
                     string status = row["Status"].ToString();
                     string referenceNumber = row["ReferenceNumber"].ToString();
 
-                    if (commandType == "BAL") {
-                        ProcessBalance(senderNumber, referenceNumber);
-                    }
-                    else if (commandType == "RET") {
-                        ProcessRetailer(senderNumber, command, referenceNumber);
-                    }
-                    else if ((commandType == "DISTRIBUTOR") || (commandType == "DEALER") || (commandType == "MOBILE") || (commandType == "CITY") || (commandType == "PROVINCIAL")) {
-                        ProcessRegistrationByRole(senderNumber, command, referenceNumber, commandType);
-                    }
-                    else if (commandType == "ADD") {
-                        ProcessAdditionalAccount(senderNumber, command, referenceNumber);
-                    }
-                    else if (commandType.Contains("UP")) {
-                        ProcessStatusUpgrade(senderNumber, command, referenceNumber);
-                    }
-                    else if (commandType == "TLC") {
+                    try {
+                        if (commandType == "BAL") {
+                            ProcessBalance(senderNumber, referenceNumber);
+                        }
+                        else if (commandType == "RET") {
+                            ProcessRetailer(senderNumber, command, referenceNumber);
+                        }
+                        else if ((commandType == "DISTRIBUTOR") || (commandType == "DEALER") || (commandType == "MOBILE") || (commandType == "CITY") || (commandType == "PROVINCIAL")) {
+                            ProcessRegistrationByRole(senderNumber, command, referenceNumber, commandType);
+                        }
+                        else if (commandType == "ADD") {
+                            ProcessAdditionalAccount(senderNumber, command, referenceNumber);
+                        }
+                        else if (commandType.Contains("UP")) {
+                            ProcessStatusUpgrade(senderNumber, command, referenceNumber);
+                        }
+                        else if (commandType == "TLC") {
 
-                        string numberToReceive = command.Split(' ')[1].Trim();
-                        string amount = command.Split(' ')[2].Trim();
+                            string numberToReceive = command.Split(' ')[1].Trim();
+                            string amount = command.Split(' ')[2].Trim();
 
-                        DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
-                        string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
+                            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
+                            string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
 
-                        if (!HasSameTransactionWithin30Minutes(senderNumber, numberToReceive, amount, "TLC")) {
+                            if (!HasSameTransactionWithin30Minutes(senderNumber, numberToReceive, amount, "TLC")) {
+                                ProcessTransferLoadCredit(senderNumber, command, referenceNumber);
+                            }
+                            else {
+                                QueueOutbound("TLC Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                            }
+                        }
+                        else if (commandType == "TTU") {
+
+                            string receiverNumber = command.Split(' ')[1];
+                            string amount = command.Split(' ')[2];
+
+                            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
+                            string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
+
+                            if (!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "TTU")) {
+                                ProcessTransferPins(senderNumber, command, referenceNumber);
+                            }
+                            else {
+                                QueueOutbound("TTU Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                            }
+
+                        }
+                        else if (commandType == "LOAD") {
+
+                            string receiverNumber = command.Split(' ')[0];
+                            string amount = command.Split(' ')[1];
+
+                            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
+                            string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
+
+                            if (!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "LOAD")) {
+                                ProcessLoadingQueue(senderNumber, command, referenceNumber);
+                            }
+                            else {
+                                QueueOutbound("Load Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                            }
+                        }
+                        else if (commandType == "CPW") {
+                            ProcessChangePassword(senderNumber, command, referenceNumber);
+                        }
+                        else if (commandType == "HELP") {
+                            ProcessHelp(senderNumber, command, referenceNumber);
+                        }
+                        else if (commandType == "LOGIN") {
+
+                            string receiverNumber = command.Split(' ')[1];
+                            string amount = command.Split(' ')[2];
+
+                            DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
+                            string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
+
+                            if (!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "LOAD")) {
+                                ProcessLogin(senderNumber, command, referenceNumber);
+                            }
+                            else {
+                                QueueOutbound("Login Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                            }
+                        }
+                        else if (commandType == "TV") {
+                            ProcessGSAT(senderNumber, command, referenceNumber);
+                        }
+                        else if (commandType == "REP TLC") {
+                            command = command.Replace("REP", "").Trim();
+
                             ProcessTransferLoadCredit(senderNumber, command, referenceNumber);
                         }
-                        else {
-                            QueueOutbound("TLC Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
-                        }
-                    }
-                    else if (commandType == "TTU") {
+                        else if (commandType == "REP TTU") {
+                            command = command.Replace("REP", "").Trim();
 
-                        string receiverNumber = command.Split(' ')[1];
-                        string amount = command.Split(' ')[2];
-
-                        DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
-                        string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
-
-                        if (!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "TTU")) {
                             ProcessTransferPins(senderNumber, command, referenceNumber);
                         }
-                        else {
-                            QueueOutbound("TTU Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
-                        }
-                        
-                    }
-                    else if (commandType == "LOAD") {
+                        else if (commandType == "REP LOAD") {
+                            command = command.Replace("REP", "").Trim();
 
-                        string receiverNumber = command.Split(' ')[0];
-                        string amount = command.Split(' ')[1];
-
-                        DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
-                        string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
-
-                        if(!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "LOAD")) {
                             ProcessLoadingQueue(senderNumber, command, referenceNumber);
                         }
-                        else {
-                            QueueOutbound("Load Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
-                        }
-                    }
-                    else if (commandType == "CPW") {
-                        ProcessChangePassword(senderNumber, command, referenceNumber);
-                    }
-                    else if (commandType == "HELP") {
-                        ProcessHelp(senderNumber, command, referenceNumber);
-                    }
-                    else if (commandType == "LOGIN") {
+                        else if (commandType == "REP LOGIN") {
+                            command = command.Replace("REP", "").Trim();
 
-                        string receiverNumber = command.Split(' ')[1];
-                        string amount = command.Split(' ')[2];
-
-                        DataTable configurationsTable = RunQueryDataTable("SELECT Value FROM configurations WHERE Parameter = 'RepeatTransactionMinutes'");
-                        string repeatTransactionMinutes = configurationsTable.Rows[0]["Value"].ToString();
-
-                        if (!HasSameTransactionWithin30Minutes(senderNumber, receiverNumber, amount, "LOAD")) {
                             ProcessLogin(senderNumber, command, referenceNumber);
                         }
                         else {
-                            QueueOutbound("Login Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
+                            QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
                         }
-                    }
-                    else if (commandType == "TV") {
-                        ProcessGSAT(senderNumber, command, referenceNumber);
-                    }
-                    else if (commandType == "REP TLC") {
-                        command = command.Replace("REP", "").Trim();
 
-                        ProcessTransferLoadCredit(senderNumber, command, referenceNumber);
-                    }
-                    else if (commandType == "REP TTU") {
-                        command = command.Replace("REP", "").Trim();
+                        RunDatabaseQuery("UPDATE commands SET Status = 'DONE' WHERE referenceNumber = '" + referenceNumber + "'");
 
-                        ProcessTransferPins(senderNumber, command, referenceNumber);
+                        Thread.Sleep(2000);
                     }
-                    else if (commandType == "REP LOAD") {
-                        command = command.Replace("REP", "").Trim();
-
-                        ProcessLoadingQueue(senderNumber, command, referenceNumber);
+                    catch (Exception error){
+                        RunDatabaseQuery("UPDATE commands SET Status = 'DONE' WHERE referenceNumber = '" + referenceNumber + "'");
                     }
-                    else if (commandType == "REP LOGIN") {
-                        command = command.Replace("REP", "").Trim();
-
-                        ProcessLogin(senderNumber, command, referenceNumber);
-                    }
-                    else {
-                        QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
-                    }
-
-                    RunDatabaseQuery("UPDATE commands SET Status = 'DONE' WHERE referenceNumber = '" + referenceNumber + "'");
-
-                    Thread.Sleep(2000);
                 }
             }
         }
@@ -395,7 +398,6 @@ namespace SerialSMSSender {
                 QueueOutbound(message, senderNumber, referenceNumber);
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
 
@@ -450,7 +452,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error){
-                MessageBox.Show(error.Message);
                 QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
@@ -657,15 +658,10 @@ namespace SerialSMSSender {
 
                                     RunDatabaseQuery("INSERT INTO history_tlc (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + amount + "(" + amountToBeDeducted + ")', '" + numberToReceive + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + referenceNumber + "')");
 
-                                    QueueOutbound("(1/2) You have issued P" + FormatNumberWithComma(amount, true) + "(" + FormatNumberWithComma(amountToBeDeducted.ToString(), true) + ") load credits to " + numberToReceive + ". New load wallet balance: P" + newSenderBalance + ".", senderNumber, referenceNumber);
-                                    Thread.Sleep(2000);
-                                    QueueOutbound("(1/2) You have received P" + FormatNumberWithComma(amount, true) + " load credits from " + senderNumber + ". New load credit balance: P" + FormatNumberWithComma(newReceiverBalance, true) + ". ", numberToReceive, referenceNumber);
-                                    
-                                
-                                    Thread.Sleep(2000);
-                                    QueueOutbound("(2/2) RefNo: " + referenceNumber + ". " + "Date: " + DateTime.Now.ToString(), senderNumber, referenceNumber);
-                                    Thread.Sleep(2000);
-                                    QueueOutbound("(2/2) RefNo: " + referenceNumber + ". " + "Date: " + DateTime.Now.ToString(), numberToReceive, referenceNumber);
+                                    QueueOutbound("You have issued P" + FormatNumberWithComma(amount, true) + "(" + FormatNumberWithComma(amountToBeDeducted.ToString(), true) + ") load to " + numberToReceive + "." + Environment.NewLine + "New balance: P" + newSenderBalance + Environment.NewLine + "Txn: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), senderNumber, referenceNumber);
+                                    Thread.Sleep(500);
+                                    QueueOutbound("You have received P" + FormatNumberWithComma(amount, true) + " load from " + senderNumber + "." + Environment.NewLine + "New balance: P" + FormatNumberWithComma(newReceiverBalance, true) + Environment.NewLine + "Txn: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), numberToReceive, referenceNumber);
+                                    Thread.Sleep(500);
                                 }
                                 else {
                                     QueueOutbound("TLC Error: You have insufficient balance to complete the transaction.", senderNumber, referenceNumber);
@@ -794,18 +790,19 @@ namespace SerialSMSSender {
 
                                 //DEDUCT FROM LOAD WALLET
                                 string amount = productCodesTable.Rows[0]["Price"].ToString();
-                                string systemResponse = "(1/2) You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-                                QueueOutbound(systemResponse, senderNumber, referenceNumber);
-                                Thread.Sleep(2000);
-                                QueueOutbound("(2/2) New load wallet balance: P" + GetUserBalance(senderNumber), senderNumber, referenceNumber);
-                                Thread.Sleep(2000);
 
                                 DeductLoadCredit(senderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString());
                                 RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("SMART")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
+                               
+ 
+                                string systemResponse = "You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ") to " + receiverNumber + "." + Environment.NewLine + "New Balance: P" + GetUserBalance(senderNumber) + Environment.NewLine + "Txn: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                QueueOutbound(systemResponse, senderNumber, referenceNumber);
+                                Thread.Sleep(2000);
+
                                 amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("SMART"))).ToString() + ")";
-                                
                                 RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber, SystemResponse) VALUES ('" + senderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + systemResponse + "')");
+
                             }
                             else {
                                 QueueOutbound("Loading Error: Smart/TNT loading is currently unavailable. Please try again later.", senderNumber, referenceNumber);
@@ -829,17 +826,16 @@ namespace SerialSMSSender {
 
                                 //DEDUCT FROM LOAD WALLET
                                 string amount = productCodesTable.Rows[0]["Price"].ToString();
-                                string systemResponse = "(1/2) You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ") to " + receiverNumber + ". RefNo: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-                                QueueOutbound(systemResponse, senderNumber, referenceNumber);
-                                Thread.Sleep(2000);
-                                QueueOutbound("(2/2) New load wallet balance: P" + GetUserBalance(senderNumber), senderNumber, referenceNumber);
-                                Thread.Sleep(2000);
 
                                 DeductLoadCredit(senderNumber, (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString());
                                 RunDatabaseQuery("INSERT INTO history_income (PhoneNumber, Income, Type, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + (double.Parse(amount) * GetPercentIncomeLoad("GLOBE")).ToString() + "', 'LOAD', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
-                                amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ")";
 
+                                string systemResponse = "You have successfully loaded " + productCode + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ") to " + receiverNumber + "." + Environment.NewLine + "New Balance: P" + GetUserBalance(senderNumber) + Environment.NewLine + "Txn: " + referenceNumber + Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                QueueOutbound(systemResponse, senderNumber, referenceNumber);
+                                Thread.Sleep(2000);
+
+                                amount = amount + "(" + (double.Parse(amount) * (1 - GetPercentIncomeLoad("GLOBE"))).ToString() + ")";
                                 RunDatabaseQuery("INSERT INTO history_load (SenderNumber, Amount, ReceiverNumber, DateTime, ReferenceNumber, SystemResponse) VALUES ('" + senderNumber + "', '" + amount + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "', '" + systemResponse + "')");
                             }
                             else {
@@ -855,15 +851,14 @@ namespace SerialSMSSender {
                     QueueOutbound("Loading Error: Invalid Product Code. Please use the correct product code", senderNumber, referenceNumber);
                 }
             }
-            catch (Exception error){
-                MessageBox.Show(error.Message);
+            catch (Exception error) {
                 QueueOutbound("Loading Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
         }
 
         private void ProcessChangePassword(string senderNumber, string command, string referenceNumber) {
 
-            try {
+                try {
 
                 string username = command.Split(' ')[1].Split('/')[0];
                 string oldPassword = command.Split(' ')[1].Split('/')[1].Trim();
@@ -1062,7 +1057,7 @@ namespace SerialSMSSender {
                     }
                 }
 
-                Thread.Sleep(2000);
+                Thread.Sleep(500);
             }
         }
         #endregion
@@ -1622,9 +1617,14 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
+        #endregion
+
+        #region THREAD - Receive Messages on Gateways
+        private void ReceiveMessagesSmart() {
+            
+        } 
         #endregion
 
         #region METHODS - User Manipulation
@@ -1669,14 +1669,13 @@ namespace SerialSMSSender {
                         homeTextBoxSending.ScrollToCaret();
                     });
                     if (existing.Contains("AT+CMGS")) {
-                        RunDatabaseQuery("UPDATE outbounds SET Status = 'DONE' WHERE referenceNumber = '" + referenceNumber + "'");
+                        RunDatabaseQuery("UPDATE outbounds SET Status = 'DONE' WHERE ReferenceNumber = '" + referenceNumber + "' AND ReceiverNumber = '" + recipient + "'");
                     }
 
                     smsPort.Close();
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
 
@@ -1715,7 +1714,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
         #endregion
@@ -1766,7 +1764,7 @@ namespace SerialSMSSender {
             string query;
 
             while (notUnique) {
-                referenceNumber = DateTime.Now.ToString("MMddyyyyhmm") + "-" + random.Next(0, 10000) + "-" + random.Next(0, 10000);
+                referenceNumber = DateTime.Now.ToString("MMddyyyy") + "-" + random.Next(0, 10000);
 
                 query = "SELECT COUNT(ReferenceNumber) FROM commands WHERE ReferenceNumber = '" + referenceNumber + "'";
 
@@ -1784,7 +1782,6 @@ namespace SerialSMSSender {
                     }
                 }
                 catch (Exception error) {
-                    MessageBox.Show(error.Message);
                 }
             }
 
@@ -1878,7 +1875,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             return activationCodeUsable;
@@ -1918,7 +1914,6 @@ namespace SerialSMSSender {
                 pins = dataTableBalance.Rows[0]["Value"].ToString();
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             return pins;
@@ -1935,7 +1930,6 @@ namespace SerialSMSSender {
                 usedBy = dataTableBalance.Rows[0]["UsedBy"].ToString();
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             return usedBy;
@@ -1952,7 +1946,6 @@ namespace SerialSMSSender {
                 pins = dataTableBalance.Rows[0]["Pins"].ToString();
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             return pins;
@@ -1968,7 +1961,6 @@ namespace SerialSMSSender {
                 role = dataTableBalance.Rows[0]["Role"].ToString();
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             return role;
@@ -1984,7 +1976,6 @@ namespace SerialSMSSender {
                 role = dataTableBalance.Rows[0]["Role"].ToString();
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message + "GetActivationCodeRole");
             }
 
             return role;
@@ -2000,7 +1991,6 @@ namespace SerialSMSSender {
                 username = dataTableBalance.Rows[0]["Username"].ToString();
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
 
             return username;
@@ -2156,6 +2146,19 @@ namespace SerialSMSSender {
             return hasSameTransactionWithin30Minutes;
         }
 
+        private string GetUserNumber(string username) {
+
+            string phoneNumber;
+
+            string query = "SELECT PhoneNumber FROM users WHERE Username = '" + username + "'";
+
+            DataTable userTable = RunQueryDataTable(query);
+
+            phoneNumber = userTable.Rows[0]["PhoneNumber"].ToString();
+
+            return phoneNumber;
+        }
+
         private string GetUserBalance(string phoneNumber) {
 
             string balance;
@@ -2180,9 +2183,6 @@ namespace SerialSMSSender {
 
             if(carrierTable.Rows.Count > 0) {
                 carrier = carrierTable.Rows[0]["Carrier"].ToString();
-            }
-            else {
-                MessageBox.Show(phoneNumber + " is not listed in the carriers. Please Update.");
             }
 
             return carrier;
@@ -2412,7 +2412,6 @@ namespace SerialSMSSender {
                 }
             }
             catch (Exception error) {
-                MessageBox.Show(error.Message);
             }
         }
 
@@ -2661,10 +2660,10 @@ namespace SerialSMSSender {
             if (helpTextBoxReply.Text != "") {
 
                 string reply = helpTextBoxReply.Text;
-                string senderNumber = helpLabelOutputSenderNumber.Text;
+                string senderNumber = GetUserNumber(helpLabelOutputSenderNumber.Text);
                 string referenceNumber = helpLabelOutputReferenceNumber.Text;
 
-                QueueOutbound(reply, helpLabelOutputSenderNumber.Text, "");
+                QueueOutbound(reply, senderNumber, "");
 
                 RunDatabaseQuery("UPDATE help SET Status = 'MESSAGE SENT' WHERE SenderNumber = '" + senderNumber + "' AND ReferenceNumber = '" + referenceNumber + "'");
 
