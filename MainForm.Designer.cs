@@ -24,6 +24,8 @@ namespace SerialSMSSender {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.mainTabController = new System.Windows.Forms.TabControl();
@@ -61,22 +63,27 @@ namespace SerialSMSSender {
             this.homeLabelSenderOne = new System.Windows.Forms.Label();
             this.homeGroupBoxToggleRetailer = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.homeRadioButtonGlobeOFF = new System.Windows.Forms.RadioButton();
+            this.homeRadioButtonGlobeSMS = new System.Windows.Forms.RadioButton();
+            this.homeRadioButtonGlobeULT = new System.Windows.Forms.RadioButton();
+            this.homeLabelGlobeMode = new System.Windows.Forms.Label();
             this.homeLabelSmart = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.homeRadioButtonOffSmart = new System.Windows.Forms.RadioButton();
+            this.homeRadioButtonOnSmart = new System.Windows.Forms.RadioButton();
             this.homeLabelGlobeThree = new System.Windows.Forms.Label();
             this.homeLabelGlobeTwo = new System.Windows.Forms.Label();
+            this.homeLabelGlobeOne = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.homeRadioButtonOffGlobeThree = new System.Windows.Forms.RadioButton();
+            this.homeRadioButtonOnGlobeThree = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.homeRadioButtonOffGlobeTwo = new System.Windows.Forms.RadioButton();
             this.homeRadioButtonOnGlobeTwo = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.homeRadioButtonOffGlobeOne = new System.Windows.Forms.RadioButton();
             this.homeRadioButtonOnGlobeOne = new System.Windows.Forms.RadioButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.homeRadioButtonOffGlobeThree = new System.Windows.Forms.RadioButton();
-            this.homeRadioButtonOnGlobeThree = new System.Windows.Forms.RadioButton();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.homeRadioButtonOffSmart = new System.Windows.Forms.RadioButton();
-            this.homeRadioButtonOnSmart = new System.Windows.Forms.RadioButton();
-            this.homeLabelGlobeOne = new System.Windows.Forms.Label();
             this.homeTableLayoutPanelTextBoxes = new System.Windows.Forms.TableLayoutPanel();
             this.homeGroupBoxReceiving = new System.Windows.Forms.GroupBox();
             this.homeTextBoxReceiving = new System.Windows.Forms.TextBox();
@@ -87,31 +94,40 @@ namespace SerialSMSSender {
             this.homeTextBoxGlobe = new System.Windows.Forms.TextBox();
             this.homeGroupBoxSmart = new System.Windows.Forms.GroupBox();
             this.homeTextBoxSmart = new System.Windows.Forms.TextBox();
+            this.tabPageGlobeQueue = new System.Windows.Forms.TabPage();
+            this.globeQueueDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPageHelp = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.HelpDataGridView = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.helpLabelReply = new System.Windows.Forms.Label();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.helpLabelOutputStatus = new System.Windows.Forms.Label();
             this.helpLabelStatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.helpLabelOutputDateIssued = new System.Windows.Forms.Label();
             this.helpLabelDateIssued = new System.Windows.Forms.Label();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.helpLabelOutputReferenceNumber = new System.Windows.Forms.Label();
-            this.helpLabelReferenceNumber = new System.Windows.Forms.Label();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.helpLabelOutputDateOfIncident = new System.Windows.Forms.Label();
-            this.helpLabelDateOfIncident = new System.Windows.Forms.Label();
+            this.helpLabelReply = new System.Windows.Forms.Label();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.helpLabelOutputCode = new System.Windows.Forms.Label();
-            this.helpLabelCode = new System.Windows.Forms.Label();
+            this.helpLabelContent = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.helpLabelSenderNumber = new System.Windows.Forms.Label();
             this.helpLabelOutputSenderNumber = new System.Windows.Forms.Label();
             this.helpTextBoxReply = new System.Windows.Forms.TextBox();
             this.helpButtonSend = new System.Windows.Forms.Button();
+            this.tabPageInbox = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.inboxGroupBoxSmart = new System.Windows.Forms.GroupBox();
+            this.inboxDataGridViewSmart = new System.Windows.Forms.DataGridView();
+            this.inboxGroupBoxGlobe3 = new System.Windows.Forms.GroupBox();
+            this.inboxDataGridViewGlobe = new System.Windows.Forms.DataGridView();
+            this.inboxButtonRefresh = new System.Windows.Forms.Button();
+            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            this.inboxLabelYear = new System.Windows.Forms.Label();
+            this.inboxLabelDay = new System.Windows.Forms.Label();
+            this.inboxButtonPrevious = new System.Windows.Forms.Button();
+            this.inboxButtonNext = new System.Windows.Forms.Button();
+            this.inboxLabelMonth = new System.Windows.Forms.Label();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -155,6 +171,7 @@ namespace SerialSMSSender {
             this.label14 = new System.Windows.Forms.Label();
             this.B_RepeatTransaction = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.settingsPortsButtonSaveGSATLoading = new System.Windows.Forms.Button();
             this.settingsPortsButtonSaveGlobeLoading = new System.Windows.Forms.Button();
@@ -165,6 +182,17 @@ namespace SerialSMSSender {
             this.settingsPortsTextBoxSmartLoading = new System.Windows.Forms.TextBox();
             this.settingsPortsTextBoxGlobeLoading = new System.Windows.Forms.TextBox();
             this.settingsPortsTextBoxGSATLoading = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.settingsULTTextBoxRebate = new System.Windows.Forms.TextBox();
+            this.settingsULTButtonSaveRebate = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.settingsULTTextBoxGateway = new System.Windows.Forms.TextBox();
+            this.settingsULTTextBoxConfirmation = new System.Windows.Forms.TextBox();
+            this.settingsULTButtonSaveGateway = new System.Windows.Forms.Button();
+            this.settingsULTButtonSaveConfirmation = new System.Windows.Forms.Button();
             this.settingsGroupBoxPorts = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.settingsPortsButtonSaveGlobeThree = new System.Windows.Forms.Button();
@@ -191,12 +219,12 @@ namespace SerialSMSSender {
             this.settingsPortsLabelGlobeThree = new System.Windows.Forms.TextBox();
             this.settingsPortsLabelSmart = new System.Windows.Forms.TextBox();
             this.settingsPortsButtonSaveSmart = new System.Windows.Forms.Button();
-            this.tabPageInbox = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
-            this.inboxGroupBoxGlobe1 = new System.Windows.Forms.GroupBox();
-            this.inboxGroupBoxGlobe2 = new System.Windows.Forms.GroupBox();
-            this.inboxGroupBoxGlobe3 = new System.Windows.Forms.GroupBox();
-            this.inboxGroupBoxSmart = new System.Windows.Forms.GroupBox();
+            this.tabPageMessageSimulation = new System.Windows.Forms.TabPage();
+            this.messageSimulationTextBoxMessage = new System.Windows.Forms.TextBox();
+            this.messageSimulationLabelMessage = new System.Windows.Forms.Label();
+            this.messageSimulationButtonSend = new System.Windows.Forms.Button();
+            this.messageSimulationTextBoxNumber = new System.Windows.Forms.TextBox();
+            this.messageSimulationLabelNumber = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.mainTabController.SuspendLayout();
             this.tabPageHome.SuspendLayout();
@@ -215,26 +243,34 @@ namespace SerialSMSSender {
             this.panel6.SuspendLayout();
             this.homeGroupBoxToggleRetailer.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.homeTableLayoutPanelTextBoxes.SuspendLayout();
             this.homeGroupBoxReceiving.SuspendLayout();
             this.homeGroupBoxSending.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.homeGroupBoxGlobe.SuspendLayout();
             this.homeGroupBoxSmart.SuspendLayout();
+            this.tabPageGlobeQueue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.globeQueueDataGridView)).BeginInit();
             this.tabPageHelp.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HelpDataGridView)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
-            this.tableLayoutPanel13.SuspendLayout();
-            this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
+            this.tabPageInbox.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
+            this.inboxGroupBoxSmart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inboxDataGridViewSmart)).BeginInit();
+            this.inboxGroupBoxGlobe3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inboxDataGridViewGlobe)).BeginInit();
+            this.tableLayoutPanel22.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -242,11 +278,13 @@ namespace SerialSMSSender {
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             this.settingsGroupBoxPorts.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
-            this.tabPageInbox.SuspendLayout();
-            this.tableLayoutPanel21.SuspendLayout();
+            this.tabPageMessageSimulation.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -268,9 +306,11 @@ namespace SerialSMSSender {
             // mainTabController
             // 
             this.mainTabController.Controls.Add(this.tabPageHome);
+            this.mainTabController.Controls.Add(this.tabPageGlobeQueue);
             this.mainTabController.Controls.Add(this.tabPageHelp);
             this.mainTabController.Controls.Add(this.tabPageInbox);
             this.mainTabController.Controls.Add(this.tabPageSettings);
+            this.mainTabController.Controls.Add(this.tabPageMessageSimulation);
             this.mainTabController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabController.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainTabController.Location = new System.Drawing.Point(3, 3);
@@ -294,8 +334,8 @@ namespace SerialSMSSender {
             // homeTableLayoutPanel
             // 
             this.homeTableLayoutPanel.ColumnCount = 2;
-            this.homeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.89272F));
-            this.homeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.10728F));
+            this.homeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.06513F));
+            this.homeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.93487F));
             this.homeTableLayoutPanel.Controls.Add(this.groupBox1, 0, 1);
             this.homeTableLayoutPanel.Controls.Add(this.homeGroupBoxToggles, 0, 0);
             this.homeTableLayoutPanel.Controls.Add(this.homeTableLayoutPanelTextBoxes, 1, 0);
@@ -317,7 +357,7 @@ namespace SerialSMSSender {
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 347);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(232, 339);
+            this.groupBox1.Size = new System.Drawing.Size(286, 339);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Status";
@@ -336,7 +376,7 @@ namespace SerialSMSSender {
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.34177F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.65823F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(226, 317);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(280, 317);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // groupBox2
@@ -345,7 +385,7 @@ namespace SerialSMSSender {
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 200);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(220, 114);
+            this.groupBox2.Size = new System.Drawing.Size(274, 114);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -367,14 +407,14 @@ namespace SerialSMSSender {
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(214, 92);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(268, 92);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // homeSenderTwoStatus
             // 
             this.homeSenderTwoStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.homeSenderTwoStatus.AutoSize = true;
-            this.homeSenderTwoStatus.Location = new System.Drawing.Point(114, 61);
+            this.homeSenderTwoStatus.Location = new System.Drawing.Point(142, 61);
             this.homeSenderTwoStatus.Name = "homeSenderTwoStatus";
             this.homeSenderTwoStatus.Size = new System.Drawing.Size(61, 15);
             this.homeSenderTwoStatus.TabIndex = 9;
@@ -384,7 +424,7 @@ namespace SerialSMSSender {
             // 
             this.homeSenderTwoStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeSenderTwoStatusLabel.AutoSize = true;
-            this.homeSenderTwoStatusLabel.Location = new System.Drawing.Point(12, 61);
+            this.homeSenderTwoStatusLabel.Location = new System.Drawing.Point(40, 61);
             this.homeSenderTwoStatusLabel.Name = "homeSenderTwoStatusLabel";
             this.homeSenderTwoStatusLabel.Size = new System.Drawing.Size(96, 15);
             this.homeSenderTwoStatusLabel.TabIndex = 6;
@@ -394,7 +434,7 @@ namespace SerialSMSSender {
             // 
             this.homeSenderOneStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeSenderOneStatusLabel.AutoSize = true;
-            this.homeSenderOneStatusLabel.Location = new System.Drawing.Point(11, 15);
+            this.homeSenderOneStatusLabel.Location = new System.Drawing.Point(39, 15);
             this.homeSenderOneStatusLabel.Name = "homeSenderOneStatusLabel";
             this.homeSenderOneStatusLabel.Size = new System.Drawing.Size(97, 15);
             this.homeSenderOneStatusLabel.TabIndex = 7;
@@ -404,7 +444,7 @@ namespace SerialSMSSender {
             // 
             this.homeSenderOneStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.homeSenderOneStatus.AutoSize = true;
-            this.homeSenderOneStatus.Location = new System.Drawing.Point(114, 15);
+            this.homeSenderOneStatus.Location = new System.Drawing.Point(142, 15);
             this.homeSenderOneStatus.Name = "homeSenderOneStatus";
             this.homeSenderOneStatus.Size = new System.Drawing.Size(61, 15);
             this.homeSenderOneStatus.TabIndex = 8;
@@ -416,7 +456,7 @@ namespace SerialSMSSender {
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(220, 191);
+            this.groupBox3.Size = new System.Drawing.Size(274, 191);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
@@ -442,14 +482,14 @@ namespace SerialSMSSender {
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(214, 169);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(268, 169);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // homeSmartStatus
             // 
             this.homeSmartStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.homeSmartStatus.AutoSize = true;
-            this.homeSmartStatus.Location = new System.Drawing.Point(114, 140);
+            this.homeSmartStatus.Location = new System.Drawing.Point(142, 140);
             this.homeSmartStatus.Name = "homeSmartStatus";
             this.homeSmartStatus.Size = new System.Drawing.Size(61, 15);
             this.homeSmartStatus.TabIndex = 12;
@@ -459,7 +499,7 @@ namespace SerialSMSSender {
             // 
             this.homeGlobeThreeStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.homeGlobeThreeStatus.AutoSize = true;
-            this.homeGlobeThreeStatus.Location = new System.Drawing.Point(114, 97);
+            this.homeGlobeThreeStatus.Location = new System.Drawing.Point(142, 97);
             this.homeGlobeThreeStatus.Name = "homeGlobeThreeStatus";
             this.homeGlobeThreeStatus.Size = new System.Drawing.Size(61, 15);
             this.homeGlobeThreeStatus.TabIndex = 11;
@@ -469,7 +509,7 @@ namespace SerialSMSSender {
             // 
             this.homeGlobeTwoStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.homeGlobeTwoStatus.AutoSize = true;
-            this.homeGlobeTwoStatus.Location = new System.Drawing.Point(114, 55);
+            this.homeGlobeTwoStatus.Location = new System.Drawing.Point(142, 55);
             this.homeGlobeTwoStatus.Name = "homeGlobeTwoStatus";
             this.homeGlobeTwoStatus.Size = new System.Drawing.Size(61, 15);
             this.homeGlobeTwoStatus.TabIndex = 10;
@@ -479,7 +519,7 @@ namespace SerialSMSSender {
             // 
             this.homeSmartStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeSmartStatusLabel.AutoSize = true;
-            this.homeSmartStatusLabel.Location = new System.Drawing.Point(36, 140);
+            this.homeSmartStatusLabel.Location = new System.Drawing.Point(64, 140);
             this.homeSmartStatusLabel.Name = "homeSmartStatusLabel";
             this.homeSmartStatusLabel.Size = new System.Drawing.Size(72, 15);
             this.homeSmartStatusLabel.TabIndex = 8;
@@ -489,7 +529,7 @@ namespace SerialSMSSender {
             // 
             this.homeGlobeThreeStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeGlobeThreeStatusLabel.AutoSize = true;
-            this.homeGlobeThreeStatusLabel.Location = new System.Drawing.Point(5, 97);
+            this.homeGlobeThreeStatusLabel.Location = new System.Drawing.Point(33, 97);
             this.homeGlobeThreeStatusLabel.Name = "homeGlobeThreeStatusLabel";
             this.homeGlobeThreeStatusLabel.Size = new System.Drawing.Size(103, 15);
             this.homeGlobeThreeStatusLabel.TabIndex = 7;
@@ -499,7 +539,7 @@ namespace SerialSMSSender {
             // 
             this.homeGlobeTwoStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeGlobeTwoStatusLabel.AutoSize = true;
-            this.homeGlobeTwoStatusLabel.Location = new System.Drawing.Point(13, 55);
+            this.homeGlobeTwoStatusLabel.Location = new System.Drawing.Point(41, 55);
             this.homeGlobeTwoStatusLabel.Name = "homeGlobeTwoStatusLabel";
             this.homeGlobeTwoStatusLabel.Size = new System.Drawing.Size(95, 15);
             this.homeGlobeTwoStatusLabel.TabIndex = 6;
@@ -509,7 +549,7 @@ namespace SerialSMSSender {
             // 
             this.homeGlobeOneStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeGlobeOneStatusLabel.AutoSize = true;
-            this.homeGlobeOneStatusLabel.Location = new System.Drawing.Point(12, 13);
+            this.homeGlobeOneStatusLabel.Location = new System.Drawing.Point(40, 13);
             this.homeGlobeOneStatusLabel.Name = "homeGlobeOneStatusLabel";
             this.homeGlobeOneStatusLabel.Size = new System.Drawing.Size(96, 15);
             this.homeGlobeOneStatusLabel.TabIndex = 5;
@@ -519,7 +559,7 @@ namespace SerialSMSSender {
             // 
             this.homeGlobeOneStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.homeGlobeOneStatus.AutoSize = true;
-            this.homeGlobeOneStatus.Location = new System.Drawing.Point(114, 13);
+            this.homeGlobeOneStatus.Location = new System.Drawing.Point(142, 13);
             this.homeGlobeOneStatus.Name = "homeGlobeOneStatus";
             this.homeGlobeOneStatus.Size = new System.Drawing.Size(61, 15);
             this.homeGlobeOneStatus.TabIndex = 9;
@@ -532,7 +572,7 @@ namespace SerialSMSSender {
             this.homeGroupBoxToggles.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeGroupBoxToggles.Location = new System.Drawing.Point(3, 3);
             this.homeGroupBoxToggles.Name = "homeGroupBoxToggles";
-            this.homeGroupBoxToggles.Size = new System.Drawing.Size(232, 338);
+            this.homeGroupBoxToggles.Size = new System.Drawing.Size(286, 338);
             this.homeGroupBoxToggles.TabIndex = 0;
             this.homeGroupBoxToggles.TabStop = false;
             this.homeGroupBoxToggles.Text = "Toggles";
@@ -551,7 +591,7 @@ namespace SerialSMSSender {
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.34177F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.65823F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(226, 316);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(280, 316);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // homeGroupBoxToggleSender
@@ -560,7 +600,7 @@ namespace SerialSMSSender {
             this.homeGroupBoxToggleSender.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeGroupBoxToggleSender.Location = new System.Drawing.Point(3, 199);
             this.homeGroupBoxToggleSender.Name = "homeGroupBoxToggleSender";
-            this.homeGroupBoxToggleSender.Size = new System.Drawing.Size(220, 114);
+            this.homeGroupBoxToggleSender.Size = new System.Drawing.Size(274, 114);
             this.homeGroupBoxToggleSender.TabIndex = 0;
             this.homeGroupBoxToggleSender.TabStop = false;
             // 
@@ -582,14 +622,14 @@ namespace SerialSMSSender {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(214, 92);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(268, 92);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // homeLabelSenderTwo
             // 
             this.homeLabelSenderTwo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeLabelSenderTwo.AutoSize = true;
-            this.homeLabelSenderTwo.Location = new System.Drawing.Point(14, 61);
+            this.homeLabelSenderTwo.Location = new System.Drawing.Point(42, 61);
             this.homeLabelSenderTwo.Name = "homeLabelSenderTwo";
             this.homeLabelSenderTwo.Size = new System.Drawing.Size(96, 15);
             this.homeLabelSenderTwo.TabIndex = 6;
@@ -599,7 +639,7 @@ namespace SerialSMSSender {
             // 
             this.panel5.Controls.Add(this.homeRadioButtonOffSenderOne);
             this.panel5.Controls.Add(this.homeRadioButtonOnSenderOne);
-            this.panel5.Location = new System.Drawing.Point(113, 0);
+            this.panel5.Location = new System.Drawing.Point(141, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(101, 42);
@@ -634,7 +674,7 @@ namespace SerialSMSSender {
             // 
             this.panel6.Controls.Add(this.homeRadioButtonOffSenderTwo);
             this.panel6.Controls.Add(this.homeRadioButtonOnSenderTwo);
-            this.panel6.Location = new System.Drawing.Point(113, 46);
+            this.panel6.Location = new System.Drawing.Point(141, 46);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(101, 42);
@@ -669,7 +709,7 @@ namespace SerialSMSSender {
             // 
             this.homeLabelSenderOne.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeLabelSenderOne.AutoSize = true;
-            this.homeLabelSenderOne.Location = new System.Drawing.Point(13, 15);
+            this.homeLabelSenderOne.Location = new System.Drawing.Point(41, 15);
             this.homeLabelSenderOne.Name = "homeLabelSenderOne";
             this.homeLabelSenderOne.Size = new System.Drawing.Size(97, 15);
             this.homeLabelSenderOne.TabIndex = 7;
@@ -681,50 +721,150 @@ namespace SerialSMSSender {
             this.homeGroupBoxToggleRetailer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeGroupBoxToggleRetailer.Location = new System.Drawing.Point(3, 3);
             this.homeGroupBoxToggleRetailer.Name = "homeGroupBoxToggleRetailer";
-            this.homeGroupBoxToggleRetailer.Size = new System.Drawing.Size(220, 190);
+            this.homeGroupBoxToggleRetailer.Size = new System.Drawing.Size(274, 190);
             this.homeGroupBoxToggleRetailer.TabIndex = 1;
             this.homeGroupBoxToggleRetailer.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.33645F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.66355F));
-            this.tableLayoutPanel2.Controls.Add(this.homeLabelSmart, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.homeLabelGlobeThree, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.homeLabelGlobeTwo, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel3, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.panel4, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.homeLabelGlobeOne, 0, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.41791F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.58209F));
+            this.tableLayoutPanel2.Controls.Add(this.panel7, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.homeLabelGlobeMode, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.homeLabelSmart, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.panel4, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.homeLabelGlobeThree, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.homeLabelGlobeTwo, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.homeLabelGlobeOne, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(214, 168);
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(268, 168);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.homeRadioButtonGlobeOFF);
+            this.panel7.Controls.Add(this.homeRadioButtonGlobeSMS);
+            this.panel7.Controls.Add(this.homeRadioButtonGlobeULT);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(111, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(157, 33);
+            this.panel7.TabIndex = 10;
+            // 
+            // homeRadioButtonGlobeOFF
+            // 
+            this.homeRadioButtonGlobeOFF.AutoSize = true;
+            this.homeRadioButtonGlobeOFF.Location = new System.Drawing.Point(101, 11);
+            this.homeRadioButtonGlobeOFF.Margin = new System.Windows.Forms.Padding(0);
+            this.homeRadioButtonGlobeOFF.Name = "homeRadioButtonGlobeOFF";
+            this.homeRadioButtonGlobeOFF.Size = new System.Drawing.Size(42, 19);
+            this.homeRadioButtonGlobeOFF.TabIndex = 2;
+            this.homeRadioButtonGlobeOFF.TabStop = true;
+            this.homeRadioButtonGlobeOFF.Text = "Off";
+            this.homeRadioButtonGlobeOFF.UseVisualStyleBackColor = true;
+            this.homeRadioButtonGlobeOFF.Click += new System.EventHandler(this.homeRadioButtonGlobeOFF_Click);
+            // 
+            // homeRadioButtonGlobeSMS
+            // 
+            this.homeRadioButtonGlobeSMS.AutoSize = true;
+            this.homeRadioButtonGlobeSMS.Location = new System.Drawing.Point(53, 11);
+            this.homeRadioButtonGlobeSMS.Margin = new System.Windows.Forms.Padding(0);
+            this.homeRadioButtonGlobeSMS.Name = "homeRadioButtonGlobeSMS";
+            this.homeRadioButtonGlobeSMS.Size = new System.Drawing.Size(48, 19);
+            this.homeRadioButtonGlobeSMS.TabIndex = 1;
+            this.homeRadioButtonGlobeSMS.TabStop = true;
+            this.homeRadioButtonGlobeSMS.Text = "SMS";
+            this.homeRadioButtonGlobeSMS.UseVisualStyleBackColor = true;
+            this.homeRadioButtonGlobeSMS.Click += new System.EventHandler(this.homeRadioButtonGlobeSMS_Click);
+            // 
+            // homeRadioButtonGlobeULT
+            // 
+            this.homeRadioButtonGlobeULT.AutoSize = true;
+            this.homeRadioButtonGlobeULT.Location = new System.Drawing.Point(10, 11);
+            this.homeRadioButtonGlobeULT.Margin = new System.Windows.Forms.Padding(0);
+            this.homeRadioButtonGlobeULT.Name = "homeRadioButtonGlobeULT";
+            this.homeRadioButtonGlobeULT.Size = new System.Drawing.Size(44, 19);
+            this.homeRadioButtonGlobeULT.TabIndex = 0;
+            this.homeRadioButtonGlobeULT.TabStop = true;
+            this.homeRadioButtonGlobeULT.Text = "ULT";
+            this.homeRadioButtonGlobeULT.UseVisualStyleBackColor = true;
+            this.homeRadioButtonGlobeULT.Click += new System.EventHandler(this.homeRadioButtonGlobeULT_Click);
+            // 
+            // homeLabelGlobeMode
+            // 
+            this.homeLabelGlobeMode.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.homeLabelGlobeMode.AutoSize = true;
+            this.homeLabelGlobeMode.Location = new System.Drawing.Point(21, 9);
+            this.homeLabelGlobeMode.Name = "homeLabelGlobeMode";
+            this.homeLabelGlobeMode.Size = new System.Drawing.Size(87, 15);
+            this.homeLabelGlobeMode.TabIndex = 9;
+            this.homeLabelGlobeMode.Text = "Globe Loading:";
             // 
             // homeLabelSmart
             // 
             this.homeLabelSmart.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeLabelSmart.AutoSize = true;
-            this.homeLabelSmart.Location = new System.Drawing.Point(37, 139);
+            this.homeLabelSmart.Location = new System.Drawing.Point(36, 142);
             this.homeLabelSmart.Name = "homeLabelSmart";
             this.homeLabelSmart.Size = new System.Drawing.Size(72, 15);
             this.homeLabelSmart.TabIndex = 8;
             this.homeLabelSmart.Text = "SMART Port:";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.homeRadioButtonOffSmart);
+            this.panel4.Controls.Add(this.homeRadioButtonOnSmart);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(111, 132);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(157, 36);
+            this.panel4.TabIndex = 4;
+            // 
+            // homeRadioButtonOffSmart
+            // 
+            this.homeRadioButtonOffSmart.AutoSize = true;
+            this.homeRadioButtonOffSmart.Location = new System.Drawing.Point(53, 11);
+            this.homeRadioButtonOffSmart.Margin = new System.Windows.Forms.Padding(0);
+            this.homeRadioButtonOffSmart.Name = "homeRadioButtonOffSmart";
+            this.homeRadioButtonOffSmart.Size = new System.Drawing.Size(42, 19);
+            this.homeRadioButtonOffSmart.TabIndex = 1;
+            this.homeRadioButtonOffSmart.TabStop = true;
+            this.homeRadioButtonOffSmart.Text = "Off";
+            this.homeRadioButtonOffSmart.UseVisualStyleBackColor = true;
+            this.homeRadioButtonOffSmart.CheckedChanged += new System.EventHandler(this.homeRadioButtonOffSmart_CheckedChanged);
+            // 
+            // homeRadioButtonOnSmart
+            // 
+            this.homeRadioButtonOnSmart.AutoSize = true;
+            this.homeRadioButtonOnSmart.Location = new System.Drawing.Point(10, 11);
+            this.homeRadioButtonOnSmart.Margin = new System.Windows.Forms.Padding(0);
+            this.homeRadioButtonOnSmart.Name = "homeRadioButtonOnSmart";
+            this.homeRadioButtonOnSmart.Size = new System.Drawing.Size(41, 19);
+            this.homeRadioButtonOnSmart.TabIndex = 0;
+            this.homeRadioButtonOnSmart.TabStop = true;
+            this.homeRadioButtonOnSmart.Text = "On";
+            this.homeRadioButtonOnSmart.UseVisualStyleBackColor = true;
+            // 
             // homeLabelGlobeThree
             // 
             this.homeLabelGlobeThree.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeLabelGlobeThree.AutoSize = true;
-            this.homeLabelGlobeThree.Location = new System.Drawing.Point(6, 97);
+            this.homeLabelGlobeThree.Location = new System.Drawing.Point(5, 108);
             this.homeLabelGlobeThree.Name = "homeLabelGlobeThree";
             this.homeLabelGlobeThree.Size = new System.Drawing.Size(103, 15);
             this.homeLabelGlobeThree.TabIndex = 7;
@@ -734,20 +874,67 @@ namespace SerialSMSSender {
             // 
             this.homeLabelGlobeTwo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.homeLabelGlobeTwo.AutoSize = true;
-            this.homeLabelGlobeTwo.Location = new System.Drawing.Point(14, 55);
+            this.homeLabelGlobeTwo.Location = new System.Drawing.Point(13, 75);
             this.homeLabelGlobeTwo.Name = "homeLabelGlobeTwo";
             this.homeLabelGlobeTwo.Size = new System.Drawing.Size(95, 15);
             this.homeLabelGlobeTwo.TabIndex = 6;
             this.homeLabelGlobeTwo.Text = "GLOBE Port Two:";
             // 
+            // homeLabelGlobeOne
+            // 
+            this.homeLabelGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.homeLabelGlobeOne.AutoSize = true;
+            this.homeLabelGlobeOne.Location = new System.Drawing.Point(12, 42);
+            this.homeLabelGlobeOne.Name = "homeLabelGlobeOne";
+            this.homeLabelGlobeOne.Size = new System.Drawing.Size(96, 15);
+            this.homeLabelGlobeOne.TabIndex = 5;
+            this.homeLabelGlobeOne.Text = "GLOBE Port One:";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.homeRadioButtonOffGlobeThree);
+            this.panel3.Controls.Add(this.homeRadioButtonOnGlobeThree);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(111, 99);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(157, 33);
+            this.panel3.TabIndex = 3;
+            // 
+            // homeRadioButtonOffGlobeThree
+            // 
+            this.homeRadioButtonOffGlobeThree.AutoSize = true;
+            this.homeRadioButtonOffGlobeThree.Location = new System.Drawing.Point(53, 11);
+            this.homeRadioButtonOffGlobeThree.Margin = new System.Windows.Forms.Padding(0);
+            this.homeRadioButtonOffGlobeThree.Name = "homeRadioButtonOffGlobeThree";
+            this.homeRadioButtonOffGlobeThree.Size = new System.Drawing.Size(42, 19);
+            this.homeRadioButtonOffGlobeThree.TabIndex = 1;
+            this.homeRadioButtonOffGlobeThree.TabStop = true;
+            this.homeRadioButtonOffGlobeThree.Text = "Off";
+            this.homeRadioButtonOffGlobeThree.UseVisualStyleBackColor = true;
+            this.homeRadioButtonOffGlobeThree.CheckedChanged += new System.EventHandler(this.homeRadioButtonOffGlobeThree_CheckedChanged);
+            // 
+            // homeRadioButtonOnGlobeThree
+            // 
+            this.homeRadioButtonOnGlobeThree.AutoSize = true;
+            this.homeRadioButtonOnGlobeThree.Location = new System.Drawing.Point(10, 11);
+            this.homeRadioButtonOnGlobeThree.Margin = new System.Windows.Forms.Padding(0);
+            this.homeRadioButtonOnGlobeThree.Name = "homeRadioButtonOnGlobeThree";
+            this.homeRadioButtonOnGlobeThree.Size = new System.Drawing.Size(41, 19);
+            this.homeRadioButtonOnGlobeThree.TabIndex = 0;
+            this.homeRadioButtonOnGlobeThree.TabStop = true;
+            this.homeRadioButtonOnGlobeThree.Text = "On";
+            this.homeRadioButtonOnGlobeThree.UseVisualStyleBackColor = true;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.homeRadioButtonOffGlobeTwo);
             this.panel2.Controls.Add(this.homeRadioButtonOnGlobeTwo);
-            this.panel2.Location = new System.Drawing.Point(112, 42);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(111, 66);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(102, 42);
+            this.panel2.Size = new System.Drawing.Size(157, 33);
             this.panel2.TabIndex = 2;
             // 
             // homeRadioButtonOffGlobeTwo
@@ -779,10 +966,11 @@ namespace SerialSMSSender {
             // 
             this.panel1.Controls.Add(this.homeRadioButtonOffGlobeOne);
             this.panel1.Controls.Add(this.homeRadioButtonOnGlobeOne);
-            this.panel1.Location = new System.Drawing.Point(112, 0);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(111, 33);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(102, 42);
+            this.panel1.Size = new System.Drawing.Size(157, 33);
             this.panel1.TabIndex = 0;
             // 
             // homeRadioButtonOffGlobeOne
@@ -810,86 +998,6 @@ namespace SerialSMSSender {
             this.homeRadioButtonOnGlobeOne.Text = "On";
             this.homeRadioButtonOnGlobeOne.UseVisualStyleBackColor = true;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.homeRadioButtonOffGlobeThree);
-            this.panel3.Controls.Add(this.homeRadioButtonOnGlobeThree);
-            this.panel3.Location = new System.Drawing.Point(112, 84);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(102, 42);
-            this.panel3.TabIndex = 3;
-            // 
-            // homeRadioButtonOffGlobeThree
-            // 
-            this.homeRadioButtonOffGlobeThree.AutoSize = true;
-            this.homeRadioButtonOffGlobeThree.Location = new System.Drawing.Point(53, 11);
-            this.homeRadioButtonOffGlobeThree.Margin = new System.Windows.Forms.Padding(0);
-            this.homeRadioButtonOffGlobeThree.Name = "homeRadioButtonOffGlobeThree";
-            this.homeRadioButtonOffGlobeThree.Size = new System.Drawing.Size(42, 19);
-            this.homeRadioButtonOffGlobeThree.TabIndex = 1;
-            this.homeRadioButtonOffGlobeThree.TabStop = true;
-            this.homeRadioButtonOffGlobeThree.Text = "Off";
-            this.homeRadioButtonOffGlobeThree.UseVisualStyleBackColor = true;
-            this.homeRadioButtonOffGlobeThree.CheckedChanged += new System.EventHandler(this.homeRadioButtonOffGlobeThree_CheckedChanged);
-            // 
-            // homeRadioButtonOnGlobeThree
-            // 
-            this.homeRadioButtonOnGlobeThree.AutoSize = true;
-            this.homeRadioButtonOnGlobeThree.Location = new System.Drawing.Point(10, 11);
-            this.homeRadioButtonOnGlobeThree.Margin = new System.Windows.Forms.Padding(0);
-            this.homeRadioButtonOnGlobeThree.Name = "homeRadioButtonOnGlobeThree";
-            this.homeRadioButtonOnGlobeThree.Size = new System.Drawing.Size(41, 19);
-            this.homeRadioButtonOnGlobeThree.TabIndex = 0;
-            this.homeRadioButtonOnGlobeThree.TabStop = true;
-            this.homeRadioButtonOnGlobeThree.Text = "On";
-            this.homeRadioButtonOnGlobeThree.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.homeRadioButtonOffSmart);
-            this.panel4.Controls.Add(this.homeRadioButtonOnSmart);
-            this.panel4.Location = new System.Drawing.Point(112, 126);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(102, 42);
-            this.panel4.TabIndex = 4;
-            // 
-            // homeRadioButtonOffSmart
-            // 
-            this.homeRadioButtonOffSmart.AutoSize = true;
-            this.homeRadioButtonOffSmart.Location = new System.Drawing.Point(53, 11);
-            this.homeRadioButtonOffSmart.Margin = new System.Windows.Forms.Padding(0);
-            this.homeRadioButtonOffSmart.Name = "homeRadioButtonOffSmart";
-            this.homeRadioButtonOffSmart.Size = new System.Drawing.Size(42, 19);
-            this.homeRadioButtonOffSmart.TabIndex = 1;
-            this.homeRadioButtonOffSmart.TabStop = true;
-            this.homeRadioButtonOffSmart.Text = "Off";
-            this.homeRadioButtonOffSmart.UseVisualStyleBackColor = true;
-            this.homeRadioButtonOffSmart.CheckedChanged += new System.EventHandler(this.homeRadioButtonOffSmart_CheckedChanged);
-            // 
-            // homeRadioButtonOnSmart
-            // 
-            this.homeRadioButtonOnSmart.AutoSize = true;
-            this.homeRadioButtonOnSmart.Location = new System.Drawing.Point(10, 11);
-            this.homeRadioButtonOnSmart.Margin = new System.Windows.Forms.Padding(0);
-            this.homeRadioButtonOnSmart.Name = "homeRadioButtonOnSmart";
-            this.homeRadioButtonOnSmart.Size = new System.Drawing.Size(41, 19);
-            this.homeRadioButtonOnSmart.TabIndex = 0;
-            this.homeRadioButtonOnSmart.TabStop = true;
-            this.homeRadioButtonOnSmart.Text = "On";
-            this.homeRadioButtonOnSmart.UseVisualStyleBackColor = true;
-            // 
-            // homeLabelGlobeOne
-            // 
-            this.homeLabelGlobeOne.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.homeLabelGlobeOne.AutoSize = true;
-            this.homeLabelGlobeOne.Location = new System.Drawing.Point(13, 13);
-            this.homeLabelGlobeOne.Name = "homeLabelGlobeOne";
-            this.homeLabelGlobeOne.Size = new System.Drawing.Size(96, 15);
-            this.homeLabelGlobeOne.TabIndex = 5;
-            this.homeLabelGlobeOne.Text = "GLOBE Port One:";
-            // 
             // homeTableLayoutPanelTextBoxes
             // 
             this.homeTableLayoutPanelTextBoxes.ColumnCount = 2;
@@ -899,12 +1007,12 @@ namespace SerialSMSSender {
             this.homeTableLayoutPanelTextBoxes.Controls.Add(this.homeGroupBoxSending, 0, 0);
             this.homeTableLayoutPanelTextBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeTableLayoutPanelTextBoxes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeTableLayoutPanelTextBoxes.Location = new System.Drawing.Point(238, 0);
+            this.homeTableLayoutPanelTextBoxes.Location = new System.Drawing.Point(292, 0);
             this.homeTableLayoutPanelTextBoxes.Margin = new System.Windows.Forms.Padding(0);
             this.homeTableLayoutPanelTextBoxes.Name = "homeTableLayoutPanelTextBoxes";
             this.homeTableLayoutPanelTextBoxes.RowCount = 1;
             this.homeTableLayoutPanelTextBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.homeTableLayoutPanelTextBoxes.Size = new System.Drawing.Size(806, 344);
+            this.homeTableLayoutPanelTextBoxes.Size = new System.Drawing.Size(752, 344);
             this.homeTableLayoutPanelTextBoxes.TabIndex = 1;
             // 
             // homeGroupBoxReceiving
@@ -912,9 +1020,9 @@ namespace SerialSMSSender {
             this.homeGroupBoxReceiving.Controls.Add(this.homeTextBoxReceiving);
             this.homeGroupBoxReceiving.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeGroupBoxReceiving.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeGroupBoxReceiving.Location = new System.Drawing.Point(406, 3);
+            this.homeGroupBoxReceiving.Location = new System.Drawing.Point(379, 3);
             this.homeGroupBoxReceiving.Name = "homeGroupBoxReceiving";
-            this.homeGroupBoxReceiving.Size = new System.Drawing.Size(397, 338);
+            this.homeGroupBoxReceiving.Size = new System.Drawing.Size(370, 338);
             this.homeGroupBoxReceiving.TabIndex = 1;
             this.homeGroupBoxReceiving.TabStop = false;
             this.homeGroupBoxReceiving.Text = "Modem Responses (Receiving)";
@@ -928,7 +1036,7 @@ namespace SerialSMSSender {
             this.homeTextBoxReceiving.Name = "homeTextBoxReceiving";
             this.homeTextBoxReceiving.ReadOnly = true;
             this.homeTextBoxReceiving.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.homeTextBoxReceiving.Size = new System.Drawing.Size(391, 316);
+            this.homeTextBoxReceiving.Size = new System.Drawing.Size(364, 316);
             this.homeTextBoxReceiving.TabIndex = 10;
             // 
             // homeGroupBoxSending
@@ -938,7 +1046,7 @@ namespace SerialSMSSender {
             this.homeGroupBoxSending.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeGroupBoxSending.Location = new System.Drawing.Point(3, 3);
             this.homeGroupBoxSending.Name = "homeGroupBoxSending";
-            this.homeGroupBoxSending.Size = new System.Drawing.Size(397, 338);
+            this.homeGroupBoxSending.Size = new System.Drawing.Size(370, 338);
             this.homeGroupBoxSending.TabIndex = 0;
             this.homeGroupBoxSending.TabStop = false;
             this.homeGroupBoxSending.Text = "Modem Responses (Sending)";
@@ -952,7 +1060,7 @@ namespace SerialSMSSender {
             this.homeTextBoxSending.Name = "homeTextBoxSending";
             this.homeTextBoxSending.ReadOnly = true;
             this.homeTextBoxSending.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.homeTextBoxSending.Size = new System.Drawing.Size(391, 316);
+            this.homeTextBoxSending.Size = new System.Drawing.Size(364, 316);
             this.homeTextBoxSending.TabIndex = 9;
             // 
             // tableLayoutPanel7
@@ -963,12 +1071,12 @@ namespace SerialSMSSender {
             this.tableLayoutPanel7.Controls.Add(this.homeGroupBoxGlobe, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.homeGroupBoxSmart, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(241, 347);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(295, 347);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 339F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(800, 339);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(746, 339);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
             // homeGroupBoxGlobe
@@ -977,7 +1085,7 @@ namespace SerialSMSSender {
             this.homeGroupBoxGlobe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeGroupBoxGlobe.Location = new System.Drawing.Point(3, 3);
             this.homeGroupBoxGlobe.Name = "homeGroupBoxGlobe";
-            this.homeGroupBoxGlobe.Size = new System.Drawing.Size(394, 333);
+            this.homeGroupBoxGlobe.Size = new System.Drawing.Size(367, 333);
             this.homeGroupBoxGlobe.TabIndex = 0;
             this.homeGroupBoxGlobe.TabStop = false;
             this.homeGroupBoxGlobe.Text = "Modem Responses (GLOBE)";
@@ -991,16 +1099,16 @@ namespace SerialSMSSender {
             this.homeTextBoxGlobe.Name = "homeTextBoxGlobe";
             this.homeTextBoxGlobe.ReadOnly = true;
             this.homeTextBoxGlobe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.homeTextBoxGlobe.Size = new System.Drawing.Size(388, 311);
+            this.homeTextBoxGlobe.Size = new System.Drawing.Size(361, 311);
             this.homeTextBoxGlobe.TabIndex = 0;
             // 
             // homeGroupBoxSmart
             // 
             this.homeGroupBoxSmart.Controls.Add(this.homeTextBoxSmart);
             this.homeGroupBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeGroupBoxSmart.Location = new System.Drawing.Point(403, 3);
+            this.homeGroupBoxSmart.Location = new System.Drawing.Point(376, 3);
             this.homeGroupBoxSmart.Name = "homeGroupBoxSmart";
-            this.homeGroupBoxSmart.Size = new System.Drawing.Size(394, 333);
+            this.homeGroupBoxSmart.Size = new System.Drawing.Size(367, 333);
             this.homeGroupBoxSmart.TabIndex = 1;
             this.homeGroupBoxSmart.TabStop = false;
             this.homeGroupBoxSmart.Text = "Modem Responses (SMART)";
@@ -1014,8 +1122,33 @@ namespace SerialSMSSender {
             this.homeTextBoxSmart.Name = "homeTextBoxSmart";
             this.homeTextBoxSmart.ReadOnly = true;
             this.homeTextBoxSmart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.homeTextBoxSmart.Size = new System.Drawing.Size(388, 311);
+            this.homeTextBoxSmart.Size = new System.Drawing.Size(361, 311);
             this.homeTextBoxSmart.TabIndex = 1;
+            // 
+            // tabPageGlobeQueue
+            // 
+            this.tabPageGlobeQueue.Controls.Add(this.globeQueueDataGridView);
+            this.tabPageGlobeQueue.Location = new System.Drawing.Point(4, 24);
+            this.tabPageGlobeQueue.Name = "tabPageGlobeQueue";
+            this.tabPageGlobeQueue.Size = new System.Drawing.Size(1050, 695);
+            this.tabPageGlobeQueue.TabIndex = 4;
+            this.tabPageGlobeQueue.Text = "Globe Queue";
+            this.tabPageGlobeQueue.UseVisualStyleBackColor = true;
+            // 
+            // globeQueueDataGridView
+            // 
+            this.globeQueueDataGridView.AllowUserToAddRows = false;
+            this.globeQueueDataGridView.AllowUserToDeleteRows = false;
+            this.globeQueueDataGridView.AllowUserToResizeColumns = false;
+            this.globeQueueDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.globeQueueDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.globeQueueDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.globeQueueDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.globeQueueDataGridView.Name = "globeQueueDataGridView";
+            this.globeQueueDataGridView.RowHeadersVisible = false;
+            this.globeQueueDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.globeQueueDataGridView.Size = new System.Drawing.Size(1050, 695);
+            this.globeQueueDataGridView.TabIndex = 0;
             // 
             // tabPageHelp
             // 
@@ -1065,11 +1198,9 @@ namespace SerialSMSSender {
             // 
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel15, 0, 3);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel14, 0, 2);
             this.tableLayoutPanel9.Controls.Add(this.helpLabelReply, 0, 6);
-            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel15, 0, 5);
-            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel14, 0, 4);
-            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel13, 0, 3);
-            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel12, 0, 2);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel11, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.helpTextBoxReply, 0, 7);
@@ -1090,16 +1221,6 @@ namespace SerialSMSSender {
             this.tableLayoutPanel9.Size = new System.Drawing.Size(236, 689);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
-            // helpLabelReply
-            // 
-            this.helpLabelReply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.helpLabelReply.AutoSize = true;
-            this.helpLabelReply.Location = new System.Drawing.Point(3, 384);
-            this.helpLabelReply.Name = "helpLabelReply";
-            this.helpLabelReply.Size = new System.Drawing.Size(39, 15);
-            this.helpLabelReply.TabIndex = 6;
-            this.helpLabelReply.Text = "Reply:";
-            // 
             // tableLayoutPanel15
             // 
             this.tableLayoutPanel15.ColumnCount = 2;
@@ -1108,14 +1229,14 @@ namespace SerialSMSSender {
             this.tableLayoutPanel15.Controls.Add(this.helpLabelOutputStatus, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.helpLabelStatus, 0, 0);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(0, 285);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(0, 171);
             this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel15.Size = new System.Drawing.Size(236, 57);
-            this.tableLayoutPanel15.TabIndex = 5;
+            this.tableLayoutPanel15.TabIndex = 10;
             // 
             // helpLabelOutputStatus
             // 
@@ -1146,14 +1267,14 @@ namespace SerialSMSSender {
             this.tableLayoutPanel14.Controls.Add(this.helpLabelOutputDateIssued, 0, 0);
             this.tableLayoutPanel14.Controls.Add(this.helpLabelDateIssued, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 228);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 114);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(236, 57);
-            this.tableLayoutPanel14.TabIndex = 4;
+            this.tableLayoutPanel14.TabIndex = 9;
             // 
             // helpLabelOutputDateIssued
             // 
@@ -1176,80 +1297,15 @@ namespace SerialSMSSender {
             this.helpLabelDateIssued.TabIndex = 1;
             this.helpLabelDateIssued.Text = "Date Issued:";
             // 
-            // tableLayoutPanel13
+            // helpLabelReply
             // 
-            this.tableLayoutPanel13.ColumnCount = 2;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.40425F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.59575F));
-            this.tableLayoutPanel13.Controls.Add(this.helpLabelOutputReferenceNumber, 0, 0);
-            this.tableLayoutPanel13.Controls.Add(this.helpLabelReferenceNumber, 0, 0);
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 171);
-            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 1;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(236, 57);
-            this.tableLayoutPanel13.TabIndex = 3;
-            // 
-            // helpLabelOutputReferenceNumber
-            // 
-            this.helpLabelOutputReferenceNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.helpLabelOutputReferenceNumber.AutoSize = true;
-            this.helpLabelOutputReferenceNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpLabelOutputReferenceNumber.Location = new System.Drawing.Point(169, 21);
-            this.helpLabelOutputReferenceNumber.Name = "helpLabelOutputReferenceNumber";
-            this.helpLabelOutputReferenceNumber.Size = new System.Drawing.Size(0, 15);
-            this.helpLabelOutputReferenceNumber.TabIndex = 2;
-            // 
-            // helpLabelReferenceNumber
-            // 
-            this.helpLabelReferenceNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.helpLabelReferenceNumber.AutoSize = true;
-            this.helpLabelReferenceNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpLabelReferenceNumber.Location = new System.Drawing.Point(51, 21);
-            this.helpLabelReferenceNumber.Name = "helpLabelReferenceNumber";
-            this.helpLabelReferenceNumber.Size = new System.Drawing.Size(48, 15);
-            this.helpLabelReferenceNumber.TabIndex = 1;
-            this.helpLabelReferenceNumber.Text = "Ref.No:";
-            // 
-            // tableLayoutPanel12
-            // 
-            this.tableLayoutPanel12.ColumnCount = 2;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.65957F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.34043F));
-            this.tableLayoutPanel12.Controls.Add(this.helpLabelOutputDateOfIncident, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.helpLabelDateOfIncident, 0, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 114);
-            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 1;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(235, 57);
-            this.tableLayoutPanel12.TabIndex = 2;
-            // 
-            // helpLabelOutputDateOfIncident
-            // 
-            this.helpLabelOutputDateOfIncident.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.helpLabelOutputDateOfIncident.AutoSize = true;
-            this.helpLabelOutputDateOfIncident.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpLabelOutputDateOfIncident.Location = new System.Drawing.Point(173, 21);
-            this.helpLabelOutputDateOfIncident.Name = "helpLabelOutputDateOfIncident";
-            this.helpLabelOutputDateOfIncident.Size = new System.Drawing.Size(0, 15);
-            this.helpLabelOutputDateOfIncident.TabIndex = 2;
-            // 
-            // helpLabelDateOfIncident
-            // 
-            this.helpLabelDateOfIncident.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.helpLabelDateOfIncident.AutoSize = true;
-            this.helpLabelDateOfIncident.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpLabelDateOfIncident.Location = new System.Drawing.Point(7, 21);
-            this.helpLabelDateOfIncident.Name = "helpLabelDateOfIncident";
-            this.helpLabelDateOfIncident.Size = new System.Drawing.Size(101, 15);
-            this.helpLabelDateOfIncident.TabIndex = 1;
-            this.helpLabelDateOfIncident.Text = "Date of Incident:";
+            this.helpLabelReply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.helpLabelReply.AutoSize = true;
+            this.helpLabelReply.Location = new System.Drawing.Point(3, 384);
+            this.helpLabelReply.Name = "helpLabelReply";
+            this.helpLabelReply.Size = new System.Drawing.Size(39, 15);
+            this.helpLabelReply.TabIndex = 6;
+            this.helpLabelReply.Text = "Reply:";
             // 
             // tableLayoutPanel11
             // 
@@ -1257,7 +1313,7 @@ namespace SerialSMSSender {
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.40425F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.59575F));
             this.tableLayoutPanel11.Controls.Add(this.helpLabelOutputCode, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.helpLabelCode, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.helpLabelContent, 0, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 57);
             this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
@@ -1278,16 +1334,16 @@ namespace SerialSMSSender {
             this.helpLabelOutputCode.Size = new System.Drawing.Size(0, 15);
             this.helpLabelOutputCode.TabIndex = 2;
             // 
-            // helpLabelCode
+            // helpLabelContent
             // 
-            this.helpLabelCode.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.helpLabelCode.AutoSize = true;
-            this.helpLabelCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpLabelCode.Location = new System.Drawing.Point(61, 21);
-            this.helpLabelCode.Name = "helpLabelCode";
-            this.helpLabelCode.Size = new System.Drawing.Size(38, 15);
-            this.helpLabelCode.TabIndex = 1;
-            this.helpLabelCode.Text = "Code:";
+            this.helpLabelContent.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.helpLabelContent.AutoSize = true;
+            this.helpLabelContent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpLabelContent.Location = new System.Drawing.Point(44, 21);
+            this.helpLabelContent.Name = "helpLabelContent";
+            this.helpLabelContent.Size = new System.Drawing.Size(55, 15);
+            this.helpLabelContent.TabIndex = 1;
+            this.helpLabelContent.Text = "Content:";
             // 
             // tableLayoutPanel10
             // 
@@ -1347,6 +1403,192 @@ namespace SerialSMSSender {
             this.helpButtonSend.Text = "Send";
             this.helpButtonSend.UseVisualStyleBackColor = true;
             this.helpButtonSend.Click += new System.EventHandler(this.helpButtonSend_Click);
+            // 
+            // tabPageInbox
+            // 
+            this.tabPageInbox.Controls.Add(this.tableLayoutPanel21);
+            this.tabPageInbox.Location = new System.Drawing.Point(4, 24);
+            this.tabPageInbox.Name = "tabPageInbox";
+            this.tabPageInbox.Size = new System.Drawing.Size(1050, 695);
+            this.tabPageInbox.TabIndex = 3;
+            this.tabPageInbox.Text = "Inbox";
+            this.tabPageInbox.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnCount = 2;
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxSmart, 1, 0);
+            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxGlobe3, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.inboxButtonRefresh, 1, 1);
+            this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel22, 0, 1);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 3;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(1050, 695);
+            this.tableLayoutPanel21.TabIndex = 0;
+            // 
+            // inboxGroupBoxSmart
+            // 
+            this.inboxGroupBoxSmart.Controls.Add(this.inboxDataGridViewSmart);
+            this.inboxGroupBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxGroupBoxSmart.Location = new System.Drawing.Point(528, 3);
+            this.inboxGroupBoxSmart.Name = "inboxGroupBoxSmart";
+            this.inboxGroupBoxSmart.Size = new System.Drawing.Size(519, 635);
+            this.inboxGroupBoxSmart.TabIndex = 3;
+            this.inboxGroupBoxSmart.TabStop = false;
+            this.inboxGroupBoxSmart.Text = "Smart";
+            // 
+            // inboxDataGridViewSmart
+            // 
+            this.inboxDataGridViewSmart.AllowUserToResizeColumns = false;
+            this.inboxDataGridViewSmart.AllowUserToResizeRows = false;
+            this.inboxDataGridViewSmart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.inboxDataGridViewSmart.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.inboxDataGridViewSmart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inboxDataGridViewSmart.DefaultCellStyle = dataGridViewCellStyle1;
+            this.inboxDataGridViewSmart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxDataGridViewSmart.Location = new System.Drawing.Point(3, 19);
+            this.inboxDataGridViewSmart.MultiSelect = false;
+            this.inboxDataGridViewSmart.Name = "inboxDataGridViewSmart";
+            this.inboxDataGridViewSmart.ReadOnly = true;
+            this.inboxDataGridViewSmart.RowHeadersVisible = false;
+            this.inboxDataGridViewSmart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.inboxDataGridViewSmart.Size = new System.Drawing.Size(513, 613);
+            this.inboxDataGridViewSmart.TabIndex = 0;
+            // 
+            // inboxGroupBoxGlobe3
+            // 
+            this.inboxGroupBoxGlobe3.Controls.Add(this.inboxDataGridViewGlobe);
+            this.inboxGroupBoxGlobe3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxGroupBoxGlobe3.Location = new System.Drawing.Point(3, 3);
+            this.inboxGroupBoxGlobe3.Name = "inboxGroupBoxGlobe3";
+            this.inboxGroupBoxGlobe3.Size = new System.Drawing.Size(519, 635);
+            this.inboxGroupBoxGlobe3.TabIndex = 2;
+            this.inboxGroupBoxGlobe3.TabStop = false;
+            this.inboxGroupBoxGlobe3.Text = "Globe";
+            // 
+            // inboxDataGridViewGlobe
+            // 
+            this.inboxDataGridViewGlobe.AllowUserToResizeColumns = false;
+            this.inboxDataGridViewGlobe.AllowUserToResizeRows = false;
+            this.inboxDataGridViewGlobe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.inboxDataGridViewGlobe.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.inboxDataGridViewGlobe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inboxDataGridViewGlobe.DefaultCellStyle = dataGridViewCellStyle2;
+            this.inboxDataGridViewGlobe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inboxDataGridViewGlobe.Location = new System.Drawing.Point(3, 19);
+            this.inboxDataGridViewGlobe.MultiSelect = false;
+            this.inboxDataGridViewGlobe.Name = "inboxDataGridViewGlobe";
+            this.inboxDataGridViewGlobe.ReadOnly = true;
+            this.inboxDataGridViewGlobe.RowHeadersVisible = false;
+            this.inboxDataGridViewGlobe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.inboxDataGridViewGlobe.Size = new System.Drawing.Size(513, 613);
+            this.inboxDataGridViewGlobe.TabIndex = 2;
+            // 
+            // inboxButtonRefresh
+            // 
+            this.inboxButtonRefresh.Location = new System.Drawing.Point(528, 644);
+            this.inboxButtonRefresh.Name = "inboxButtonRefresh";
+            this.inboxButtonRefresh.Size = new System.Drawing.Size(102, 27);
+            this.inboxButtonRefresh.TabIndex = 4;
+            this.inboxButtonRefresh.Text = "Refresh";
+            this.inboxButtonRefresh.UseVisualStyleBackColor = true;
+            this.inboxButtonRefresh.Click += new System.EventHandler(this.inboxButtonRefresh_Click);
+            // 
+            // tableLayoutPanel22
+            // 
+            this.tableLayoutPanel22.ColumnCount = 5;
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.04762F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.19048F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.190476F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.71429F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.66667F));
+            this.tableLayoutPanel22.Controls.Add(this.inboxLabelYear, 3, 0);
+            this.tableLayoutPanel22.Controls.Add(this.inboxLabelDay, 2, 0);
+            this.tableLayoutPanel22.Controls.Add(this.inboxButtonPrevious, 0, 0);
+            this.tableLayoutPanel22.Controls.Add(this.inboxButtonNext, 4, 0);
+            this.tableLayoutPanel22.Controls.Add(this.inboxLabelMonth, 1, 0);
+            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(0, 641);
+            this.tableLayoutPanel22.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+            this.tableLayoutPanel22.RowCount = 1;
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(525, 33);
+            this.tableLayoutPanel22.TabIndex = 5;
+            // 
+            // inboxLabelYear
+            // 
+            this.inboxLabelYear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inboxLabelYear.AutoSize = true;
+            this.inboxLabelYear.Location = new System.Drawing.Point(288, 9);
+            this.inboxLabelYear.Name = "inboxLabelYear";
+            this.inboxLabelYear.Size = new System.Drawing.Size(36, 15);
+            this.inboxLabelYear.TabIndex = 4;
+            this.inboxLabelYear.Text = "#Year";
+            // 
+            // inboxLabelDay
+            // 
+            this.inboxLabelDay.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inboxLabelDay.AutoSize = true;
+            this.inboxLabelDay.Location = new System.Drawing.Point(231, 9);
+            this.inboxLabelDay.Name = "inboxLabelDay";
+            this.inboxLabelDay.Size = new System.Drawing.Size(34, 15);
+            this.inboxLabelDay.TabIndex = 3;
+            this.inboxLabelDay.Text = "#Day";
+            // 
+            // inboxButtonPrevious
+            // 
+            this.inboxButtonPrevious.Dock = System.Windows.Forms.DockStyle.Right;
+            this.inboxButtonPrevious.Location = new System.Drawing.Point(64, 3);
+            this.inboxButtonPrevious.Name = "inboxButtonPrevious";
+            this.inboxButtonPrevious.Size = new System.Drawing.Size(75, 27);
+            this.inboxButtonPrevious.TabIndex = 0;
+            this.inboxButtonPrevious.Text = "Previous";
+            this.inboxButtonPrevious.UseVisualStyleBackColor = true;
+            this.inboxButtonPrevious.Click += new System.EventHandler(this.inboxButtonPrevious_Click);
+            // 
+            // inboxButtonNext
+            // 
+            this.inboxButtonNext.Dock = System.Windows.Forms.DockStyle.Left;
+            this.inboxButtonNext.Location = new System.Drawing.Point(345, 3);
+            this.inboxButtonNext.Name = "inboxButtonNext";
+            this.inboxButtonNext.Size = new System.Drawing.Size(75, 27);
+            this.inboxButtonNext.TabIndex = 1;
+            this.inboxButtonNext.Text = "Next";
+            this.inboxButtonNext.UseVisualStyleBackColor = true;
+            this.inboxButtonNext.Click += new System.EventHandler(this.inboxButtonNext_Click);
+            // 
+            // inboxLabelMonth
+            // 
+            this.inboxLabelMonth.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inboxLabelMonth.AutoSize = true;
+            this.inboxLabelMonth.Location = new System.Drawing.Point(159, 9);
+            this.inboxLabelMonth.Name = "inboxLabelMonth";
+            this.inboxLabelMonth.Size = new System.Drawing.Size(50, 15);
+            this.inboxLabelMonth.TabIndex = 2;
+            this.inboxLabelMonth.Text = "#Month";
             // 
             // tabPageSettings
             // 
@@ -1823,7 +2065,7 @@ namespace SerialSMSSender {
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.tableLayoutPanel18);
+            this.groupBox4.Controls.Add(this.tableLayoutPanel12);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(528, 3);
             this.groupBox4.Name = "groupBox4";
@@ -1832,8 +2074,25 @@ namespace SerialSMSSender {
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Percentage Values";
             // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 1;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel18, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.groupBox7, 0, 1);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.60188F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.39812F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(513, 319);
+            this.tableLayoutPanel12.TabIndex = 2;
+            // 
             // tableLayoutPanel18
             // 
+            this.tableLayoutPanel18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel18.ColumnCount = 3;
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41715F));
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68226F));
@@ -1847,25 +2106,20 @@ namespace SerialSMSSender {
             this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxSmartLoading, 1, 0);
             this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGlobeLoading, 1, 1);
             this.tableLayoutPanel18.Controls.Add(this.settingsPortsTextBoxGSATLoading, 1, 2);
-            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 3;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(513, 319);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(507, 97);
             this.tableLayoutPanel18.TabIndex = 1;
             // 
             // settingsPortsButtonSaveGSATLoading
             // 
             this.settingsPortsButtonSaveGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGSATLoading.Location = new System.Drawing.Point(391, 254);
+            this.settingsPortsButtonSaveGSATLoading.Location = new System.Drawing.Point(386, 69);
             this.settingsPortsButtonSaveGSATLoading.Name = "settingsPortsButtonSaveGSATLoading";
             this.settingsPortsButtonSaveGSATLoading.Size = new System.Drawing.Size(104, 23);
             this.settingsPortsButtonSaveGSATLoading.TabIndex = 19;
@@ -1876,7 +2130,7 @@ namespace SerialSMSSender {
             // settingsPortsButtonSaveGlobeLoading
             // 
             this.settingsPortsButtonSaveGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveGlobeLoading.Location = new System.Drawing.Point(391, 147);
+            this.settingsPortsButtonSaveGlobeLoading.Location = new System.Drawing.Point(386, 36);
             this.settingsPortsButtonSaveGlobeLoading.Name = "settingsPortsButtonSaveGlobeLoading";
             this.settingsPortsButtonSaveGlobeLoading.Size = new System.Drawing.Size(104, 23);
             this.settingsPortsButtonSaveGlobeLoading.TabIndex = 18;
@@ -1887,7 +2141,7 @@ namespace SerialSMSSender {
             // settingsPortsButtonSaveSmartLoading
             // 
             this.settingsPortsButtonSaveSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsButtonSaveSmartLoading.Location = new System.Drawing.Point(391, 41);
+            this.settingsPortsButtonSaveSmartLoading.Location = new System.Drawing.Point(386, 4);
             this.settingsPortsButtonSaveSmartLoading.Name = "settingsPortsButtonSaveSmartLoading";
             this.settingsPortsButtonSaveSmartLoading.Size = new System.Drawing.Size(104, 23);
             this.settingsPortsButtonSaveSmartLoading.TabIndex = 17;
@@ -1899,7 +2153,7 @@ namespace SerialSMSSender {
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 45);
+            this.label8.Location = new System.Drawing.Point(23, 8);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 15);
             this.label8.TabIndex = 0;
@@ -1909,7 +2163,7 @@ namespace SerialSMSSender {
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 151);
+            this.label9.Location = new System.Drawing.Point(23, 40);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 15);
             this.label9.TabIndex = 1;
@@ -1919,7 +2173,7 @@ namespace SerialSMSSender {
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 258);
+            this.label10.Location = new System.Drawing.Point(30, 73);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 15);
             this.label10.TabIndex = 2;
@@ -1928,7 +2182,7 @@ namespace SerialSMSSender {
             // settingsPortsTextBoxSmartLoading
             // 
             this.settingsPortsTextBoxSmartLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsTextBoxSmartLoading.Location = new System.Drawing.Point(125, 41);
+            this.settingsPortsTextBoxSmartLoading.Location = new System.Drawing.Point(123, 4);
             this.settingsPortsTextBoxSmartLoading.Name = "settingsPortsTextBoxSmartLoading";
             this.settingsPortsTextBoxSmartLoading.Size = new System.Drawing.Size(236, 23);
             this.settingsPortsTextBoxSmartLoading.TabIndex = 8;
@@ -1936,7 +2190,7 @@ namespace SerialSMSSender {
             // settingsPortsTextBoxGlobeLoading
             // 
             this.settingsPortsTextBoxGlobeLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsTextBoxGlobeLoading.Location = new System.Drawing.Point(125, 147);
+            this.settingsPortsTextBoxGlobeLoading.Location = new System.Drawing.Point(123, 36);
             this.settingsPortsTextBoxGlobeLoading.Name = "settingsPortsTextBoxGlobeLoading";
             this.settingsPortsTextBoxGlobeLoading.Size = new System.Drawing.Size(236, 23);
             this.settingsPortsTextBoxGlobeLoading.TabIndex = 9;
@@ -1944,10 +2198,134 @@ namespace SerialSMSSender {
             // settingsPortsTextBoxGSATLoading
             // 
             this.settingsPortsTextBoxGSATLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsPortsTextBoxGSATLoading.Location = new System.Drawing.Point(125, 254);
+            this.settingsPortsTextBoxGSATLoading.Location = new System.Drawing.Point(123, 69);
             this.settingsPortsTextBoxGSATLoading.Name = "settingsPortsTextBoxGSATLoading";
             this.settingsPortsTextBoxGSATLoading.Size = new System.Drawing.Size(236, 23);
             this.settingsPortsTextBoxGSATLoading.TabIndex = 10;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.tableLayoutPanel13);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.Location = new System.Drawing.Point(0, 103);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(513, 216);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Globe SMS Loading";
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 3;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.48521F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.69033F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.0217F));
+            this.tableLayoutPanel13.Controls.Add(this.label25, 0, 2);
+            this.tableLayoutPanel13.Controls.Add(this.label23, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.settingsULTTextBoxRebate, 1, 0);
+            this.tableLayoutPanel13.Controls.Add(this.settingsULTButtonSaveRebate, 2, 0);
+            this.tableLayoutPanel13.Controls.Add(this.label24, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.settingsULTTextBoxGateway, 1, 1);
+            this.tableLayoutPanel13.Controls.Add(this.settingsULTTextBoxConfirmation, 1, 2);
+            this.tableLayoutPanel13.Controls.Add(this.settingsULTButtonSaveGateway, 2, 1);
+            this.tableLayoutPanel13.Controls.Add(this.settingsULTButtonSaveConfirmation, 2, 2);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 3;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(507, 194);
+            this.tableLayoutPanel13.TabIndex = 0;
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(7, 153);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(103, 15);
+            this.label25.TabIndex = 22;
+            this.label25.Text = "ULT Confirmation:";
+            // 
+            // label23
+            // 
+            this.label23.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(14, 24);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(96, 15);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Globe Rebate % :";
+            // 
+            // settingsULTTextBoxRebate
+            // 
+            this.settingsULTTextBoxRebate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsULTTextBoxRebate.Location = new System.Drawing.Point(123, 20);
+            this.settingsULTTextBoxRebate.Name = "settingsULTTextBoxRebate";
+            this.settingsULTTextBoxRebate.Size = new System.Drawing.Size(236, 23);
+            this.settingsULTTextBoxRebate.TabIndex = 11;
+            // 
+            // settingsULTButtonSaveRebate
+            // 
+            this.settingsULTButtonSaveRebate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsULTButtonSaveRebate.Location = new System.Drawing.Point(386, 20);
+            this.settingsULTButtonSaveRebate.Name = "settingsULTButtonSaveRebate";
+            this.settingsULTButtonSaveRebate.Size = new System.Drawing.Size(104, 23);
+            this.settingsULTButtonSaveRebate.TabIndex = 20;
+            this.settingsULTButtonSaveRebate.Text = "Save";
+            this.settingsULTButtonSaveRebate.UseVisualStyleBackColor = true;
+            this.settingsULTButtonSaveRebate.Click += new System.EventHandler(this.settingsULTButtonSaveRebate_Click);
+            // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(33, 88);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(77, 15);
+            this.label24.TabIndex = 21;
+            this.label24.Text = "ULT Gateway:";
+            // 
+            // settingsULTTextBoxGateway
+            // 
+            this.settingsULTTextBoxGateway.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsULTTextBoxGateway.Location = new System.Drawing.Point(123, 84);
+            this.settingsULTTextBoxGateway.Name = "settingsULTTextBoxGateway";
+            this.settingsULTTextBoxGateway.Size = new System.Drawing.Size(236, 23);
+            this.settingsULTTextBoxGateway.TabIndex = 23;
+            // 
+            // settingsULTTextBoxConfirmation
+            // 
+            this.settingsULTTextBoxConfirmation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsULTTextBoxConfirmation.Location = new System.Drawing.Point(123, 149);
+            this.settingsULTTextBoxConfirmation.Name = "settingsULTTextBoxConfirmation";
+            this.settingsULTTextBoxConfirmation.Size = new System.Drawing.Size(236, 23);
+            this.settingsULTTextBoxConfirmation.TabIndex = 24;
+            // 
+            // settingsULTButtonSaveGateway
+            // 
+            this.settingsULTButtonSaveGateway.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsULTButtonSaveGateway.Location = new System.Drawing.Point(386, 84);
+            this.settingsULTButtonSaveGateway.Name = "settingsULTButtonSaveGateway";
+            this.settingsULTButtonSaveGateway.Size = new System.Drawing.Size(104, 23);
+            this.settingsULTButtonSaveGateway.TabIndex = 25;
+            this.settingsULTButtonSaveGateway.Text = "Save";
+            this.settingsULTButtonSaveGateway.UseVisualStyleBackColor = true;
+            this.settingsULTButtonSaveGateway.Click += new System.EventHandler(this.settingsULTButtonSaveGateway_Click);
+            // 
+            // settingsULTButtonSaveConfirmation
+            // 
+            this.settingsULTButtonSaveConfirmation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsULTButtonSaveConfirmation.Location = new System.Drawing.Point(386, 149);
+            this.settingsULTButtonSaveConfirmation.Name = "settingsULTButtonSaveConfirmation";
+            this.settingsULTButtonSaveConfirmation.Size = new System.Drawing.Size(104, 23);
+            this.settingsULTButtonSaveConfirmation.TabIndex = 26;
+            this.settingsULTButtonSaveConfirmation.Text = "Save";
+            this.settingsULTButtonSaveConfirmation.UseVisualStyleBackColor = true;
+            this.settingsULTButtonSaveConfirmation.Click += new System.EventHandler(this.settingsULTButtonSaveConfirmation_Click);
             // 
             // settingsGroupBoxPorts
             // 
@@ -2237,73 +2615,63 @@ namespace SerialSMSSender {
             this.settingsPortsButtonSaveSmart.UseVisualStyleBackColor = true;
             this.settingsPortsButtonSaveSmart.Click += new System.EventHandler(this.settingsPortsButtonSaveSmart_Click);
             // 
-            // tabPageInbox
+            // tabPageMessageSimulation
             // 
-            this.tabPageInbox.Controls.Add(this.tableLayoutPanel21);
-            this.tabPageInbox.Location = new System.Drawing.Point(4, 24);
-            this.tabPageInbox.Name = "tabPageInbox";
-            this.tabPageInbox.Size = new System.Drawing.Size(1050, 695);
-            this.tabPageInbox.TabIndex = 3;
-            this.tabPageInbox.Text = "Inbox";
-            this.tabPageInbox.UseVisualStyleBackColor = true;
+            this.tabPageMessageSimulation.Controls.Add(this.messageSimulationTextBoxMessage);
+            this.tabPageMessageSimulation.Controls.Add(this.messageSimulationLabelMessage);
+            this.tabPageMessageSimulation.Controls.Add(this.messageSimulationButtonSend);
+            this.tabPageMessageSimulation.Controls.Add(this.messageSimulationTextBoxNumber);
+            this.tabPageMessageSimulation.Controls.Add(this.messageSimulationLabelNumber);
+            this.tabPageMessageSimulation.Location = new System.Drawing.Point(4, 24);
+            this.tabPageMessageSimulation.Name = "tabPageMessageSimulation";
+            this.tabPageMessageSimulation.Size = new System.Drawing.Size(1050, 695);
+            this.tabPageMessageSimulation.TabIndex = 5;
+            this.tabPageMessageSimulation.Text = "Message Simulation";
+            this.tabPageMessageSimulation.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel21
+            // messageSimulationTextBoxMessage
             // 
-            this.tableLayoutPanel21.ColumnCount = 2;
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxSmart, 1, 1);
-            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxGlobe3, 0, 1);
-            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxGlobe2, 1, 0);
-            this.tableLayoutPanel21.Controls.Add(this.inboxGroupBoxGlobe1, 0, 0);
-            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel21.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
-            this.tableLayoutPanel21.RowCount = 2;
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.Size = new System.Drawing.Size(1050, 695);
-            this.tableLayoutPanel21.TabIndex = 0;
+            this.messageSimulationTextBoxMessage.Location = new System.Drawing.Point(375, 144);
+            this.messageSimulationTextBoxMessage.Multiline = true;
+            this.messageSimulationTextBoxMessage.Name = "messageSimulationTextBoxMessage";
+            this.messageSimulationTextBoxMessage.Size = new System.Drawing.Size(220, 117);
+            this.messageSimulationTextBoxMessage.TabIndex = 4;
             // 
-            // inboxGroupBoxGlobe1
+            // messageSimulationLabelMessage
             // 
-            this.inboxGroupBoxGlobe1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inboxGroupBoxGlobe1.Location = new System.Drawing.Point(3, 3);
-            this.inboxGroupBoxGlobe1.Name = "inboxGroupBoxGlobe1";
-            this.inboxGroupBoxGlobe1.Size = new System.Drawing.Size(519, 341);
-            this.inboxGroupBoxGlobe1.TabIndex = 0;
-            this.inboxGroupBoxGlobe1.TabStop = false;
-            this.inboxGroupBoxGlobe1.Text = "Globe (PORT 4)";
+            this.messageSimulationLabelMessage.AutoSize = true;
+            this.messageSimulationLabelMessage.Location = new System.Drawing.Point(313, 144);
+            this.messageSimulationLabelMessage.Name = "messageSimulationLabelMessage";
+            this.messageSimulationLabelMessage.Size = new System.Drawing.Size(56, 15);
+            this.messageSimulationLabelMessage.TabIndex = 3;
+            this.messageSimulationLabelMessage.Text = "Message:";
             // 
-            // inboxGroupBoxGlobe2
+            // messageSimulationButtonSend
             // 
-            this.inboxGroupBoxGlobe2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inboxGroupBoxGlobe2.Location = new System.Drawing.Point(528, 3);
-            this.inboxGroupBoxGlobe2.Name = "inboxGroupBoxGlobe2";
-            this.inboxGroupBoxGlobe2.Size = new System.Drawing.Size(519, 341);
-            this.inboxGroupBoxGlobe2.TabIndex = 1;
-            this.inboxGroupBoxGlobe2.TabStop = false;
-            this.inboxGroupBoxGlobe2.Text = "Globe (PORT 5)";
+            this.messageSimulationButtonSend.Location = new System.Drawing.Point(520, 267);
+            this.messageSimulationButtonSend.Name = "messageSimulationButtonSend";
+            this.messageSimulationButtonSend.Size = new System.Drawing.Size(75, 23);
+            this.messageSimulationButtonSend.TabIndex = 2;
+            this.messageSimulationButtonSend.Text = "Send";
+            this.messageSimulationButtonSend.UseVisualStyleBackColor = true;
+            this.messageSimulationButtonSend.Click += new System.EventHandler(this.messageSimulationButtonSend_Click);
             // 
-            // inboxGroupBoxGlobe3
+            // messageSimulationTextBoxNumber
             // 
-            this.inboxGroupBoxGlobe3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inboxGroupBoxGlobe3.Location = new System.Drawing.Point(3, 350);
-            this.inboxGroupBoxGlobe3.Name = "inboxGroupBoxGlobe3";
-            this.inboxGroupBoxGlobe3.Size = new System.Drawing.Size(519, 342);
-            this.inboxGroupBoxGlobe3.TabIndex = 2;
-            this.inboxGroupBoxGlobe3.TabStop = false;
-            this.inboxGroupBoxGlobe3.Text = "Globe (PORT 6)";
+            this.messageSimulationTextBoxNumber.Location = new System.Drawing.Point(375, 110);
+            this.messageSimulationTextBoxNumber.Name = "messageSimulationTextBoxNumber";
+            this.messageSimulationTextBoxNumber.Size = new System.Drawing.Size(220, 23);
+            this.messageSimulationTextBoxNumber.TabIndex = 1;
+            this.messageSimulationTextBoxNumber.Text = "09652479074";
             // 
-            // inboxGroupBoxSmart
+            // messageSimulationLabelNumber
             // 
-            this.inboxGroupBoxSmart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inboxGroupBoxSmart.Location = new System.Drawing.Point(528, 350);
-            this.inboxGroupBoxSmart.Name = "inboxGroupBoxSmart";
-            this.inboxGroupBoxSmart.Size = new System.Drawing.Size(519, 342);
-            this.inboxGroupBoxSmart.TabIndex = 3;
-            this.inboxGroupBoxSmart.TabStop = false;
-            this.inboxGroupBoxSmart.Text = "Smart (PORT 7)";
+            this.messageSimulationLabelNumber.AutoSize = true;
+            this.messageSimulationLabelNumber.Location = new System.Drawing.Point(275, 111);
+            this.messageSimulationLabelNumber.Name = "messageSimulationLabelNumber";
+            this.messageSimulationLabelNumber.Size = new System.Drawing.Size(96, 15);
+            this.messageSimulationLabelNumber.TabIndex = 0;
+            this.messageSimulationLabelNumber.Text = "Sender Number: ";
             // 
             // MainForm
             // 
@@ -2316,6 +2684,7 @@ namespace SerialSMSSender {
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "All Net Load - Serial Monitor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.mainTabController.ResumeLayout(false);
@@ -2341,14 +2710,16 @@ namespace SerialSMSSender {
             this.homeGroupBoxToggleRetailer.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.homeTableLayoutPanelTextBoxes.ResumeLayout(false);
             this.homeGroupBoxReceiving.ResumeLayout(false);
             this.homeGroupBoxReceiving.PerformLayout();
@@ -2359,6 +2730,8 @@ namespace SerialSMSSender {
             this.homeGroupBoxGlobe.PerformLayout();
             this.homeGroupBoxSmart.ResumeLayout(false);
             this.homeGroupBoxSmart.PerformLayout();
+            this.tabPageGlobeQueue.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.globeQueueDataGridView)).EndInit();
             this.tabPageHelp.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HelpDataGridView)).EndInit();
@@ -2368,14 +2741,18 @@ namespace SerialSMSSender {
             this.tableLayoutPanel15.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
-            this.tableLayoutPanel13.ResumeLayout(false);
-            this.tableLayoutPanel13.PerformLayout();
-            this.tableLayoutPanel12.ResumeLayout(false);
-            this.tableLayoutPanel12.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
+            this.tabPageInbox.ResumeLayout(false);
+            this.tableLayoutPanel21.ResumeLayout(false);
+            this.inboxGroupBoxSmart.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.inboxDataGridViewSmart)).EndInit();
+            this.inboxGroupBoxGlobe3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.inboxDataGridViewGlobe)).EndInit();
+            this.tableLayoutPanel22.ResumeLayout(false);
+            this.tableLayoutPanel22.PerformLayout();
             this.tabPageSettings.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -2385,13 +2762,17 @@ namespace SerialSMSSender {
             this.tableLayoutPanel19.ResumeLayout(false);
             this.tableLayoutPanel19.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel18.ResumeLayout(false);
             this.tableLayoutPanel18.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
             this.settingsGroupBoxPorts.ResumeLayout(false);
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
-            this.tabPageInbox.ResumeLayout(false);
-            this.tableLayoutPanel21.ResumeLayout(false);
+            this.tabPageMessageSimulation.ResumeLayout(false);
+            this.tabPageMessageSimulation.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2466,24 +2847,12 @@ namespace SerialSMSSender {
         private System.Windows.Forms.DataGridView HelpDataGridView;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label helpLabelReply;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private System.Windows.Forms.Label helpLabelStatus;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.Label helpLabelDateIssued;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Label helpLabelReferenceNumber;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.Label helpLabelDateOfIncident;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.Label helpLabelCode;
+        private System.Windows.Forms.Label helpLabelContent;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Label helpLabelSenderNumber;
         private System.Windows.Forms.TextBox helpTextBoxReply;
         private System.Windows.Forms.Button helpButtonSend;
-        private System.Windows.Forms.Label helpLabelOutputStatus;
-        private System.Windows.Forms.Label helpLabelOutputDateIssued;
-        private System.Windows.Forms.Label helpLabelOutputReferenceNumber;
-        private System.Windows.Forms.Label helpLabelOutputDateOfIncident;
         private System.Windows.Forms.Label helpLabelOutputCode;
         private System.Windows.Forms.Label helpLabelOutputSenderNumber;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
@@ -2568,8 +2937,46 @@ namespace SerialSMSSender {
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
         private System.Windows.Forms.GroupBox inboxGroupBoxSmart;
         private System.Windows.Forms.GroupBox inboxGroupBoxGlobe3;
-        private System.Windows.Forms.GroupBox inboxGroupBoxGlobe2;
-        private System.Windows.Forms.GroupBox inboxGroupBoxGlobe1;
+        private System.Windows.Forms.DataGridView inboxDataGridViewSmart;
+        private System.Windows.Forms.Button inboxButtonRefresh;
+        private System.Windows.Forms.DataGridView inboxDataGridViewGlobe;
+        private System.Windows.Forms.TabPage tabPageGlobeQueue;
+        private System.Windows.Forms.DataGridView globeQueueDataGridView;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
+        private System.Windows.Forms.Label inboxLabelYear;
+        private System.Windows.Forms.Label inboxLabelDay;
+        private System.Windows.Forms.Button inboxButtonPrevious;
+        private System.Windows.Forms.Button inboxButtonNext;
+        private System.Windows.Forms.Label inboxLabelMonth;
+        private System.Windows.Forms.TabPage tabPageMessageSimulation;
+        private System.Windows.Forms.TextBox messageSimulationTextBoxMessage;
+        private System.Windows.Forms.Label messageSimulationLabelMessage;
+        private System.Windows.Forms.Button messageSimulationButtonSend;
+        private System.Windows.Forms.TextBox messageSimulationTextBoxNumber;
+        private System.Windows.Forms.Label messageSimulationLabelNumber;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label helpLabelOutputStatus;
+        private System.Windows.Forms.Label helpLabelStatus;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label helpLabelOutputDateIssued;
+        private System.Windows.Forms.Label helpLabelDateIssued;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox settingsULTTextBoxRebate;
+        private System.Windows.Forms.Button settingsULTButtonSaveRebate;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox settingsULTTextBoxGateway;
+        private System.Windows.Forms.TextBox settingsULTTextBoxConfirmation;
+        private System.Windows.Forms.Button settingsULTButtonSaveGateway;
+        private System.Windows.Forms.Button settingsULTButtonSaveConfirmation;
+        private System.Windows.Forms.Label homeLabelGlobeMode;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.RadioButton homeRadioButtonGlobeSMS;
+        private System.Windows.Forms.RadioButton homeRadioButtonGlobeULT;
+        private System.Windows.Forms.RadioButton homeRadioButtonGlobeOFF;
     }
 }
 
