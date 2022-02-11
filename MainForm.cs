@@ -1221,7 +1221,7 @@ namespace SerialSMSSender {
 
                         string keyword = productCodeTable.Rows[0]["KeywordUSSD"].ToString();
 
-                        if (Regex.IsMatch(keyword, @"^[a-zA-Z]+$")) {
+                        if (Regex.IsMatch(productCodeTable.Rows[0]["ProductCode"].ToString(), @"^[a-zA-Z]+$")) {
                             SendMessageViaSmart(keyword + " " + receiverNumber, "4122");
                         }
                         else {
