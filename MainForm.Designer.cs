@@ -1189,10 +1189,10 @@ namespace SerialSMSSender {
             this.HelpDataGridView.Location = new System.Drawing.Point(245, 3);
             this.HelpDataGridView.Name = "HelpDataGridView";
             this.HelpDataGridView.RowHeadersVisible = false;
-            this.HelpDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.HelpDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HelpDataGridView.Size = new System.Drawing.Size(802, 689);
             this.HelpDataGridView.TabIndex = 0;
-            this.HelpDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HelpDataGridView_CellContentDoubleClick);
+            this.HelpDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HelpDataGridView_CellDoubleClick);
             // 
             // tableLayoutPanel9
             // 

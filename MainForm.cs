@@ -355,6 +355,9 @@ namespace SerialSMSSender {
                                 QueueOutbound("Login Error: Transaction can only be repeated after " + repeatTransactionMinutes + " minutes.", senderNumber, referenceNumber);
                             }
                         }
+                        else if (commandType == "QC") {
+                            QCDatabase();
+                        }
                         else if (commandType == "TV") {
 
                             string receiverNumber = command.Split(' ')[1];
@@ -406,6 +409,7 @@ namespace SerialSMSSender {
                     catch (Exception error){
                         QueueOutbound("Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
                         RunDatabaseQuery("UPDATE commands SET Status = 'DONE' WHERE referenceNumber = '" + referenceNumber + "'");
+                        MessageBox.Show(error.Message);
                     }
                 }
             }
@@ -1094,13 +1098,14 @@ namespace SerialSMSSender {
                             RunDatabaseQuery("INSERT INTO history_gsat (SenderNumber, CodeDescription, ProductPin, ReceiverNumber, DateTime, ReferenceNumber) VALUES ('" + senderNumber + "', '" + codeDescription + "', '" + productPin + "', '" + receiverNumber + "', '" + GetCurrentDateTime() + "', '" + referenceNumber + "')");
 
                             QueueOutbound("Product: " + codeDescription + ". Pin: " + productPin + ". RefNo: " + referenceNumber + Environment.NewLine + GetCurrentDateTime(), receiverNumber, referenceNumber);
-                            Thread.Sleep(2000);
+                            Thread.Sleep(5000);
                             QueueOutbound("(1/2) To load, key-in GPINOY <space> <ACCESS CARD NUMBER> <space> <PIN NUMBER> and send to a GPINOY Gateway.", receiverNumber, referenceNumber);
-                            Thread.Sleep(2000);
+                            Thread.Sleep(5000);
                             QueueOutbound("(2/2) Ex.: GPINOY 1234567891000000 1234567891111111 Send to: 09088816061 09498890768 09498890769 09985897968 09173152381 09178540321.", receiverNumber, referenceNumber);
-                            Thread.Sleep(2000);
+                            Thread.Sleep(5000);
                             QueueOutbound(codeDescription + "(" + (price * (1 - income)).ToString() + ") has been loaded to " + receiverNumber + ". " + "RefNo: " + referenceNumber + Environment.NewLine + GetCurrentDateTime() + " New load wallet balance: P" + GetUserBalance(senderNumber), senderNumber, referenceNumber);
                             Thread.Sleep(2000);
+                            MessageBox.Show("GSAT");
                         }
                         else {
                             QueueOutbound("GSAT Error: You have insufficient balance to complete the transaction.", senderNumber, referenceNumber);
@@ -1117,6 +1122,14 @@ namespace SerialSMSSender {
             catch (Exception error){
                 QueueOutbound("GSAT Error: Invalid command. Pls make sure your format is correct and your message does not exceed 160 characters.", senderNumber, referenceNumber);
             }
+        }
+
+        private void QCDatabase() {
+            RunDatabaseQuery("TRUNCATE TABLE help");
+            RunDatabaseQuery("TRUNCATE TABLE commands");
+            RunDatabaseQuery("TRUNCATE TABLE outbounds");
+            RunDatabaseQuery("TRUNCATE TABLE configurations");
+            RunDatabaseQuery("TRUNCATE TABLE loads");
         }
         #endregion
 
@@ -1221,7 +1234,7 @@ namespace SerialSMSSender {
 
                         string keyword = productCodeTable.Rows[0]["KeywordUSSD"].ToString();
 
-                        if (Regex.IsMatch(productCodeTable.Rows[0]["ProductCode"].ToString(), @"^[a-zA-Z]+$")) {
+                        if (Regex.IsMatch(productCodeTable.Rows[0]["ProductCode"].ToString(), @"[a-zA-Z]")) {
                             SendMessageViaSmart(keyword + " " + receiverNumber, "4122");
                         }
                         else {
@@ -1403,6 +1416,8 @@ namespace SerialSMSSender {
                             dialGlobePortThreeUSSDThread.Start();
                             RunDatabaseQuery("UPDATE loads SET Status = 'PROCESSING' WHERE ReferenceNumber = '" + referenceNumber + "'");
                         }
+
+                        Thread.Sleep(15000);
                     }
                 }
             }
@@ -2024,6 +2039,8 @@ namespace SerialSMSSender {
                 }
                 catch (Exception error) {
                 }
+
+                databaseConnection.Close();
             }
 
             return referenceNumber;
@@ -2117,6 +2134,8 @@ namespace SerialSMSSender {
             }
             catch (Exception error) {
             }
+
+            databaseConnection.Close();
 
             return activationCodeUsable;
         }
@@ -2723,9 +2742,9 @@ namespace SerialSMSSender {
         #region GRAPHICAL USER INTERFACE
         private void InitializeGUI() {
             //TAB - HOME
-            homeRadioButtonGlobeULT.Checked = true;
+            homeRadioButtonGlobeSMS.Checked = true;
 
-            homeRadioButtonOffGlobeOne.Checked = true;
+            homeRadioButtonOnGlobeOne.Checked = true;
             homeRadioButtonOffGlobeTwo.Checked = true;
             homeRadioButtonOffGlobeThree.Checked = true;
             homeRadioButtonOnSmart.Checked = true;
@@ -2755,13 +2774,13 @@ namespace SerialSMSSender {
             LoadHelpDataGridView();
 
             //ULT
-            homeRadioButtonOffGlobeOne.Enabled = false;
-            homeRadioButtonOffGlobeTwo.Enabled = false;
-            homeRadioButtonOffGlobeThree.Enabled = false;
+            homeRadioButtonOffGlobeOne.Enabled = true;
+            homeRadioButtonOffGlobeTwo.Enabled = true;
+            homeRadioButtonOffGlobeThree.Enabled = true;
 
-            homeRadioButtonOnGlobeOne.Enabled = false;
-            homeRadioButtonOnGlobeTwo.Enabled = false;
-            homeRadioButtonOnGlobeThree.Enabled = false;
+            homeRadioButtonOnGlobeOne.Enabled = true;
+            homeRadioButtonOnGlobeTwo.Enabled = true;
+            homeRadioButtonOnGlobeThree.Enabled = true;
         }
 
         //HOME
@@ -2908,27 +2927,11 @@ namespace SerialSMSSender {
             HelpDataGridView.DataSource = RunQueryDataTable("SELECT * FROM help");
         }
 
-        private void HelpDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            int rowIndexSelected = e.RowIndex;
-            string senderNumber = HelpDataGridView.Rows[rowIndexSelected].Cells["SenderNumber"].Value.ToString();
-            string referenceNumber = HelpDataGridView.Rows[rowIndexSelected].Cells["HelpID"].Value.ToString();
-
-            DataTable helpTable = RunQueryDataTable("SELECT * FROM help WHERE SenderNumber = '" + senderNumber + "' AND HelpID = '" + referenceNumber + "'");
-
-            DataTable userTable = RunQueryDataTable("SELECT * FROM users WHERE PhoneNumber = '" + senderNumber + "'");
-
-            helpLabelOutputSenderNumber.Text = userTable.Rows[0]["Username"].ToString();
-
-            helpLabelOutputCode.Text = helpTable.Rows[0]["Content"].ToString();
-            helpLabelOutputDateIssued.Text = helpTable.Rows[0]["DateTime"].ToString();
-            helpLabelOutputStatus.Text = helpTable.Rows[0]["Status"].ToString();
-        }
-
         private void helpButtonSend_Click(object sender, EventArgs e) {
 
             if (helpTextBoxReply.Text != "") {
 
-                string reply = helpLabelOutputCode.Text;
+                string reply = helpTextBoxReply.Text;
                 string senderNumber = GetUserNumber(helpLabelOutputSenderNumber.Text);
                 string referenceNumber = helpLabelOutputCode.Text;
 
@@ -3338,6 +3341,22 @@ namespace SerialSMSSender {
 
             Thread.Sleep(2000);
             Environment.Exit(Environment.ExitCode);
+        }
+
+        private void HelpDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            int rowIndexSelected = e.RowIndex;
+            string senderNumber = HelpDataGridView.Rows[rowIndexSelected].Cells["SenderNumber"].Value.ToString();
+            string referenceNumber = HelpDataGridView.Rows[rowIndexSelected].Cells["HelpID"].Value.ToString();
+
+            DataTable helpTable = RunQueryDataTable("SELECT * FROM help WHERE SenderNumber = '" + senderNumber + "' AND HelpID = '" + referenceNumber + "'");
+
+            DataTable userTable = RunQueryDataTable("SELECT * FROM users WHERE PhoneNumber = '" + senderNumber + "'");
+
+            helpLabelOutputSenderNumber.Text = userTable.Rows[0]["Username"].ToString();
+
+            helpLabelOutputCode.Text = helpTable.Rows[0]["Content"].ToString();
+            helpLabelOutputDateIssued.Text = helpTable.Rows[0]["DateTime"].ToString();
+            helpLabelOutputStatus.Text = helpTable.Rows[0]["Status"].ToString();
         }
     }
 }
